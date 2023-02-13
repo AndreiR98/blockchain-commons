@@ -15,5 +15,5 @@ public class AccountModel extends BaseEmptyModel {
     private String password;
     private String timeStamp;
     private BigDecimal balance;
-    private List<ContractBaseModel> contracts;
+    private AccountType type;
 }

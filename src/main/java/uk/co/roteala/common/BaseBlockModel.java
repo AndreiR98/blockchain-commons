@@ -12,21 +12,24 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 public class BaseBlockModel extends BaseEmptyModel {
-    private Integer number;
-    private String hash;
-    private String previousHash;
-    private String nextHash;
+    //header that is going to be hashed
+    private String version;
+    private String markleRoot;
+    private String timeStamp;
     private BigInteger nonce;
+    private String previousHash;
+    private Integer numberOfBits;
+    //end of header
+
+    private Integer index;
+    private String hash;
     private String transactionsRoot;
     private String stateRoot;
-    private String mine;
+    private String miner;
     private List<String> transactions;
     private Integer confirmations;
     private Integer size;
     private Integer height;
-    private Integer version;
-    private String markleRoot;
-    private String timeStamp;
+    private BlockStatus status;
     private BigDecimal difficulty;
-    private String chainWork;
 }

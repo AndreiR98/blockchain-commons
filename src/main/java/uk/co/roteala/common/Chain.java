@@ -16,7 +16,5 @@ public class Chain implements Serializable {
     private ChainType chainType;
     private ChainStatus status;
     private BaseCoinModel coin;
-    private List<Genesis> genesis;
-    private List<String> accounts;
     private List<Integer> blocks;
 }

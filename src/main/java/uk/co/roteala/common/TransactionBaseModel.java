@@ -12,12 +12,11 @@ import java.math.BigInteger;
 @AllArgsConstructor
 public class TransactionBaseModel extends BaseEmptyModel {
     private String hash;
-    private BigInteger nonce;
     private String blockHash;
     private Integer blockNumber;
     private Integer transactionIndex;
-    private AddressBaseModel from;
-    private AddressBaseModel to;
+    private String from;
+    private String to;
     private BigDecimal amount;
     private String timeStamp;
     private TransactionStatus status;
