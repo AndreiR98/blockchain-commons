@@ -1,0 +1,6 @@
+
+t	java:S115
+"ZRename this constant name to match the regular expression '^[A-Z][A-Z0-9]*(_[A-Z0-9]+)*$'.(ÍŽÒìûÿÿÿÿ
+v	java:S115"ZRename this constant name to match the regular expression '^[A-Z][A-Z0-9]*(_[A-Z0-9]+)*$'.(ö×àÓ8åÜ²¤è0
+X
+java:S1128"=Remove this unused import 'uk.co.roteala.common.BlockStatus'.(Ó«‘ëúÿÿÿÿ

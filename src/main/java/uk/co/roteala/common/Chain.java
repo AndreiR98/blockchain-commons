@@ -17,4 +17,5 @@ public class Chain implements Serializable {
     private ChainStatus status;
     private BaseCoinModel coin;
     private List<Integer> blocks;
+    private List<Genesis> genesis;
 }

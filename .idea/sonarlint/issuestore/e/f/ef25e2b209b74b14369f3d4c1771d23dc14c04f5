@@ -1,0 +1,21 @@
+
+c
+java:S1192"HDefine a constant instead of duplicating this literal "SHA-256" 3 times.(¾„ûÿÿÿÿ
+f	java:S117S"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(öïŒ¢
+v
+java:S1488"_Immediately return this expression instead of assigning it to the temporary variable "address".(ÁÇÀà
+@
+java:S2129‹"$Remove this "BigInteger" constructor(úÓ¡ùÿÿÿÿ
+@
+java:S2129‹"$Remove this "BigInteger" constructor(úÓ¡ùÿÿÿÿ
+^	java:S125Ğ"<This block of commented-out lines of code should be removed.( ‘è†ÿÿÿÿÿ8üĞ¯Üã0
+p
+java:S1128"NRemove this unused import 'org.bouncycastle.jcajce.provider.digest.RIPEMD160'.(êÛç°şÿÿÿÿ8Êæ°Üã0
+]
+java:S1128";Remove this unused import 'java.security.interfaces.ECKey'.(•ãûÿÿÿÿ8Êæ°Üã0
+_
+java:S1128"BRemove this unused import 'java.security.interfaces.ECPrivateKey'.(äíÂ8Êæ°Üã0
+]
+java:S1128"ARemove this unused import 'java.security.interfaces.ECPublicKey'.(¬ˆ”8Êæ°Üã0
+O
+java:S1128"-Remove this unused import 'java.util.Arrays'.(î–˜Éüÿÿÿÿ8Ëæ°Üã0
