@@ -57,8 +57,6 @@ _
 /src/main/java/uk/co/roteala/common/Genesis.java,c\b\cb4b752e258821b6e2d045edf379513dfa21c980
 \
 ,src/main/java/uk/co/roteala/net/OPCODES.java,e\a\eac4699bfd990b2b9fb0ff0ac0923aad2aec4b42
-e
-5src/main/java/uk/co/roteala/common/monetary/Coin.java,6\e\6e1beffe1b4e454b56c66a8ee92d16950e66d4b8
 i
 9src/main/java/uk/co/roteala/common/monetary/Monetary.java,4\0\40c7ae1a77285e353b21017e990d65f22dbc9614
 j

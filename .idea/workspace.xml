@@ -5,9 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8788e929-56e3-4231-8353-0722302cf2c4" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/4/a/4a92ba09b699cc2a79ea64c9eaeba763118e4bd1" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/6/e/6e1beffe1b4e454b56c66a8ee92d16950e66d4b8" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/uk/co/roteala/utxo/UTXOCreatorComponentFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/uk/co/roteala/utxo/UTXOCreatorComponentFactory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/uk/co/roteala/common/monetary/Coin.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/uk/co/roteala/common/monetary/Coin.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -130,7 +131,7 @@
       <workItem from="1677434159194" duration="1627000" />
       <workItem from="1677519679324" duration="1561000" />
       <workItem from="1677595470156" duration="5053000" />
-      <workItem from="1677668465625" duration="47000" />
+      <workItem from="1677668465625" duration="470000" />
     </task>
     <servers />
   </component>
