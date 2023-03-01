@@ -8,6 +8,4 @@ import org.springframework.context.annotation.Lazy;
 @Slf4j
 @Setter
 public class UTXOCreatorComponentFactory {
-
-    Map<String, Class<? extend UTXOCreatorComponent>>
 }

@@ -63,5 +63,3 @@ i
 9src/main/java/uk/co/roteala/common/monetary/Monetary.java,4\0\40c7ae1a77285e353b21017e990d65f22dbc9614
 j
 :src/main/java/uk/co/roteala/utxo/UTXOCreatorComponent.java,5\f\5f86d4ed7f04439fccf2af9ae0f2b88e54d27947
-r
-Bsrc/main/java/uk/co/roteala/utxo/AbstractUTXOCreatorComponent.java,4\a\4a92ba09b699cc2a79ea64c9eaeba763118e4bd1
