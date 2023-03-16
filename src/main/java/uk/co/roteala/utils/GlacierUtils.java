@@ -193,6 +193,12 @@ public class GlacierUtils {
         return account;
     }
 
+    public static String parseIpAddress(String address) {
+        return address
+                .substring(1)
+                .split(":")[0];
+    }
+
     private BigDecimal formatZeroBalance(Chain chain) {
         final int decimalPoints = chain.getCoin().getDecimalPoints();
 
@@ -205,7 +211,14 @@ public class GlacierUtils {
         return new BigDecimal("0."+after);
     }
 
-//    public TransactionBaseModel generateGenesisTransactions(AccountModel account) {
-//        final byte[] genesisAddress = SerializationUtils.serialize("GENESIS");
-//    }
+    /**
+     * Default return windows == true
+     * */
+    public boolean getSystem() {
+        if(System.getProperty("os.name").contains("linux")){
+            return false;
+        } else {
+            return true;
+        }
+    }
 }

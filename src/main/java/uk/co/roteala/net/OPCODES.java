@@ -8,7 +8,10 @@ import java.util.Map;
 
 public enum OPCODES implements Serializable {
     reqPeers(0x1a),
-    sendPeers(0x1b);
+    sendPeers(0x1b),
+    fetchTx(0x1c),
+    fetchBlock(0x1d),
+    fetchMempool(0x1e);
 
     private int code;
 

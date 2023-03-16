@@ -5,10 +5,24 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8788e929-56e3-4231-8353-0722302cf2c4" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/6/e/6e1beffe1b4e454b56c66a8ee92d16950e66d4b8" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/4/8/484cb231f0e5ca9776b5efb7adbfb78f5ac5389c" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/7/8/789732f11f460489c569f05c2dd159e26a05ea72" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/d/b/db3f9c9f595a0f377c1d2662996602ce1e7bdbe9" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/e/a/eac4699bfd990b2b9fb0ff0ac0923aad2aec4b42" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/e/f/ef25e2b209b74b14369f3d4c1771d23dc14c04f5" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/e/f/efc52f98997d29977a1eae3940a17b30afb30d93" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/f/f/ff12c03694ce2c0ef7b92ba2afe8aa5ae8fce547" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/uk/co/roteala/common/TransactionBaseModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/uk/co/roteala/common/TransactionBaseModel.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/uk/co/roteala/common/monetary/Coin.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/uk/co/roteala/common/monetary/Coin.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/uk/co/roteala/net/ClientConnectionManager.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/uk/co/roteala/net/MessageWriteTarget.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/uk/co/roteala/net/OPCODES.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/uk/co/roteala/net/OPCODES.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/uk/co/roteala/net/StreamConnection.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/uk/co/roteala/net/StreamConnectionFactory.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/uk/co/roteala/utils/GlacierUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/uk/co/roteala/utils/GlacierUtils.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -131,7 +145,15 @@
       <workItem from="1677434159194" duration="1627000" />
       <workItem from="1677519679324" duration="1561000" />
       <workItem from="1677595470156" duration="5053000" />
-      <workItem from="1677668465625" duration="470000" />
+      <workItem from="1677668465625" duration="1388000" />
+      <workItem from="1677694421058" duration="7073000" />
+      <workItem from="1677748587233" duration="600000" />
+      <workItem from="1677863800405" duration="13923000" />
+      <workItem from="1678194078138" duration="598000" />
+      <workItem from="1678210779488" duration="5274000" />
+      <workItem from="1678297434674" duration="3831000" />
+      <workItem from="1678919871600" duration="614000" />
+      <workItem from="1678920669004" duration="4099000" />
     </task>
     <servers />
   </component>
