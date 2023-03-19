@@ -1,6 +1,7 @@
 package uk.co.roteala.net;
 
 import lombok.*;
+import uk.co.roteala.common.BaseEmptyModel;
 
 import java.io.Serializable;
 import java.math.BigInteger;
@@ -12,7 +13,7 @@ import java.time.LocalDateTime;
 @EqualsAndHashCode
 @NoArgsConstructor
 @AllArgsConstructor
-public class Peer implements Serializable {
+public class Peer extends BaseEmptyModel {
     private String address;
 
     private boolean active;

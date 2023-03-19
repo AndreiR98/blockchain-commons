@@ -14,6 +14,10 @@ public class StorageComponent implements StorageOperations{
         this.db = db;
     }
 
+    public RocksDB getRaw(){
+        return this.db;
+    }
+
     @Override
     public void add(byte[] key, BaseEmptyModel data) throws RocksDBException {
         final byte[] serializedData = SerializationUtils.serialize(data);

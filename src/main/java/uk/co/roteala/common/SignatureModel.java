@@ -11,6 +11,5 @@ import java.io.Serializable;
 @AllArgsConstructor
 public class SignatureModel implements Serializable {
     //hex encoded values
-    private String rComponent;
-    private String sComponent;
+    private String signature;
 }

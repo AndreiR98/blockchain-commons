@@ -4,7 +4,7 @@ import java.io.Serializable;
 import java.math.BigDecimal;
 
 public interface Monetary extends Serializable {
-    BigDecimal getValue();
+    long getValue();
 
     int sigNum();
 }

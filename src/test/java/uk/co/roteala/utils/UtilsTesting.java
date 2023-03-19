@@ -16,14 +16,5 @@ import java.security.SecureRandom;
 @Slf4j
 public class UtilsTesting {
 
-    @Test
-    void testSecureRandom() throws InvalidAlgorithmParameterException, NoSuchAlgorithmException {
-        final SecureRandom secureRandom = new SecureRandom();
 
-        KeyPair kp = GlacierUtils.generateKeyPair(null);
-
-        log.info("KeyPaire:{}", kp.getPublic());
-
-        Assertions.assertTrue(true);
-    }
 }
