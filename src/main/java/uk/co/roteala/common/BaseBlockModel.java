@@ -31,7 +31,7 @@ public class BaseBlockModel extends BaseEmptyModel implements Hashing {
     private List<String> transactions;
     private Integer confirmations;
     private BlockStatus status;
-    private BigDecimal difficulty;
+    private BigInteger difficulty;
 
     @Override
     public String hashHeader() throws NoSuchAlgorithmException {
@@ -40,7 +40,6 @@ public class BaseBlockModel extends BaseEmptyModel implements Hashing {
         map.add(markleRoot);
         map.add(timeStamp);
         map.add(nonce);
-        map.add(timeStamp);
         map.add(previousHash);
         return GlacierUtils.bytesToHex(GlacierUtils.generateSHA256Digest(SerializationUtils.serialize(map)));
     }

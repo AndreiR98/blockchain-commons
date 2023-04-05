@@ -142,6 +142,16 @@ public class GlacierUtils {
         return signature;
     }
 
+    public MockAccount getFromPrivateKey(String privateKey){
+        MockAccount account = new MockAccount();
+
+        account.setPrivateKey(privateKey);
+        account.setScriptKey(addressToPubScript(privateKey));
+        account.setAddress(formatAddressFromHex(privateKey));
+
+        return account;
+    }
+
     public String addressToPubScript(String privateKeyHex) {
 
         final BigInteger d = new BigInteger(privateKeyHex, 16);
@@ -156,6 +166,39 @@ public class GlacierUtils {
         final String hexY = ecPoint.getAffineYCoord().toBigInteger().toString(16);
 
         return getScriptAddress(hexX, hexY);
+    }
+
+    private String formatAddressFromHex(String privateKeyHex){
+
+        final BigInteger d = new BigInteger(privateKeyHex, 16);
+
+
+        ECNamedCurveParameterSpec ecParameterSpec = ECNamedCurveTable.getParameterSpec("secp256k1");
+
+        ECPoint ecPoint = ecParameterSpec.getG().multiply(d).normalize();
+
+
+        final String hexX = ecPoint.getAffineXCoord().toBigInteger().toString(16);
+        final String hexY = ecPoint.getAffineYCoord().toBigInteger().toString(16);
+
+        // Combine the hex-encoded X and Y public keys into a single hex-encoded public key
+        String hexPublicKey = "04" + hexX + hexY;
+        // Hash the public key using SHA-256 and RIPEMD-160
+        byte[] publicKeyBytes = hexStringToByteArray(hexPublicKey);
+        byte[] sha256 = sha256Hash(publicKeyBytes);
+        byte[] ripeMd160 = ripemd160Hash(sha256);
+        // Add the version byte (0x00 for mainnet) to the front of the RIPEMD-160 hash
+        byte[] extendedRipeMd160 = new byte[ripeMd160.length + 1];
+        extendedRipeMd160[0] = 0x00;
+        System.arraycopy(ripeMd160, 0, extendedRipeMd160, 1, ripeMd160.length);
+        // Calculate the checksum by hashing the extended RIPEMD-160 hash twice using SHA-256
+        byte[] checksum = doubleSHA256(extendedRipeMd160);
+        // Concatenate the extended RIPEMD-160 hash and the checksum
+        byte[] bytesToEncode = new byte[extendedRipeMd160.length + 4];
+        System.arraycopy(extendedRipeMd160, 0, bytesToEncode, 0, extendedRipeMd160.length);
+        System.arraycopy(checksum, 0, bytesToEncode, extendedRipeMd160.length, 4);
+        // Base58Check encode the result
+        return Base58.encode(bytesToEncode);
     }
 
     private String formatAddress(BCECPublicKey publicKey) {
@@ -214,6 +257,8 @@ public class GlacierUtils {
 
         return account;
     }
+
+
 
     public String generateWif(KeyPair keyPair) throws NoSuchAlgorithmException {
         BCECPrivateKey privateKey = (BCECPrivateKey) keyPair.getPrivate();

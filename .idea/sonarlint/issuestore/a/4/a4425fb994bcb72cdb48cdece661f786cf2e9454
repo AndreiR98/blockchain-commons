@@ -1,3 +1,10 @@
 
+F
+java:S1948")Make "spender" transient or serializable.( ½Í®8×€“Ÿò0
 C
 java:S1168+"&Return an empty array instead of null.(¥¹ï8š¡èî0
+f
+java:S1128"IRemove this unused import 'com.fasterxml.jackson.annotation.JsonInclude'.(şîÌ8Ü€“Ÿò0
+Z
+java:S1128
+"8Remove this unused import 'javax.persistence.Transient'.(Õ„¹ùÿÿÿÿÿ8İ€“Ÿò0

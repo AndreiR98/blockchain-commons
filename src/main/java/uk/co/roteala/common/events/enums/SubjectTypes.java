@@ -13,6 +13,7 @@ public enum SubjectTypes implements Serializable {
     BLOCK("block"),
     BLOCK_FIELD("blockF"),
     PEER("peer"),
+    CHAIN("chain"),
     WALLET("wallet");
 
     private String code;

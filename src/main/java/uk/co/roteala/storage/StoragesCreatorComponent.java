@@ -12,4 +12,6 @@ public interface StoragesCreatorComponent {
     StorageComponent blocks() throws RocksDBException;
 
     StorageComponent peers() throws RocksDBException;
+
+    StorageComponent chainState() throws RocksDBException;
 }

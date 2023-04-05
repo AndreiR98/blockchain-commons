@@ -11,14 +11,14 @@
   </parent>
 
   <groupId>uk.co.roteala</groupId>
-  <artifactId>glacier-core</artifactId>
+  <artifactId>blockchain-commons</artifactId>
   <version>${revision}</version>
-  <name>glacier-core</name>
+  <name>blockchain-commons</name>
 
-  <description>Glacier core</description>
+  <description>Roteala Blockchain Commons</description>
 
   <properties>
-    <revision>1.0.0-SNAPSHOT</revision>
+    <revision>1.0.0-Spring</revision>
     <java.version>11</java.version>
     <johnzon.version>1.2.19</johnzon.version>
     <rocks.db.version>7.9.2</rocks.db.version>

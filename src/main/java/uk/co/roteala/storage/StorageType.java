@@ -11,6 +11,7 @@ public enum StorageType {
     MEMPOOL("M"),
     BLOCKS("B"),
     TX("T"),
+    CHAIN("C"),
     PEERS("P");
 
     private String code;

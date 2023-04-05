@@ -32,4 +32,14 @@ public abstract class EventsMessageFactory {
 
         return event;
     }
+
+    public static Event getChainState() {
+
+        Event event = new Event();
+        event.setAction(ActionTypes.FETCH);
+        event.setSubject(SubjectTypes.CHAIN);
+        event.setExtra("latest");
+
+        return event;
+    }
 }

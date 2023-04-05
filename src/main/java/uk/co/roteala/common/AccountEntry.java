@@ -11,5 +11,4 @@ import java.math.BigDecimal;
 @AllArgsConstructor
 public class AccountEntry extends BaseEmptyModel {
     private String address;
-    private BigDecimal value;
 }
