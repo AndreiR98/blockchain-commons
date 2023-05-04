@@ -20,8 +20,8 @@ import java.util.List;
 public class UTXO extends BaseEmptyModel implements Hashing {
     private boolean coinbase;
     private String txid;
-    private String sigscript;
-    private String pkscript;
+    private String sigScript;
+    private String pubKeyScript;
     private Coin value;
     private String address;
     private boolean spent;
@@ -31,7 +31,8 @@ public class UTXO extends BaseEmptyModel implements Hashing {
     public String hashHeader() throws NoSuchAlgorithmException {
         List<Object> map = new ArrayList<>();
         map.add(value);
-        map.add(pkscript);
+        map.add(pubKeyScript);
+        map.add(sigScript);
         map.add(txid);
         map.add(coinbase);
         map.add(address);

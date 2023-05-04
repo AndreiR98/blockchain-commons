@@ -1,0 +1,49 @@
+
+a	java:S112²"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òéüÿÿÿÿ
+a	java:S112Æ"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òéüÿÿÿÿ
+a	java:S112Ğ"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òéüÿÿÿÿ
+c
+java:S1192$"HDefine a constant instead of duplicating this literal "SHA-256" 5 times.(¾„ûÿÿÿÿ
+e
+java:S1192o"JDefine a constant instead of duplicating this literal "secp256k1" 5 times.(Ô¡ù»ıÿÿÿÿ
+a
+java:S1192m"FDefine a constant instead of duplicating this literal "ECDSA" 3 times.(›½¹¹şÿÿÿÿ
+f	java:S117\"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(öïŒ¢
+U
+java:S1854y":Remove this useless assignment to local variable "keyGen".(›½¹¹şÿÿÿÿ
+F
+java:S1481y"+Remove this unused "keyGen" local variable.(›½¹¹şÿÿÿÿ
+Q	java:S125{"<This block of commented-out lines of code should be removed.(ÿëÓÑ
+W	java:S125æ"<This block of commented-out lines of code should be removed.(ÌÀÆ©ÿÿÿÿÿ
+¢
+java:S1130ˆ"Remove the declaration of thrown exception 'java.security.NoSuchAlgorithmException', as it cannot be thrown from method's body.(š¯é³ÿÿÿÿÿ8éş³„õ0
+]
+java:S1126ù"AReplace this if-then-else statement by a single return statement.(‘‡êıÿÿÿÿ
+[
+java:S1128">Remove this unused import 'com.google.common.io.BaseEncoding'.(‹€ª8·œ¬€ù0
+t
+java:S1128"RRemove this unused import 'org.bouncycastle.crypto.params.ECPrivateKeyParameters'.(ç€ÆÑùÿÿÿÿ8·ÿ³„õ0
+s
+java:S1128"QRemove this unused import 'org.bouncycastle.crypto.params.ECPublicKeyParameters'.(•»ø¦üÿÿÿÿ8·ÿ³„õ0
+p
+java:S1128"NRemove this unused import 'org.bouncycastle.jcajce.provider.digest.RIPEMD160'.(êÛç°şÿÿÿÿ8·ÿ³„õ0
+e
+java:S1128"HRemove this unused import 'org.springframework.util.SerializationUtils'.(õ‡¢è8¸ÿ³„õ0
+]
+java:S1128";Remove this unused import 'java.security.interfaces.ECKey'.(•ãûÿÿÿÿ8¸ÿ³„õ0
+_
+java:S1128"BRemove this unused import 'java.security.interfaces.ECPrivateKey'.(äíÂ8¸ÿ³„õ0
+]
+java:S1128"ARemove this unused import 'java.security.interfaces.ECPublicKey'.(¬ˆ”8¹ÿ³„õ0
+V
+java:S1128"4Remove this unused import 'java.time.LocalDateTime'.(æÃ§ƒüÿÿÿÿ8¹ÿ³„õ0
+N
+java:S1128"1Remove this unused import 'java.time.ZoneOffset'.(ìÍÄË8¹ÿ³„õ0
+O
+java:S1128"-Remove this unused import 'java.util.Arrays'.(î–˜Éüÿÿÿÿ8ºÿ³„õ0
+O
+java:S1144Ô"3Remove this unused private "addVersionByte" method.(¯é‹øùÿÿÿÿ
+V
+java:S1144Û":Remove this unused private "concatenateByteArrays" method.(şİ³şşÿÿÿÿ
+R
+java:S1144é"6Remove this unused private "formatZeroBalance" method.(¨Ì÷²øÿÿÿÿ

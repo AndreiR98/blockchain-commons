@@ -32,7 +32,6 @@ public class TransactionBaseModel extends BaseEmptyModel implements Hashing {
     @Override
     public String hashHeader() throws NoSuchAlgorithmException {
         List<Object> map = new ArrayList<>();
-        map.add(hash);
         map.add(in);
         map.add(out);
         map.add(fees);

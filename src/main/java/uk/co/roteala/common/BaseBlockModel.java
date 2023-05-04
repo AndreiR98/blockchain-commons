@@ -23,12 +23,13 @@ public class BaseBlockModel extends BaseEmptyModel implements Hashing {
     private BigInteger nonce;
     private String previousHash;
     private Integer numberOfBits;
+    private List<String> transactions;
     //end of header
 
     private Integer index;
     private String hash;
     private String miner;
-    private List<String> transactions;
+
     private Integer confirmations;
     private BlockStatus status;
     private BigInteger difficulty;
@@ -39,6 +40,7 @@ public class BaseBlockModel extends BaseEmptyModel implements Hashing {
         map.add(version);
         map.add(markleRoot);
         map.add(timeStamp);
+        map.add(transactions);
         map.add(nonce);
         map.add(previousHash);
         return GlacierUtils.bytesToHex(GlacierUtils.generateSHA256Digest(SerializationUtils.serialize(map)));

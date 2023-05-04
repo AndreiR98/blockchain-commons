@@ -1,5 +1,6 @@
 package uk.co.roteala.utils;
 
+import com.google.common.io.BaseEncoding;
 import lombok.experimental.UtilityClass;
 import org.bouncycastle.asn1.sec.SECNamedCurves;
 import org.bouncycastle.asn1.x9.X9ECParameters;
