@@ -10,5 +10,6 @@ import java.io.Serializable;
 @NoArgsConstructor
 @AllArgsConstructor
 public class AddressBaseModel implements Serializable {
-    private String hexEncoded;
+    private String address;
+    private Integer port;
 }

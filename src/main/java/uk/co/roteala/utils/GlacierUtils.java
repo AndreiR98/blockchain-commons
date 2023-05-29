@@ -380,4 +380,18 @@ public class GlacierUtils {
             return true;
         }
     }
+
+    public AddressBaseModel formatAddress(String address){
+        AddressBaseModel addressModel = new AddressBaseModel();
+
+        String addressFirst = address.substring(1);
+        //.split(":")[0];
+        String addressIp = addressFirst.split(":")[0];
+        Integer port = Integer.valueOf(addressFirst.split(":")[1]);
+
+        addressModel.setAddress(addressIp);
+        addressModel.setPort(port);
+
+        return addressModel;
+    }
 }
