@@ -5,5 +5,5 @@ import java.security.NoSuchAlgorithmException;
 public interface Hashing {
     String hashHeader() throws NoSuchAlgorithmException;
 
-    byte[] message();
+    byte[] serialized();
 }

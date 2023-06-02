@@ -5,6 +5,8 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.*;
 import org.springframework.util.SerializationUtils;
 import uk.co.roteala.common.monetary.Coin;
+import uk.co.roteala.security.ECKey;
+import uk.co.roteala.security.utils.HashingFactory;
 import uk.co.roteala.utils.GlacierUtils;
 
 import javax.persistence.Transient;
@@ -32,7 +34,6 @@ public class UTXO extends BaseEmptyModel implements Hashing {
         List<Object> map = new ArrayList<>();
         map.add(value);
         map.add(pubKeyScript);
-        map.add(sigScript);
         map.add(txid);
         map.add(coinbase);
         map.add(address);
@@ -40,7 +41,28 @@ public class UTXO extends BaseEmptyModel implements Hashing {
     }
 
     @Override
-    public byte[] message() {
-        return null;
+    public byte[] serialized() {
+        List<Object> map = new ArrayList<>();
+        map.add(coinbase);
+        map.add(txid);
+        map.add(pubKeyScript);
+        map.add(value);
+        map.add(address);
+        map.add(spent);
+        map.add(spender);
+
+        return SerializationUtils.serialize(map);
+    }
+
+    public void setSigScript(ECKey ecKey, String pubKeyHash) throws NoSuchAlgorithmException {
+        //Compute the signature over the UTXO using the privateKey
+        final String signature = ecKey.signUTXO(this);
+
+        if(pubKeyHash == null) {
+            //retrieve the pub key hash from the private key
+            pubKeyHash = HashingFactory.sha256Hash((ecKey.getPublicKey().getX() + ecKey.getPublicKey().getY()).getBytes()).toString();
+        }
+
+        this.sigScript = signature + " " + pubKeyHash;
     }
 }

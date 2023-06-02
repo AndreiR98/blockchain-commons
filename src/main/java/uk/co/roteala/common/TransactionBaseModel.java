@@ -37,21 +37,24 @@ public class TransactionBaseModel extends BaseEmptyModel implements Hashing {
         map.add(fees);
         map.add(timeStamp);
         map.add(blockNumber);
-        return GlacierUtils.bytesToHex(GlacierUtils.generateSHA256Digest(SerializationUtils.serialize(map)));
+        map.add(version);
+        return GlacierUtils.bytesToHex(GlacierUtils.generateSHA256Digest(GlacierUtils.generateSHA256Digest(SerializationUtils.serialize(map))));
     }
 
     @Override
-    public byte[] message() {
+    public byte[] serialized() {
         List<Object> map = new ArrayList<>();
         map.add(hash);
         map.add(blockHash);
         map.add(blockNumber);
+        map.add(fees);
+        map.add(version);
         map.add(transactionIndex);
         map.add(in);
         map.add(out);
-        map.add(fees);
-        map.add(version);
         map.add(timeStamp);
+        map.add(confirmations);
+        map.add(blockTime);
         map.add(status);
 
         return SerializationUtils.serialize(map);
