@@ -5,20 +5,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8788e929-56e3-4231-8353-0722302cf2c4" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/3/0/301dd235ede97b1f00761e4a5ca217bcf9028d64" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/3/6/368f58e825c382fff31df1c8f16f4ed3b2689463" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/3/6/368f58e825c382fff31df1c8f16f4ed3b2689463" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/4/8/484cb231f0e5ca9776b5efb7adbfb78f5ac5389c" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/4/8/484cb231f0e5ca9776b5efb7adbfb78f5ac5389c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/a/4/a4425fb994bcb72cdb48cdece661f786cf2e9454" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/4/4/442292b8a7efeabbe4cc176709b833b1792140ec" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/4/8/484cb231f0e5ca9776b5efb7adbfb78f5ac5389c" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/6/e/6e1beffe1b4e454b56c66a8ee92d16950e66d4b8" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/3/0/301dd235ede97b1f00761e4a5ca217bcf9028d64" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/a/4/a4425fb994bcb72cdb48cdece661f786cf2e9454" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/4/4/442292b8a7efeabbe4cc176709b833b1792140ec" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/4/8/484cb231f0e5ca9776b5efb7adbfb78f5ac5389c" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/6/e/6e1beffe1b4e454b56c66a8ee92d16950e66d4b8" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/index.pb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/uk/co/roteala/common/BaseBlockModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/uk/co/roteala/common/BaseBlockModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/uk/co/roteala/common/Hashing.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/uk/co/roteala/common/Hashing.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/uk/co/roteala/common/TransactionBaseModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/uk/co/roteala/common/TransactionBaseModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/uk/co/roteala/common/UTXO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/uk/co/roteala/common/UTXO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/uk/co/roteala/net/Peer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/uk/co/roteala/net/Peer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/uk/co/roteala/common/monetary/Coin.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/uk/co/roteala/common/monetary/Coin.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -28,10 +26,10 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Enum" />
         <option value="AnnotationType" />
         <option value="Interface" />
         <option value="Class" />
+        <option value="Enum" />
       </list>
     </option>
   </component>
@@ -60,7 +58,7 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
-    "com.google.cloudcode.ide_session_index": "20230602_0003",
+    "com.google.cloudcode.ide_session_index": "20230607_0003",
     "git-widget-placeholder": "development",
     "last_opened_file_path": "C:/Bitcoin/java_bitcoin",
     "node.js.detected.package.eslint": "true",
@@ -185,7 +183,11 @@
       <workItem from="1685622214472" duration="555000" />
       <workItem from="1685635337589" duration="4099000" />
       <workItem from="1685658710833" duration="1234000" />
-      <workItem from="1685700748363" duration="1190000" />
+      <workItem from="1685700748363" duration="2976000" />
+      <workItem from="1685901690579" duration="2482000" />
+      <workItem from="1685992563312" duration="2206000" />
+      <workItem from="1686067944570" duration="2317000" />
+      <workItem from="1686155190832" duration="586000" />
     </task>
     <servers />
   </component>

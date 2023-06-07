@@ -1,9 +1,0 @@
-
-n
-java:S1210"YOverride "equals(Object obj)" to comply with the contract of the "compareTo(T o)" method.( •ê<
-^
-java:S1128"<Remove this unused import 'com.google.common.math.LongMath'.(˙Õø¡˚ˇˇˇˇ8Óî≠˘¯0
-N
-java:S1128"1Remove this unused import 'java.math.BigDecimal'.(ÍêÍä8Óî≠˘¯0
-l
-java:S1128	"ORemove this unused import 'com.google.common.base.Preconditions.checkArgument'.(±˝°ï8Óî≠˘¯0

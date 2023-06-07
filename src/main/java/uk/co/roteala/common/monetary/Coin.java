@@ -20,6 +20,14 @@ public class Coin implements Monetary, Comparable<Coin>, Serializable {
         return new Coin(l);
     }
 
+    public Coin add(final Coin value) {
+        return new Coin(LongMath.checkedAdd(this.value, value.value));
+    }
+
+    public Coin plus(final Coin value) {
+        return add(value);
+    }
+
     public static final Coin ZERO = Coin.valueOf(0);
     @Override
     public int compareTo(@NotNull Coin o) {

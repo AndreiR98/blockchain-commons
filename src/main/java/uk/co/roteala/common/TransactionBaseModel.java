@@ -19,6 +19,8 @@ public class TransactionBaseModel extends BaseEmptyModel implements Hashing {
     private String hash;
     private String blockHash;
     private Integer blockNumber;
+    private String from;
+    private String to;
     private Coin fees;
     private Integer version;
     private Integer transactionIndex;
@@ -38,6 +40,8 @@ public class TransactionBaseModel extends BaseEmptyModel implements Hashing {
         map.add(timeStamp);
         map.add(blockNumber);
         map.add(version);
+        map.add(from);
+        map.add(to);
         return GlacierUtils.bytesToHex(GlacierUtils.generateSHA256Digest(GlacierUtils.generateSHA256Digest(SerializationUtils.serialize(map))));
     }
 
