@@ -4,7 +4,7 @@ import org.rocksdb.FlushOptions;
 import org.rocksdb.RocksDB;
 import org.rocksdb.RocksDBException;
 import org.springframework.util.SerializationUtils;
-import uk.co.roteala.common.BaseEmptyModel;
+import uk.co.roteala.common.BaseModel;
 
 public class StorageComponent implements StorageOperations{
 
@@ -19,19 +19,19 @@ public class StorageComponent implements StorageOperations{
     }
 
     @Override
-    public void add(byte[] key, BaseEmptyModel data) throws RocksDBException {
+    public void add(byte[] key, BaseModel data) throws RocksDBException {
         final byte[] serializedData = SerializationUtils.serialize(data);
         this.db.put(key, serializedData);
         this.db.flush(new FlushOptions().setWaitForFlush(true));
     }
 
     @Override
-    public BaseEmptyModel get(byte[] key) throws RocksDBException {
+    public BaseModel get(byte[] key) throws RocksDBException {
         if(key != null) {
             final byte[] serializedData = this.db.get(key);
 
             if(serializedData != null) {
-                return (BaseEmptyModel) SerializationUtils.deserialize(serializedData);
+                return (BaseModel) SerializationUtils.deserialize(serializedData);
             }
         }
 

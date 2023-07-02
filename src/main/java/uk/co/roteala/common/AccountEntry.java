@@ -1,14 +1,17 @@
 package uk.co.roteala.common;
 
+import com.fasterxml.jackson.databind.PropertyNamingStrategies;
+import com.fasterxml.jackson.databind.annotation.JsonNaming;
 import lombok.*;
-
-import java.math.BigDecimal;
 
 @Data
 @Builder
 @EqualsAndHashCode
 @NoArgsConstructor
 @AllArgsConstructor
-public class AccountEntry extends BaseEmptyModel {
+@JsonNaming(PropertyNamingStrategies.SnakeCaseStrategy.class)
+public class AccountEntry {
     private String address;
+    private String privateKey;
+    private String wif;
 }

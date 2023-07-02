@@ -1,7 +1,5 @@
 package uk.co.roteala.storage;
 
-import uk.co.roteala.common.ChainStatus;
-
 import java.util.HashMap;
 import java.util.Map;
 

@@ -137,20 +137,10 @@ public class GlacierUtils {
 
         byte[] signatureBytes = sig.sign();
 
-        signature.setSignature(bytesToHex(signatureBytes));
+        //signature.setSignature(bytesToHex(signatureBytes));
 
 
         return signature;
-    }
-
-    public MockAccount getFromPrivateKey(String privateKey){
-        MockAccount account = new MockAccount();
-
-        account.setPrivateKey(privateKey);
-        account.setScriptKey(addressToPubScript(privateKey));
-        account.setAddress(formatAddressFromHex(privateKey));
-
-        return account;
     }
 
     public String addressToPubScript(String privateKeyHex) {
@@ -239,27 +229,6 @@ public class GlacierUtils {
 
         return bytesToHex(ripeMd160);
     }
-
-    public MockAccount generateMockAccount() throws InvalidAlgorithmParameterException, NoSuchAlgorithmException, NoSuchProviderException {
-        KeyPair keyPair = generateKeyPair();
-
-        BCECPublicKey publicKey = (BCECPublicKey) keyPair.getPublic();
-        BCECPrivateKey privateKey = (BCECPrivateKey) keyPair.getPrivate();
-
-        String address = formatAddress(publicKey);
-        String scriptAddress = getScriptAddress(publicKey.getW().getAffineX().toString(16), publicKey.getW().getAffineY().toString(16));
-
-        MockAccount account = new MockAccount();
-
-        account.setAddress(address);
-        account.setPrivateKey(privateKey.getD().toString(16));
-        account.setWif(generateWif(keyPair));
-        account.setScriptKey(scriptAddress);
-
-        return account;
-    }
-
-
 
     public String generateWif(KeyPair keyPair) throws NoSuchAlgorithmException {
         BCECPrivateKey privateKey = (BCECPrivateKey) keyPair.getPrivate();
@@ -356,42 +325,5 @@ public class GlacierUtils {
         return address
                 .substring(1)
                 .split(":")[0];
-    }
-
-    private BigDecimal formatZeroBalance(Chain chain) {
-        final int decimalPoints = chain.getCoin().getDecimalPoints();
-
-        StringBuilder after = new StringBuilder();
-
-        for(int i = 0; i < decimalPoints; i++){
-            after.append("0");
-        }
-
-        return new BigDecimal("0."+after);
-    }
-
-    /**
-     * Default return windows == true
-     * */
-    public boolean getSystem() {
-        if(System.getProperty("os.name").contains("linux")){
-            return false;
-        } else {
-            return true;
-        }
-    }
-
-    public AddressBaseModel formatAddress(String address){
-        AddressBaseModel addressModel = new AddressBaseModel();
-
-        String addressFirst = address.substring(1);
-        //.split(":")[0];
-        String addressIp = addressFirst.split(":")[0];
-        Integer port = Integer.valueOf(addressFirst.split(":")[1]);
-
-        addressModel.setAddress(addressIp);
-        addressModel.setPort(port);
-
-        return addressModel;
     }
 }

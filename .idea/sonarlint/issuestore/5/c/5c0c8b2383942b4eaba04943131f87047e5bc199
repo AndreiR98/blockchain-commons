@@ -1,8 +1,2 @@
 
-{
-java:S1488R"YImmediately return this expression instead of assigning it to the temporary variable "r".(”²α„ώÿÿÿÿ8ƒ‹Εγ‡1
-E	java:S108=")Either remove or fill this block of code.(”ύΎ8ύ‹Εγ‡1
-c
-java:S1854M"ARemove this useless assignment to local variable "secretKeySpec".(‹ς“ωÿÿÿÿ8ÿ‹Εγ‡1
-T
-java:S1481M"2Remove this unused "secretKeySpec" local variable.(‹ς“ωÿÿÿÿ8ƒΕγ‡1
+E	java:S1088")Either remove or fill this block of code.(”ύΎ8ύ‹Εγ‡1

@@ -2,7 +2,10 @@ package uk.co.roteala.common;
 
 import com.fasterxml.jackson.databind.PropertyNamingStrategies;
 import com.fasterxml.jackson.databind.annotation.JsonNaming;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import lombok.*;
+import uk.co.roteala.common.monetary.Coin;
+import uk.co.roteala.common.monetary.CoinConverter;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
@@ -14,12 +17,13 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @JsonNaming(PropertyNamingStrategies.SnakeCaseStrategy.class)
-public class AccountModel implements Serializable {
+public class AccountModel extends BaseModel implements Serializable {
     private String address;
-
-    //Updated from the UTXOs
-    private BigDecimal amount;
-    private String privateKey;
-    private String password;
-    private String timeStamp;
+    private Integer nonce;
+    @JsonSerialize(converter = CoinConverter.class)
+    private Coin balance;
+    @JsonSerialize(converter = CoinConverter.class)
+    private Coin inboundAmount;
+    @JsonSerialize(converter = CoinConverter.class)
+    private Coin outboundAmount;
 }

@@ -1,14 +1,7 @@
 package uk.co.roteala.net;
 
-import com.fasterxml.jackson.databind.PropertyNamingStrategy;
-import com.fasterxml.jackson.databind.annotation.JsonNaming;
 import lombok.*;
-import uk.co.roteala.common.BaseEmptyModel;
-
-import java.io.Serializable;
-import java.math.BigInteger;
-import java.nio.channels.SocketChannel;
-import java.time.LocalDateTime;
+import uk.co.roteala.common.BaseModel;
 
 @Data
 @Builder
@@ -16,7 +9,7 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @AllArgsConstructor
 //@JsonNaming(PropertyNamingStrategy.SnakeCaseStrategy.class)
-public class Peer extends BaseEmptyModel {
+public class Peer extends BaseModel {
     private String address;
     private Integer port;
     private long lastTimeSeen;

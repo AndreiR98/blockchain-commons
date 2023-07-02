@@ -1,6 +1,7 @@
 package uk.co.roteala.security;
 
 import java.math.BigInteger;
+import java.security.NoSuchAlgorithmException;
 
 public interface PrivKey extends Key{
 

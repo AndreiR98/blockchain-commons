@@ -5,10 +5,11 @@ import lombok.Setter;
 import org.bouncycastle.jce.ECNamedCurveTable;
 import org.bouncycastle.jce.spec.ECNamedCurveParameterSpec;
 import org.bouncycastle.math.ec.ECPoint;
-import uk.co.roteala.security.utils.HashingFactory;
+import uk.co.roteala.security.utils.HashingService;
 import uk.co.roteala.utils.Base58;
 
 import java.math.BigInteger;
+import java.security.NoSuchAlgorithmException;
 
 @Builder
 public class PrivateKey implements PrivKey {
@@ -44,7 +45,7 @@ public class PrivateKey implements PrivKey {
     }
 
     @Override
-    public String toWIF() {
+    public String toWIF()  {
         return generateWIF();
     }
 
@@ -61,7 +62,7 @@ public class PrivateKey implements PrivKey {
                 .build();
     }
 
-    private String generateWIF() {
+    private String generateWIF()  {
         byte[] privateKeyBytes = this.getEncoded();
 
         if (privateKeyBytes[0] == 0) {
@@ -74,7 +75,7 @@ public class PrivateKey implements PrivKey {
         prefixPrivateKeyBytes[0] = (byte) 0x80;
         System.arraycopy(privateKeyBytes, 0, prefixPrivateKeyBytes, 1, privateKeyBytes.length);
 
-        byte[] hash = HashingFactory.doubleSHA256(prefixPrivateKeyBytes);
+        byte[] hash = HashingService.doubleSHA256(prefixPrivateKeyBytes);
 
         byte[] checksum = new byte[4];
         System.arraycopy(hash, 0, checksum, 0, 4);

@@ -1,0 +1,13 @@
+
+­
+java:S4449"Annotate the parameter with @javax.annotation.Nullable in method 'getMessage' declaration, or make sure that null can not be passed as argument.(•‡¨B8¹«í÷1
+³
+java:S4449"Annotate the parameter with @javax.annotation.Nullable in method 'getMessage' declaration, or make sure that null can not be passed as argument.(Êßöœúÿÿÿÿ8º«í÷1
+D
+java:S1165
+""Make this "errorCode" field final.(ƒÁÕ‚øÿÿÿÿ8»«í÷1
+M
+java:S1948
+"+Make "errorCode" transient or serializable.(ƒÁÕ‚øÿÿÿÿ8¼«í÷1
+U
+java:S3878%"8Remove this array creation and simply pass the elements.(›äÛà8Ñ«í÷1

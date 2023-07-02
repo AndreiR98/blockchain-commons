@@ -3,8 +3,12 @@ package uk.co.roteala.security;
 import lombok.Builder;
 import lombok.Setter;
 import org.bouncycastle.math.ec.ECPoint;
-import uk.co.roteala.security.utils.HashingFactory;
+import uk.co.roteala.security.utils.CryptographyUtils;
+import uk.co.roteala.security.utils.HashingService;
 import uk.co.roteala.utils.Base58;
+
+import java.math.BigInteger;
+import java.security.NoSuchAlgorithmException;
 
 @Builder
 public class PublicKey implements PubKey{
@@ -48,6 +52,22 @@ public class PublicKey implements PubKey{
                 .getEncoded();
     }
 
+    /**
+     * Return pubKey.x||pubKey.y
+     * @return String
+     * */
+    public byte[] encode() {
+
+        final byte[] bX = this.encodedX();
+        final byte[] bY = this.encodedY();
+
+        byte[] newBxBy = new byte[bX.length + bY.length];
+        System.arraycopy(bX, 0, newBxBy, 0, bX.length);
+        System.arraycopy(bY, 0, newBxBy, bX.length, bY.length);
+
+        return newBxBy;
+    }
+
     private String generateAddress() {
         final byte[] bX = this.encodedX();
         final byte[] bY = this.encodedY();
@@ -62,14 +82,14 @@ public class PublicKey implements PubKey{
         System.arraycopy(newBX, 0, newBxBy, 0, newBX.length);
         System.arraycopy(bY, 0, newBxBy, newBX.length, bY.length);
 
-        byte[] ripedMdString = HashingFactory.firstRoundAddressGenerator(newBxBy);
+        byte[] ripedMdString = HashingService.firstRoundAddressGenerator(newBxBy);
 
         byte[] extendedRipeMd160 = new byte[ripedMdString.length + 1];
         extendedRipeMd160[0] = 0x00;
         System.arraycopy(ripedMdString, 0, extendedRipeMd160, 1, ripedMdString.length);
 
         //Calculate the checksum by hashing the extended ripedMD twice using SHA256
-        byte[] checkSum = HashingFactory.doubleSHA256(extendedRipeMd160);
+        byte[] checkSum = HashingService.doubleSHA256(extendedRipeMd160);
 
         byte[] bytesToEncode = new byte[extendedRipeMd160.length + 4];
 
