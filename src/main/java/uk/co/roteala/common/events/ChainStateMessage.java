@@ -10,7 +10,7 @@ import uk.co.roteala.common.ChainState;
 public class ChainStateMessage extends BaseModel implements Message{
     private final ChainState message;
 
-
+    private String address;
     @Override
     public MessageTypes messageType() {
         return MessageTypes.STATECHAIN;
@@ -19,5 +19,10 @@ public class ChainStateMessage extends BaseModel implements Message{
     @Override
     public BaseModel getMessage() {
         return this.message;
+    }
+
+    @Override
+    public MessageActions messageAction() {
+        return null;
     }
 }

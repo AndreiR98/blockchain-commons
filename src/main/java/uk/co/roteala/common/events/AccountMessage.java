@@ -10,6 +10,8 @@ import uk.co.roteala.common.BaseModel;
 public class AccountMessage extends BaseModel implements Message{
 
     private final AccountModel account;
+
+    private String address;
     @Override
     public MessageTypes messageType() {
         return MessageTypes.ACCOUNT;
@@ -18,5 +20,10 @@ public class AccountMessage extends BaseModel implements Message{
     @Override
     public BaseModel getMessage() {
         return this.account;
+    }
+
+    @Override
+    public MessageActions messageAction() {
+        return null;
     }
 }

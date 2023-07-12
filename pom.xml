@@ -25,6 +25,9 @@
     <bouncy.version>1.70</bouncy.version>
     <netty-all.version>4.1.89.Final</netty-all.version>
     <bson.version>4.10.1</bson.version>
+    <rome.version>2.1.0</rome.version>
+    <guava.version>31.0.1-jre</guava.version>
+    <commons-codec.version>1.15</commons-codec.version>
     <commons-lang3.version>3.12.0</commons-lang3.version>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <spring.kubernetes.version>2.7.13.RELEASE</spring.kubernetes.version>
@@ -42,7 +45,7 @@
     <dependency>
       <groupId>com.rometools</groupId>
       <artifactId>rome</artifactId>
-      <version>2.1.0</version>
+      <version>${rome.version}</version>
     </dependency>
 
 
@@ -72,7 +75,7 @@
     <dependency>
       <groupId>commons-codec</groupId>
       <artifactId>commons-codec</artifactId>
-      <version>1.15</version>
+      <version>${commons-codec.version}</version>
     </dependency>
 
     <dependency>
@@ -102,7 +105,7 @@
     <dependency>
       <groupId>com.google.guava</groupId>
       <artifactId>guava</artifactId>
-      <version>31.0.1-jre</version>
+      <version>${guava.version}</version>
     </dependency>
 
     <dependency>

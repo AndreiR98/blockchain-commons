@@ -9,6 +9,8 @@ import uk.co.roteala.common.PseudoTransaction;
 @RequiredArgsConstructor
 public class MempoolTransaction extends BaseModel implements Message{
     private final PseudoTransaction transaction;
+
+    private String address;
     @Override
     public MessageTypes messageType() {
         return MessageTypes.MEMPOOL;
@@ -18,4 +20,14 @@ public class MempoolTransaction extends BaseModel implements Message{
     public BaseModel getMessage() {
         return this.transaction;
     }
+
+    @Override
+    public MessageActions messageAction() {
+        return null;
+    }
+
+//    @Override
+//    public void setAddress(String address) {
+//        this.address = address;
+//    }
 }

@@ -9,6 +9,7 @@ import uk.co.roteala.common.BaseModel;
 public class PeerMessage extends BaseModel implements Message{
     private final PeersContainer peersContainer;
 
+    private String address;
     @Override
     public MessageTypes messageType() {
         return MessageTypes.PEERS;
@@ -17,5 +18,10 @@ public class PeerMessage extends BaseModel implements Message{
     @Override
     public BaseModel getMessage() {
         return this.peersContainer;
+    }
+
+    @Override
+    public MessageActions messageAction() {
+        return null;
     }
 }

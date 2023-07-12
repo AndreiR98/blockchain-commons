@@ -36,6 +36,7 @@ public class Block extends BaseModel {
     //end of header
 
     private String hash;
+    private String forkHash;
     private Integer confirmations;
     private BlockStatus status;
 

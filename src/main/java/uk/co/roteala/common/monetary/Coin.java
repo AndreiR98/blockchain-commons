@@ -29,8 +29,16 @@ public class Coin implements Monetary, Comparable<Coin>, Serializable {
         return new Coin(this.value.add(value.value));
     }
 
+    public Coin min(final Coin value) {
+        return new Coin(this.value.min(value.value));
+    }
+
     public Coin plus(final Coin value) {
         return add(value);
+    }
+
+    public Coin minus(final Coin value) {
+        return min(value);
     }
 
     public static final Coin ZERO = Coin.valueOf(BigDecimal.ZERO);

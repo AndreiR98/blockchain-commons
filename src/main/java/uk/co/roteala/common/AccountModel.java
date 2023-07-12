@@ -26,4 +26,17 @@ public class AccountModel extends BaseModel implements Serializable {
     private Coin inboundAmount;
     @JsonSerialize(converter = CoinConverter.class)
     private Coin outboundAmount;
+
+    /**
+     * Return an empty account with address
+     * */
+    public AccountModel empty(String address) {
+        return AccountModel.builder()
+                .address(address)
+                .nonce(0)
+                .balance(Coin.ZERO)
+                .inboundAmount(Coin.ZERO)
+                .outboundAmount(Coin.ZERO)
+                .build();
+    }
 }

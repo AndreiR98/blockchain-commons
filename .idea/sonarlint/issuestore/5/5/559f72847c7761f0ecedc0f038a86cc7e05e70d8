@@ -1,0 +1,16 @@
+
+L
+java:S3740?"/Provide the parametrized type for this generic.(ù¨´Ş8ñË°‘1
+]	java:S125K"<This block of commented-out lines of code should be removed.(€Û ôüÿÿÿÿ8ŸÌ°‘1
+e
+java:S1128"HRemove this unused import 'com.fasterxml.jackson.annotation.JsonIgnore'.(ş‘‹„8¡Ì°‘1
+[
+java:S1128">Remove this unused import 'org.springframework.lang.Nullable'.(—Ùë8¡Ì°‘1
+Z
+java:S1128"8Remove this unused import 'reactor.core.publisher.Flux'.(·äÍÆøÿÿÿÿ8¡Ì°‘1
+U
+java:S1128"8Remove this unused import 'reactor.netty.tcp.TcpServer'.( •òÛ8¢Ì°‘1
+M
+java:S1128"0Remove this unused import 'java.util.ArrayList'.(÷‰îƒ8¢Ì°‘1
+M
+java:S1128"+Remove this unused import 'java.util.List'.(Õë±Äøÿÿÿÿ8¢Ì°‘1

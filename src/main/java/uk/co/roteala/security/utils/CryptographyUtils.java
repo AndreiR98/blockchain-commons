@@ -44,16 +44,16 @@ public class CryptographyUtils{
 
         BigInteger rsInverted = x.multiply(sInverted).modInverse(curve.getOrder());
 
-            ECPoint publicPoint1 = rPoint.multiply(rsInverted);
-            ECPoint publicPoint1Negate = rPoint.multiply(rsInverted).negate();
+        ECPoint publicPoint1 = rPoint.multiply(rsInverted);
+        ECPoint publicPoint1Negate = rPoint.multiply(rsInverted).negate();
 
-            ECPoint publicPoint2 = curveRaw.getG().multiply(gCoeficient).negate();
+        ECPoint publicPoint2 = curveRaw.getG().multiply(gCoeficient).negate();
 
-            ECPoint publicKeyPoint = publicPoint1.add(publicPoint2).normalize();
-            ECPoint publicKeyPointNegate = publicPoint1Negate.add(publicPoint2).normalize();
+        ECPoint publicKeyPoint = publicPoint1.add(publicPoint2).normalize();
+        ECPoint publicKeyPointNegate = publicPoint1Negate.add(publicPoint2).normalize();
 
-            publicKeys.add(PublicKey.builder().ecPoint(publicKeyPoint).build());
-            publicKeys.add(PublicKey.builder().ecPoint(publicKeyPointNegate).build());
+        publicKeys.add(PublicKey.builder().ecPoint(publicKeyPoint).build());
+        publicKeys.add(PublicKey.builder().ecPoint(publicKeyPointNegate).build());
 
         return publicKeys;
     }

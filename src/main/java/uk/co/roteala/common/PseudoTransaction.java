@@ -3,6 +3,7 @@ package uk.co.roteala.common;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import lombok.*;
 import lombok.extern.slf4j.Slf4j;
@@ -16,6 +17,7 @@ import org.bouncycastle.math.ec.ECFieldElement;
 import org.bouncycastle.math.ec.ECPoint;
 import uk.co.roteala.common.monetary.Coin;
 import uk.co.roteala.common.monetary.CoinConverter;
+import uk.co.roteala.common.monetary.CoinDeserializer;
 import uk.co.roteala.security.ECDSA;
 import uk.co.roteala.security.ECKey;
 import uk.co.roteala.security.PublicKey;
@@ -45,6 +47,8 @@ public class PseudoTransaction extends BaseModel {
     private Coin value;
     private Integer nonce;
     private long timeStamp;
+    @JsonDeserialize(using = TransactionStatusDeserializer.class)
+    @JsonSerialize(converter = TransactionStatusConverter.class)
     private TransactionStatus status;
     private String pubKeyHash;
     @JsonInclude(JsonInclude.Include.NON_NULL)
@@ -100,17 +104,21 @@ public class PseudoTransaction extends BaseModel {
      * Match the recovery key hash with the pukeyHash
      * Match the recovery key hash with the hash from address
      * */
-    public boolean verifySignatureWithRecovery() throws JsonProcessingException {
+    public boolean verifySignatureWithRecovery() {
         // Retrieve all possible keys for this signature
-        List<PublicKey> publicKeys = CryptographyUtils.recoverPublicKeys(this);
+        try {
+            List<PublicKey> publicKeys = CryptographyUtils.recoverPublicKeys(this);
 
-        for (PublicKey publicKey : publicKeys) {
-            CryptographyUtils.checkKeyWithPubKeyHash(publicKey, this.pubKeyHash);
-            CryptographyUtils.checkKeyWithAddress(publicKey, this.from);
-            if (CryptographyUtils.checkKeyWithPubKeyHash(publicKey, this.pubKeyHash)
-                    && CryptographyUtils.checkKeyWithAddress(publicKey, this.from)) {
-                return true;
+            for (PublicKey publicKey : publicKeys) {
+                CryptographyUtils.checkKeyWithPubKeyHash(publicKey, this.pubKeyHash);
+                CryptographyUtils.checkKeyWithAddress(publicKey, this.from);
+                if (CryptographyUtils.checkKeyWithPubKeyHash(publicKey, this.pubKeyHash)
+                        && CryptographyUtils.checkKeyWithAddress(publicKey, this.from)) {
+                    return true;
+                }
             }
+        } catch (JsonProcessingException e) {
+            throw new RuntimeException(e);
         }
 
         return false;

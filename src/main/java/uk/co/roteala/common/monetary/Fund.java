@@ -9,7 +9,7 @@ import uk.co.roteala.common.AccountModel;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Fund {
-    private AccountModel targetAccount;
+    private String targetAccountAddress;
     private AccountModel sourceAccount;
     private Coin amount;
     private boolean isProcessed;

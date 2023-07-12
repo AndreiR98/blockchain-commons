@@ -10,6 +10,7 @@ import uk.co.roteala.common.Block;
 public class BlockMessage extends BaseModel implements Message {
     private final Block block;
 
+    private String address;
     @Override
     public MessageTypes messageType() {
         return MessageTypes.BLOCK;
@@ -18,5 +19,10 @@ public class BlockMessage extends BaseModel implements Message {
     @Override
     public BaseModel getMessage() {
         return this.block;
+    }
+
+    @Override
+    public MessageActions messageAction() {
+        return null;
     }
 }

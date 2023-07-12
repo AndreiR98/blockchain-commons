@@ -8,4 +8,9 @@ public interface Message extends Serializable {
     MessageTypes messageType();
 
     BaseModel getMessage();
+
+    MessageActions messageAction();
+
+    String getAddress();
+    void setAddress(String address);
 }

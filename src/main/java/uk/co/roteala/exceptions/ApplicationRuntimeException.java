@@ -34,7 +34,7 @@ public class ApplicationRuntimeException extends RuntimeException{
         }
 
         static {
-            messageSource.setBasenames(new String[]{"i18n.errors", "i18n.error-messages", "i18n.error-messages-common", "i18n.errors-common", "i18n.errors-core"});
+            messageSource.setBasenames(new String[]{"i18n.errors"});
         }
     }
 }
