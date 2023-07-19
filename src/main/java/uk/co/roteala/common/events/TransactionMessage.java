@@ -8,7 +8,7 @@ import uk.co.roteala.common.BaseModel;
 
 @Data
 @RequiredArgsConstructor
-public class ChainStateMessage extends BaseModel implements Message {
+public class TransactionMessage extends BaseModel implements Message {
     private Connection connection;
 
     private MessageActions messageAction;
@@ -16,10 +16,9 @@ public class ChainStateMessage extends BaseModel implements Message {
     private final BaseModel message;
 
     private final boolean verified;
-
     @Override
     public MessageTypes getMessageType() {
-        return MessageTypes.STATECHAIN;
+        return MessageTypes.TRANSACTION;
     }
 
     @Override

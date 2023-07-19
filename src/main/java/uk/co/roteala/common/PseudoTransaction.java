@@ -110,8 +110,6 @@ public class PseudoTransaction extends BaseModel {
             List<PublicKey> publicKeys = CryptographyUtils.recoverPublicKeys(this);
 
             for (PublicKey publicKey : publicKeys) {
-                CryptographyUtils.checkKeyWithPubKeyHash(publicKey, this.pubKeyHash);
-                CryptographyUtils.checkKeyWithAddress(publicKey, this.from);
                 if (CryptographyUtils.checkKeyWithPubKeyHash(publicKey, this.pubKeyHash)
                         && CryptographyUtils.checkKeyWithAddress(publicKey, this.from)) {
                     return true;

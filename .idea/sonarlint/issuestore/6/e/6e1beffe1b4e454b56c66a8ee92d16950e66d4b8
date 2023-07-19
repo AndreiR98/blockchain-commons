@@ -1,0 +1,10 @@
+
+u
+java:S1210."YOverride "equals(Object obj)" to comply with the contract of the "compareTo(T o)" method.( •ê<8≠ø≠°ï1
+X	java:S125"<This block of commented-out lines of code should be removed.(≤›Û´8∞ø≠°ï1
+X	java:S125"<This block of commented-out lines of code should be removed.(Ñë‰¨8±ø≠°ï1
+^
+java:S1128"<Remove this unused import 'com.google.common.math.LongMath'.(˙Õø¡˚ˇˇˇˇ8¥ø≠°ï1
+l
+java:S1128
+"ORemove this unused import 'com.google.common.base.Preconditions.checkArgument'.(±˝°ï8¥ø≠°ï1

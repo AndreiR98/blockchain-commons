@@ -8,7 +8,10 @@ import org.bouncycastle.asn1.x9.X9ECParameters;
 import org.bouncycastle.math.ec.ECCurve;
 import org.bouncycastle.math.ec.ECFieldElement;
 import org.bouncycastle.math.ec.ECPoint;
+import uk.co.roteala.common.BaseModel;
 import uk.co.roteala.common.PseudoTransaction;
+import uk.co.roteala.common.SignatureModel;
+import uk.co.roteala.security.PrivateKey;
 import uk.co.roteala.security.PublicKey;
 import uk.co.roteala.utils.Base58;
 
@@ -40,14 +43,14 @@ public class CryptographyUtils{
         BigInteger sInverted = s.modInverse(curve.getOrder());
         BigInteger rInverted = x.modInverse(curve.getOrder());
 
-        BigInteger gCoeficient = rInverted.multiply(h).mod(curve.getOrder());
+        BigInteger gCoefficient = rInverted.multiply(h).mod(curve.getOrder());
 
         BigInteger rsInverted = x.multiply(sInverted).modInverse(curve.getOrder());
 
         ECPoint publicPoint1 = rPoint.multiply(rsInverted);
         ECPoint publicPoint1Negate = rPoint.multiply(rsInverted).negate();
 
-        ECPoint publicPoint2 = curveRaw.getG().multiply(gCoeficient).negate();
+        ECPoint publicPoint2 = curveRaw.getG().multiply(gCoefficient).negate();
 
         ECPoint publicKeyPoint = publicPoint1.add(publicPoint2).normalize();
         ECPoint publicKeyPointNegate = publicPoint1Negate.add(publicPoint2).normalize();

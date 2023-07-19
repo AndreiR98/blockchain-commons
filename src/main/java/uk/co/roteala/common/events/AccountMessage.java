@@ -2,28 +2,33 @@ package uk.co.roteala.common.events;
 
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
+import reactor.netty.Connection;
 import uk.co.roteala.common.AccountModel;
 import uk.co.roteala.common.BaseModel;
 
 @Data
 @RequiredArgsConstructor
-public class AccountMessage extends BaseModel implements Message{
+public class AccountMessage extends BaseModel implements Message {
 
-    private final AccountModel account;
+    private Connection connection;
 
-    private String address;
+    private MessageActions messageAction;
+
+    private final BaseModel message;
+
+    private final boolean verified;
     @Override
-    public MessageTypes messageType() {
+    public MessageTypes getMessageType() {
         return MessageTypes.ACCOUNT;
     }
 
     @Override
     public BaseModel getMessage() {
-        return this.account;
+        return this.message;
     }
 
     @Override
-    public MessageActions messageAction() {
-        return null;
+    public boolean isVerified() {
+        return this.verified;
     }
 }

@@ -2,18 +2,13 @@ package uk.co.roteala.common;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.google.common.hash.Hashing;
 import lombok.*;
-import org.springframework.util.SerializationUtils;
+import lombok.extern.slf4j.Slf4j;
 import uk.co.roteala.common.monetary.Coin;
-import uk.co.roteala.utils.GlacierUtils;
+import uk.co.roteala.security.utils.HashingService;
 
 import java.math.BigInteger;
-import java.nio.charset.StandardCharsets;
-import java.security.NoSuchAlgorithmException;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
+import java.util.*;
 
 @Data
 @Builder
@@ -25,10 +20,10 @@ public class Block extends BaseModel {
     private Integer version;
     private String markleRoot;
     private long timeStamp;
-    private BigInteger nonce;
+    private String nonce;
     private String previousHash;
     private Integer numberOfBits;
-    private BigInteger difficulty;
+    private Integer difficulty;
     private List<String> transactions;
     private Coin reward;
     private String miner;
@@ -40,35 +35,52 @@ public class Block extends BaseModel {
     private Integer confirmations;
     private BlockStatus status;
 
-    public void setHash() throws JsonProcessingException {
-        this.hash = com.google.common.hash.Hashing.sha256().hashString(Hashing.sha256()
-                        .hashString(prepareToHash(), StandardCharsets.UTF_8)
-                        .toString(), StandardCharsets.UTF_8)
-                .toString();
+    public String computeHash() {
+        Map<String, Object> map = new HashMap<>();
+        map.put("version", this.version);
+        map.put("markleRoot", this.markleRoot);
+        map.put("timeStamp", this.timeStamp);
+        map.put("reward", String.valueOf(this.reward.getValue()));
+        map.put("nonce", this.nonce);
+        map.put("miner", this.miner);
+        map.put("index", this.index);
+        map.put("previousHash", this.previousHash);
+        map.put("numberOfBits", this.numberOfBits);
+        map.put("difficulty", this.difficulty);
+        map.put("transactions", this.getTransactionAsString());
+
+        Map<String, Object> sortedMap = new TreeMap<>(map);
+
+        ObjectMapper objectMapper = new ObjectMapper();
+        String jsonString = null;
+
+        try {
+            jsonString = objectMapper.writeValueAsString(sortedMap);
+        }catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+
+        return HashingService.bytesToHexString(HashingService.sha256Hash(jsonString.getBytes()));
     }
 
-    //For miner
-    private String prepareToHash() throws JsonProcessingException {
-        ObjectMapper mapper = new ObjectMapper();
+    public String getTransactionAsString() {
+        List<String> map = new ArrayList<>();
 
-        HashMap map = new HashMap<>();
-        map.put("markle_root", markleRoot);
-        map.put("reward", reward);
-        map.put("transactions", transactions);
-        map.put("nonce", nonce);
-        map.put("previous_hash", previousHash);
-        map.put("number_of_bits", numberOfBits);
-        map.put("difficulty", difficulty);
-        map.put("time_stamp", timeStamp);
-        map.put("miner", miner);
-        map.put("index", index);
-        map.put("version", version);
+        this.getTransactions().forEach(map::add);
 
-        return mapper.writeValueAsString(map);
+        TreeSet<String> sortedMap = new TreeSet<>();
+
+        ObjectMapper objectMapper = new ObjectMapper();
+        String jsonString = null;
+
+        try {
+            jsonString = objectMapper.writeValueAsString(sortedMap);
+        }catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+
+        return jsonString;
     }
 
-    public String toJSON() throws JsonProcessingException {
-        ObjectMapper mapper = new ObjectMapper();
-        return mapper.writeValueAsString(this);
-    }
+
 }

@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.google.common.hash.Hashing;
 import lombok.*;
@@ -13,11 +14,10 @@ import reactor.core.publisher.Flux;
 import reactor.netty.tcp.TcpServer;
 import uk.co.roteala.common.monetary.Coin;
 import uk.co.roteala.common.monetary.CoinConverter;
+import uk.co.roteala.security.utils.HashingService;
 
 import java.nio.charset.StandardCharsets;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
+import java.util.*;
 
 
 @EqualsAndHashCode(callSuper = true)
@@ -29,7 +29,6 @@ import java.util.List;
 public class Transaction extends BaseModel {
     private String hash;
     private String pseudoHash;
-    private String blockHash;
     private Integer blockNumber;
     private String from;
     private String to;
@@ -39,48 +38,45 @@ public class Transaction extends BaseModel {
     private Integer transactionIndex;
     @JsonSerialize(converter = CoinConverter.class)
     private Coin value;
+    private Integer nonce;
     private long timeStamp;
     private long confirmations;
     private long blockTime;
+    private String pubKeyHash;
+    @JsonDeserialize(using = TransactionStatusDeserializer.class)
+    @JsonSerialize(converter = TransactionStatusConverter.class)
     private TransactionStatus status;
     @JsonInclude(JsonInclude.Include.NON_NULL)
     private SignatureModel signature;
 
-    public void setHash() throws JsonProcessingException {
-        this.hash = Hashing.sha256().hashString(Hashing.sha256()
-                        .hashString(prepareToHash(), StandardCharsets.UTF_8)
-                        .toString(), StandardCharsets.UTF_8)
-                .toString();
-    }
+    public String computeHash() {
+        Map<String, Object> map = new HashMap<>();
+        map.put("pseudoHash", this.pseudoHash);
+        map.put("blockNumber", this.blockNumber);
+        map.put("from", this.from);
+        map.put("to", this.to);
+        map.put("fees", String.valueOf(this.fees.getValue()));
+        map.put("version", this.version);
+        map.put("transactionIndex", this.transactionIndex);
+        map.put("value", String.valueOf(this.value.getValue()));
+        map.put("nonce", this.nonce);
+        map.put("timeStamp", this.timeStamp);
+        map.put("blockTime", this.blockTime);
+        map.put("pubKeyHash", this.pubKeyHash);
+        map.put("signature", this.signature.format());
 
-    //For miner
-    /**Very important that each miner will generate THE SAME hash for each transaciton in block, this way when block is created
-     * and brodcasted each miner based on the hashed will generate take the transaciton from mempool
-     * */
-    private String prepareToHash() throws JsonProcessingException {
-        ObjectMapper mapper = new ObjectMapper();
+        Map<String, Object> sortedMap = new TreeMap<>(map);
 
-        HashMap map = new HashMap<>();
-        map.put("block_number", blockNumber);
-        map.put("transactionIndex", transactionIndex);
-        map.put("block_time", blockTime);
-        map.put("fees", fees.getValue());
-        map.put("amount", value.getValue());
-        map.put("signature", signature);
-        map.put("version", version);
-        map.put("from_address", from);
-        map.put("to_address", to);
-        map.put("time_stamp", timeStamp);
-        map.put("pseudoHash", pseudoHash);
-        //map.put("transaction_index", transactionIndex);
+        ObjectMapper objectMapper = new ObjectMapper();
 
-        return mapper.writeValueAsString(map);
-    }
+        String jsonString = null;
 
+        try {
+            jsonString = objectMapper.writeValueAsString(sortedMap);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
 
-
-    public String toJSON() throws JsonProcessingException {
-        ObjectMapper mapper = new ObjectMapper();
-        return mapper.writeValueAsString(this);
+        return HashingService.bytesToHexString(HashingService.sha256Hash(jsonString.getBytes()));
     }
 }

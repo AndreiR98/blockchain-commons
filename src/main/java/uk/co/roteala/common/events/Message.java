@@ -1,16 +1,21 @@
 package uk.co.roteala.common.events;
 
+import reactor.netty.Connection;
 import uk.co.roteala.common.BaseModel;
 
 import java.io.Serializable;
 
 public interface Message extends Serializable {
-    MessageTypes messageType();
+    MessageTypes getMessageType();
 
     BaseModel getMessage();
 
-    MessageActions messageAction();
+    MessageActions getMessageAction();
 
-    String getAddress();
-    void setAddress(String address);
+    Connection getConnection();
+    void setConnection(Connection connection);
+
+    void setMessageAction(MessageActions action);
+
+    boolean isVerified();
 }
