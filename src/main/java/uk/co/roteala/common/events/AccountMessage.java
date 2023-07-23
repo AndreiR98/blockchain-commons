@@ -1,5 +1,6 @@
 package uk.co.roteala.common.events;
 
+import lombok.Builder;
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
 import reactor.netty.Connection;
@@ -16,19 +17,9 @@ public class AccountMessage extends BaseModel implements Message {
 
     private final BaseModel message;
 
-    private final boolean verified;
+    private boolean verified;
     @Override
     public MessageTypes getMessageType() {
         return MessageTypes.ACCOUNT;
-    }
-
-    @Override
-    public BaseModel getMessage() {
-        return this.message;
-    }
-
-    @Override
-    public boolean isVerified() {
-        return this.verified;
     }
 }

@@ -77,6 +77,6 @@ public class Transaction extends BaseModel {
             throw new RuntimeException(e);
         }
 
-        return HashingService.bytesToHexString(HashingService.sha256Hash(jsonString.getBytes()));
+        return HashingService.bytesToHexString(HashingService.computeSHA3(jsonString));
     }
 }

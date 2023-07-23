@@ -2,8 +2,11 @@ package uk.co.roteala.security.utils;
 
 import lombok.experimental.UtilityClass;
 import lombok.extern.slf4j.Slf4j;
+import org.bouncycastle.crypto.digests.SHAKEDigest;
 import org.bouncycastle.jce.provider.BouncyCastleProvider;
 
+import java.math.BigInteger;
+import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.security.Security;
@@ -75,5 +78,18 @@ public class HashingService {
             hexString.append(hex);
         }
         return hexString.toString();
+    }
+
+    public byte[] computeSHA3(String input) {
+        try {
+            Security.addProvider(new BouncyCastleProvider());
+            MessageDigest crypt = MessageDigest.getInstance("SHA3-384");
+
+            crypt.update(input.getBytes(StandardCharsets.UTF_8));
+
+            return crypt.digest();
+        } catch (NoSuchAlgorithmException e) {
+            throw new RuntimeException(e);
+        }
     }
 }

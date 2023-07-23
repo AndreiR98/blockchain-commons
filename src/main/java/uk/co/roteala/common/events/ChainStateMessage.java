@@ -1,5 +1,6 @@
 package uk.co.roteala.common.events;
 
+import lombok.Builder;
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
 import reactor.netty.Connection;
@@ -13,22 +14,12 @@ public class ChainStateMessage extends BaseModel implements Message {
 
     private MessageActions messageAction;
 
-    private final BaseModel message;
+    private BaseModel message;
 
-    private final boolean verified;
+    private boolean verified;
 
     @Override
     public MessageTypes getMessageType() {
         return MessageTypes.STATECHAIN;
-    }
-
-    @Override
-    public BaseModel getMessage() {
-        return this.message;
-    }
-
-    @Override
-    public boolean isVerified() {
-        return this.verified;
     }
 }

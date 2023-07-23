@@ -2,9 +2,11 @@ package uk.co.roteala.common;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import lombok.*;
 import lombok.extern.slf4j.Slf4j;
 import uk.co.roteala.common.monetary.Coin;
+import uk.co.roteala.common.monetary.CoinConverter;
 import uk.co.roteala.security.utils.HashingService;
 
 import java.math.BigInteger;
@@ -25,6 +27,7 @@ public class Block extends BaseModel {
     private Integer numberOfBits;
     private Integer difficulty;
     private List<String> transactions;
+    @JsonSerialize(converter = CoinConverter.class)
     private Coin reward;
     private String miner;
     private Integer index;
@@ -63,12 +66,10 @@ public class Block extends BaseModel {
         return HashingService.bytesToHexString(HashingService.sha256Hash(jsonString.getBytes()));
     }
 
-    public String getTransactionAsString() {
-        List<String> map = new ArrayList<>();
-
-        this.getTransactions().forEach(map::add);
-
+    private String getTransactionAsString() {
         TreeSet<String> sortedMap = new TreeSet<>();
+
+        this.getTransactions().forEach(sortedMap::add);
 
         ObjectMapper objectMapper = new ObjectMapper();
         String jsonString = null;
