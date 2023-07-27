@@ -28,5 +28,6 @@ public enum MessageActions {
      * */
     RESPONSE_TO_VERIFY,
 
-    VERIFY_WITH_BROKER
+    VERIFY_WITH_BROKER,
+    VERIFY_BROADCAST
 }

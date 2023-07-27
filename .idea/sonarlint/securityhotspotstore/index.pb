@@ -83,12 +83,8 @@ k
 ;src/main/java/uk/co/roteala/common/events/MessageTypes.java,1\b\1b2ff50d5d024eb3f47a19e82124c7f8308afe78
 m
 =src/main/java/uk/co/roteala/common/events/AccountMessage.java,d\3\d3e6014afd0e2b3ca7ba32b7dccd519d19f24a64
-m
-=src/main/java/uk/co/roteala/common/events/MessageActions.java,9\6\9684baba7c1f9c4666bef3bb65af78d25ef0ddc0
 ]
 -src/main/java/uk/co/roteala/utils/Base58.java,d\b\db1cdaa45ef83c72eb83c82c4f5079fb5da21075
-c
-3src/main/java/uk/co/roteala/common/Transaction.java,5\5\559f72847c7761f0ecedc0f038a86cc7e05e70d8
 n
 >src/main/java/uk/co/roteala/security/utils/HashingService.java,f\e\fef6924643ad8c94a559861f3a607f631c681150
 {
@@ -107,7 +103,9 @@ b
 2src/main/java/uk/co/roteala/common/ChainState.java,a\7\a7b1b5f4d615d0ecdc6238c3afd39caeabc5a3f8
 q
 Asrc/main/java/uk/co/roteala/security/utils/CryptographyUtils.java,f\7\f748379d05ebf18c9eacf9dbfd4287b41d5c8a24
-]
--src/main/java/uk/co/roteala/common/Block.java,2\c\2c2fed9b7cd1d13b5bbf000f6c4d43b1e27b82a9
 f
 6src/main/java/uk/co/roteala/utils/BlockchainUtils.java,e\c\ec881407da2dc76ec2589e1ff4e3988ccde684f0
+]
+-src/main/java/uk/co/roteala/common/Block.java,2\c\2c2fed9b7cd1d13b5bbf000f6c4d43b1e27b82a9
+c
+3src/main/java/uk/co/roteala/common/Transaction.java,5\5\559f72847c7761f0ecedc0f038a86cc7e05e70d8

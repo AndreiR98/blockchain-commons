@@ -23,7 +23,7 @@ public class BlockchainUtils {
         transaction.setBlockNumber(block.getIndex());
         transaction.setFrom(pseudoTransaction.getFrom());
         transaction.setTo(pseudoTransaction.getTo());
-        transaction.setFees(null);
+        transaction.setFees(Coin.ZERO);
         transaction.setVersion(pseudoTransaction.getVersion());
         transaction.setTransactionIndex(index);
         transaction.setValue(pseudoTransaction.getValue());
