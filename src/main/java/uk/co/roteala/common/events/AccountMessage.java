@@ -18,6 +18,9 @@ public class AccountMessage extends BaseModel implements Message {
     private final BaseModel message;
 
     private boolean verified;
+
+    //Used for rewarding
+    private String address;
     @Override
     public MessageTypes getMessageType() {
         return MessageTypes.ACCOUNT;

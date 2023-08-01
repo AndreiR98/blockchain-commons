@@ -14,6 +14,8 @@ public interface Message extends Serializable {
 
     Connection getConnection();
 
+    String getAddress();
+
     void setConnection(Connection connection);
 
     boolean isVerified();
@@ -21,4 +23,6 @@ public interface Message extends Serializable {
     void setVerified(boolean v);
 
     void setMessageAction(MessageActions action);
+
+    void setAddress(String address);
 }

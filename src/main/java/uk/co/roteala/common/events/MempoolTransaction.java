@@ -8,7 +8,6 @@ import uk.co.roteala.common.AccountModel;
 import uk.co.roteala.common.BaseModel;
 
 @Data
-
 @RequiredArgsConstructor
 public class MempoolTransaction extends BaseModel implements Message {
     private Connection connection;
@@ -18,6 +17,8 @@ public class MempoolTransaction extends BaseModel implements Message {
     private final BaseModel message;
 
     private boolean verified;
+
+    private String address;
     @Override
     public MessageTypes getMessageType() {
         return MessageTypes.MEMPOOL;

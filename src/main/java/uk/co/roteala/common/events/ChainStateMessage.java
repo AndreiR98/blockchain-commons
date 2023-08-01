@@ -14,9 +14,11 @@ public class ChainStateMessage extends BaseModel implements Message {
 
     private MessageActions messageAction;
 
-    private BaseModel message;
+    private final BaseModel message;
 
     private boolean verified;
+
+    private String address;
 
     @Override
     public MessageTypes getMessageType() {

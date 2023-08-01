@@ -6,14 +6,17 @@ import java.util.Map;
 
 public enum BlockStatus implements Serializable {
 
-    PENDING("001"),
-    MINED("002");
+    PROPOSED(0),
+    PENDING(1),
+    CONFIRMED(2),
+    MINED(3),
+    FAILED(4);
 
-    private String code;
+    private Integer code;
 
-    private static final Map<String, BlockStatus> VALUES = new HashMap<>();
+    private static final Map<Integer, BlockStatus> VALUES = new HashMap<>();
 
-    BlockStatus(String code) {
+    BlockStatus(Integer code) {
         this.code = code;
     }
 
@@ -23,11 +26,11 @@ public enum BlockStatus implements Serializable {
         }
     }
 
-    public String getCode() {
+    public Integer getCode() {
         return this.code;
     }
 
-    public static BlockStatus valueOfCode(String code) {
+    public static BlockStatus valueOfCode(Integer code) {
         return VALUES.get(code);
     }
 }

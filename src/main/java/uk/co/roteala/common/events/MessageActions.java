@@ -21,13 +21,33 @@ public enum MessageActions {
      * Syncronize the node
      * */
     REQUEST_SYNC,
-    /**
-     * Response type to the verification asked by broker or nodes
-     * This will be processed diffrently;
-     * When response comes true +1 to the confirmations if confirmations > threshold append block adn send message to all to do the same
-     * */
-    RESPONSE_TO_VERIFY,
 
-    VERIFY_WITH_BROKER,
-    VERIFY_BROADCAST
+
+    /**
+     * MINERS MESSAGE WITH MINED BLOCK
+     * */
+    MINED_BLOCK,
+
+    /**
+     * VERIFIED_MINED_BLOCK
+     * */
+    VERIFIED_MINED_BLOCK,
+
+    /**
+     * APPEND_MINED_BLOCK
+     * */
+    APPEND_MINED_BLOCK,
+
+
+    /**
+     * PEERS
+     * */
+    STORE_PEER,
+
+    /**
+     * CONNECT_PEER
+     * */
+    CONNECT_PEER
+
+
 }

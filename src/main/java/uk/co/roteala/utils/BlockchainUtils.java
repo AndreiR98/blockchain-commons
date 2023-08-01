@@ -10,6 +10,8 @@ import uk.co.roteala.security.utils.HashingService;
 
 import java.math.BigDecimal;
 import java.math.BigInteger;
+import java.net.InetSocketAddress;
+import java.net.SocketAddress;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -42,6 +44,32 @@ public class BlockchainUtils {
 
         return bothHashes.toString();
     }
+
+    public Transaction mapPsuedoTransactionToTransaction(PseudoTransaction pseudoTransaction, Block block, Integer index) {
+        Transaction transaction = new Transaction();
+
+        transaction.setConfirmations(block.getConfirmations());
+        transaction.setFrom(pseudoTransaction.getFrom());
+        transaction.setTo(pseudoTransaction.getTo());
+        transaction.setStatus(pseudoTransaction.getStatus());
+        transaction.setNonce(pseudoTransaction.getNonce());
+        transaction.setVersion(pseudoTransaction.getVersion());
+        transaction.setFees(Coin.ZERO);
+        transaction.setPubKeyHash(pseudoTransaction.getPubKeyHash());
+        transaction.setPseudoHash(pseudoTransaction.getPseudoHash());
+        transaction.setSignature(pseudoTransaction.getSignature());
+        transaction.setBlockTime(block.getTimeStamp());
+        transaction.setBlockNumber(block.getIndex());
+        transaction.setTransactionIndex(index);
+        transaction.setValue(pseudoTransaction.getValue());
+        transaction.setTimeStamp(pseudoTransaction.getTimeStamp());
+        transaction.setHash(transaction.computeHash());
+
+
+        return transaction;
+    }
+
+    
 
     /**
      * TODO::Recreate the markle root based on the orde in the block
@@ -179,5 +207,14 @@ public class BlockchainUtils {
         } catch (NumberFormatException e) {
             return false;
         }
+    }
+
+    public String formatIPAddress(SocketAddress address) {
+        if (address instanceof InetSocketAddress) {
+            InetSocketAddress inetSocketAddress = (InetSocketAddress) address;
+            return inetSocketAddress.getAddress().getHostAddress();
+        }
+
+        return null;
     }
 }

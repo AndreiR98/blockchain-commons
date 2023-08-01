@@ -18,6 +18,8 @@ public class BlockMessage extends BaseModel implements Message {
     private final BaseModel message;
 
     private boolean verified;
+
+    private String address;
     @Override
     public MessageTypes getMessageType() {
         return MessageTypes.BLOCK;
