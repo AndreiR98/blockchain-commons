@@ -62,15 +62,11 @@ public class CryptographyUtils{
     }
 
     public boolean checkKeyWithPubKeyHash(PublicKey key, String pubKeyHash) {
-        String pubKeyHashFromKey = bytesToHexString(HashingService.doubleSHA256(key.encode()));
-
-        return Objects.equals(pubKeyHashFromKey, pubKeyHash);
+        return Objects.equals(key.getPubKeyHash(), pubKeyHash);
     }
 
     public boolean checkKeyWithAddress(PublicKey key, String address) {
-        String addressFromKey = key.toAddress();
-
-        return Objects.equals(addressFromKey, address);
+        return Objects.equals(key.toAddress(), address);
     }
 
     public String decodeAddress(String address){

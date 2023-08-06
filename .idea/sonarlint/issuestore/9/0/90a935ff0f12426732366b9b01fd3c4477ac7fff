@@ -1,0 +1,6 @@
+
+{	java:S115"ZRename this constant name to match the regular expression '^[A-Z][A-Z0-9]*(_[A-Z0-9]+)*$'.(ÍÓÃıÿÿÿÿ8Ô®µ›1
+\
+java:S1118":Add a private constructor to hide the implicit public one.(‡Ìé§üÿÿÿÿ8¯•Ÿµ›1
+J
+java:S1128"(Remove this unused import 'lombok.Data'.(÷í«ÿÿÿÿÿ8Ç®œµ›1

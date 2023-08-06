@@ -38,6 +38,7 @@ import java.util.TreeMap;
 @EqualsAndHashCode
 @NoArgsConstructor
 @AllArgsConstructor
+@Slf4j
 public class PseudoTransaction extends BaseModel {
     private String pseudoHash;
     private String from;
@@ -45,6 +46,7 @@ public class PseudoTransaction extends BaseModel {
     private Integer version;
     @JsonSerialize(converter = CoinConverter.class)
     private Coin value;
+    private Fees fees;
     private Integer nonce;
     private long timeStamp;
     @JsonDeserialize(using = TransactionStatusDeserializer.class)
@@ -53,28 +55,6 @@ public class PseudoTransaction extends BaseModel {
     private String pubKeyHash;
     @JsonInclude(JsonInclude.Include.NON_NULL)
     private SignatureModel signature;
-
-    /**
-     * Compute the hash of the pseudo transaction
-     * */
-    public String computeHash() throws JsonProcessingException {
-        Map<String, Object> map = new HashMap<>();
-        map.put("from", this.from);
-        map.put("to", this.to);
-        map.put("version", this.version);
-        map.put("value", String.valueOf(this.value.getValue()));
-        map.put("nonce", this.nonce);
-        map.put("timeStamp", this.timeStamp);
-        map.put("pubKeyHash", this.pubKeyHash);
-        map.put("signature", this.signature.format());
-
-        Map<String, Object> sortedMap = new TreeMap<>(map);
-
-        ObjectMapper objectMapper = new ObjectMapper();
-        String jsonString = objectMapper.writeValueAsString(sortedMap);
-
-        return HashingService.bytesToHexString(HashingService.sha256Hash(jsonString.getBytes()));
-    }
 
     /**
      * Compute signing hash
@@ -87,14 +67,17 @@ public class PseudoTransaction extends BaseModel {
         map.put("to", this.to);
         map.put("version", this.version);
         map.put("value", String.valueOf(this.value.getValue()));
+        map.put("fees", this.fees.format());
         map.put("nonce", this.nonce);
-        map.put("timeStamp", this.timeStamp);
-        map.put("pubKeyHash", this.pubKeyHash);
+        map.put("time_stamp", this.timeStamp);
+        map.put("pub_key_hash", this.pubKeyHash);
 
         Map<String, Object> sortedMap = new TreeMap<>(map);
 
         ObjectMapper objectMapper = new ObjectMapper();
         String jsonString = objectMapper.writeValueAsString(sortedMap);
+
+        log.info("JSON:{}", jsonString);
 
         return HashingService.bytesToHexString(HashingService.sha256Hash(jsonString.getBytes()));
     }

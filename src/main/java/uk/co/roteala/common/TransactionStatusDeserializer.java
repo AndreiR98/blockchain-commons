@@ -12,6 +12,6 @@ public class TransactionStatusDeserializer extends JsonDeserializer<TransactionS
 
     @Override
     public TransactionStatus deserialize(JsonParser jsonParser, DeserializationContext deserializationContext) throws IOException {
-        return TransactionStatus.valueOfCode(jsonParser.getText());
+        return TransactionStatus.valueOfCode(jsonParser.getIntValue());
     }
 }

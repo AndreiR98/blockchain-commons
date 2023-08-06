@@ -21,6 +21,7 @@ public enum MessageActions {
      * Syncronize the node
      * */
     REQUEST_SYNC,
+    REQUEST,
 
 
     /**
@@ -47,7 +48,8 @@ public enum MessageActions {
     /**
      * CONNECT_PEER
      * */
-    CONNECT_PEER
+    CONNECT_PEER,
 
+    NO_CONNECTIONS
 
 }

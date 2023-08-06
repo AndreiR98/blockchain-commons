@@ -2,6 +2,7 @@ package uk.co.roteala.security;
 
 import lombok.Builder;
 import lombok.Setter;
+import lombok.extern.slf4j.Slf4j;
 import org.bouncycastle.math.ec.ECPoint;
 import uk.co.roteala.security.utils.CryptographyUtils;
 import uk.co.roteala.security.utils.HashingService;
@@ -11,6 +12,7 @@ import java.math.BigInteger;
 import java.security.NoSuchAlgorithmException;
 
 @Builder
+@Slf4j
 public class PublicKey implements PubKey{
 
     @Setter
@@ -53,10 +55,10 @@ public class PublicKey implements PubKey{
     }
 
     /**
-     * Return pubKey.x||pubKey.y
+     * Return Double hash of pubKey.x||pubKey.y
      * @return String
      * */
-    public byte[] encode() {
+    public String getPubKeyHash() {
 
         final byte[] bX = this.encodedX();
         final byte[] bY = this.encodedY();
@@ -65,7 +67,8 @@ public class PublicKey implements PubKey{
         System.arraycopy(bX, 0, newBxBy, 0, bX.length);
         System.arraycopy(bY, 0, newBxBy, bX.length, bY.length);
 
-        return newBxBy;
+        return CryptographyUtils
+                .bytesToHexString(HashingService.doubleSHA256(newBxBy));
     }
 
     private String generateAddress() {

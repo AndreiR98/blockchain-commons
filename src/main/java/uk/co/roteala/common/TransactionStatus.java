@@ -6,16 +6,16 @@ import java.util.Map;
 
 public enum TransactionStatus implements Serializable {
 
-    PENDING("001"),
-    VALIDATED("002"),
-    PROCESSED("003"),
-    SUCCESS("004");
+    PENDING(1),
+    VALIDATED(2),
+    PROCESSED(3),
+    SUCCESS(4);
 
-    private String code;
+    private Integer code;
 
-    private static final Map<String, TransactionStatus> VALUES = new HashMap<>();
+    private static final Map<Integer, TransactionStatus> VALUES = new HashMap<>();
 
-    TransactionStatus(String code) {
+    TransactionStatus(Integer code) {
         this.code = code;
     }
 
@@ -25,11 +25,11 @@ public enum TransactionStatus implements Serializable {
         }
     }
 
-    public String getCode() {
+    public Integer getCode() {
         return this.code;
     }
 
-    public static TransactionStatus valueOfCode(String code) {
+    public static TransactionStatus valueOfCode(Integer code) {
         return VALUES.get(code);
     }
 }

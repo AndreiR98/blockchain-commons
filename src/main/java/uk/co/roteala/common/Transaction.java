@@ -32,8 +32,7 @@ public class Transaction extends BaseModel {
     private Integer blockNumber;
     private String from;
     private String to;
-    @JsonSerialize(converter = CoinConverter.class)
-    private Coin fees;
+    private Fees fees;
     private Integer version;
     private Integer transactionIndex;
     @JsonSerialize(converter = CoinConverter.class)
@@ -55,7 +54,7 @@ public class Transaction extends BaseModel {
         map.put("blockNumber", this.blockNumber);
         map.put("from", this.from);
         map.put("to", this.to);
-        map.put("fees", String.valueOf(this.fees.getValue()));
+        map.put("fees", this.fees.format());
         map.put("version", this.version);
         map.put("transactionIndex", this.transactionIndex);
         map.put("value", String.valueOf(this.value.getValue()));

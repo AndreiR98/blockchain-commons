@@ -1,0 +1,8 @@
+package uk.co.roteala.utils;
+
+import lombok.Data;
+
+
+public class SerializationConstants {
+    public static final String serializationCoefficient = "6880657dd3ebe504650ca82209e97b692d99a2e8c4f147e9ec5330a1d7438c0d87c63706041b60bf157b6ffa284a21f77c8c41e5c94333caaa6c3f1810cd6b496da1c2e1b95eefb3d69feb96cb72db81fb8b0024d749d36b3e5ed0c669fc38c4080f8a0e3dddaf187e62f358784ee70a17f20ee386e86f8088d2cab99";
+}

@@ -12,5 +12,5 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 public class PeersContainer extends BaseModel {
-    private List<Peer> peersList;
+    private List<String> peersList;
 }

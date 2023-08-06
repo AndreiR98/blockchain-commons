@@ -1,15 +1,12 @@
 package uk.co.roteala.utils;
 
+
 import lombok.experimental.UtilityClass;
 import lombok.extern.slf4j.Slf4j;
-import uk.co.roteala.common.Block;
-import uk.co.roteala.common.PseudoTransaction;
-import uk.co.roteala.common.Transaction;
-import uk.co.roteala.common.monetary.Coin;
+import uk.co.roteala.common.*;
 import uk.co.roteala.security.utils.HashingService;
 
-import java.math.BigDecimal;
-import java.math.BigInteger;
+
 import java.net.InetSocketAddress;
 import java.net.SocketAddress;
 import java.util.ArrayList;
@@ -22,16 +19,16 @@ public class BlockchainUtils {
     public String mapHashed(PseudoTransaction pseudoTransaction, Block block, int index) {
         Transaction transaction = new Transaction();
         transaction.setPseudoHash(pseudoTransaction.getPseudoHash());
-        transaction.setBlockNumber(block.getIndex());
+        transaction.setBlockNumber(block.getHeader().getIndex());
         transaction.setFrom(pseudoTransaction.getFrom());
         transaction.setTo(pseudoTransaction.getTo());
-        transaction.setFees(Coin.ZERO);
+        transaction.setFees(pseudoTransaction.getFees());
         transaction.setVersion(pseudoTransaction.getVersion());
         transaction.setTransactionIndex(index);
         transaction.setValue(pseudoTransaction.getValue());
         transaction.setNonce(pseudoTransaction.getNonce());
         transaction.setTimeStamp(pseudoTransaction.getTimeStamp());
-        transaction.setBlockTime(block.getTimeStamp());
+        transaction.setBlockTime(block.getHeader().getTimeStamp());
         transaction.setPubKeyHash(pseudoTransaction.getPubKeyHash());
         transaction.setStatus(pseudoTransaction.getStatus());
         transaction.setSignature(pseudoTransaction.getSignature());
@@ -54,12 +51,12 @@ public class BlockchainUtils {
         transaction.setStatus(pseudoTransaction.getStatus());
         transaction.setNonce(pseudoTransaction.getNonce());
         transaction.setVersion(pseudoTransaction.getVersion());
-        transaction.setFees(Coin.ZERO);
+        transaction.setFees(pseudoTransaction.getFees());
         transaction.setPubKeyHash(pseudoTransaction.getPubKeyHash());
         transaction.setPseudoHash(pseudoTransaction.getPseudoHash());
         transaction.setSignature(pseudoTransaction.getSignature());
-        transaction.setBlockTime(block.getTimeStamp());
-        transaction.setBlockNumber(block.getIndex());
+        transaction.setBlockTime(block.getHeader().getTimeStamp());
+        transaction.setBlockNumber(block.getHeader().getIndex());
         transaction.setTransactionIndex(index);
         transaction.setValue(pseudoTransaction.getValue());
         transaction.setTimeStamp(pseudoTransaction.getTimeStamp());
