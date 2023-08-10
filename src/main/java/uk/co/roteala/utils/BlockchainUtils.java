@@ -16,10 +16,10 @@ import java.util.List;
 @Slf4j
 @UtilityClass
 public class BlockchainUtils {
-    public String mapHashed(PseudoTransaction pseudoTransaction, Block block, int index) {
+    public String mapHashed(PseudoTransaction pseudoTransaction, int blockIndex, long blockTimeStamp, int index) {
         Transaction transaction = new Transaction();
         transaction.setPseudoHash(pseudoTransaction.getPseudoHash());
-        transaction.setBlockNumber(block.getHeader().getIndex());
+        transaction.setBlockNumber(blockIndex);
         transaction.setFrom(pseudoTransaction.getFrom());
         transaction.setTo(pseudoTransaction.getTo());
         transaction.setFees(pseudoTransaction.getFees());
@@ -28,7 +28,7 @@ public class BlockchainUtils {
         transaction.setValue(pseudoTransaction.getValue());
         transaction.setNonce(pseudoTransaction.getNonce());
         transaction.setTimeStamp(pseudoTransaction.getTimeStamp());
-        transaction.setBlockTime(block.getHeader().getTimeStamp());
+        transaction.setBlockTime(blockTimeStamp);
         transaction.setPubKeyHash(pseudoTransaction.getPubKeyHash());
         transaction.setStatus(pseudoTransaction.getStatus());
         transaction.setSignature(pseudoTransaction.getSignature());
@@ -42,10 +42,9 @@ public class BlockchainUtils {
         return bothHashes.toString();
     }
 
-    public Transaction mapPsuedoTransactionToTransaction(PseudoTransaction pseudoTransaction, Block block, Integer index) {
+    public Transaction mapPsuedoTransactionToTransaction(PseudoTransaction pseudoTransaction, BlockHeader blockHeader, Integer index) {
         Transaction transaction = new Transaction();
 
-        transaction.setConfirmations(block.getConfirmations());
         transaction.setFrom(pseudoTransaction.getFrom());
         transaction.setTo(pseudoTransaction.getTo());
         transaction.setStatus(pseudoTransaction.getStatus());
@@ -55,8 +54,8 @@ public class BlockchainUtils {
         transaction.setPubKeyHash(pseudoTransaction.getPubKeyHash());
         transaction.setPseudoHash(pseudoTransaction.getPseudoHash());
         transaction.setSignature(pseudoTransaction.getSignature());
-        transaction.setBlockTime(block.getHeader().getTimeStamp());
-        transaction.setBlockNumber(block.getHeader().getIndex());
+        transaction.setBlockTime(blockHeader.getTimeStamp());
+        transaction.setBlockNumber(blockHeader.getIndex());
         transaction.setTransactionIndex(index);
         transaction.setValue(pseudoTransaction.getValue());
         transaction.setTimeStamp(pseudoTransaction.getTimeStamp());

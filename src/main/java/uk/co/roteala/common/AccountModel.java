@@ -1,5 +1,7 @@
 package uk.co.roteala.common;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.databind.PropertyNamingStrategies;
 import com.fasterxml.jackson.databind.annotation.JsonNaming;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
@@ -16,6 +18,7 @@ import java.util.List;
 @EqualsAndHashCode
 @NoArgsConstructor
 @AllArgsConstructor
+@JsonTypeName("ACCOUNT")
 @JsonNaming(PropertyNamingStrategies.SnakeCaseStrategy.class)
 public class AccountModel extends BaseModel implements Serializable {
     private String address;
@@ -30,6 +33,7 @@ public class AccountModel extends BaseModel implements Serializable {
     /**
      * Return an empty account with address
      * */
+    @JsonIgnore
     public AccountModel empty(String address) {
         return AccountModel.builder()
                 .address(address)

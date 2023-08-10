@@ -11,6 +11,6 @@ import uk.co.roteala.common.AccountModel;
 public class Fund {
     private String targetAccountAddress;
     private AccountModel sourceAccount;
-    private Coin amount;
+    private AmountDTO amount;
     private boolean isProcessed;
 }

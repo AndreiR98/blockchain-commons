@@ -1,5 +1,6 @@
 package uk.co.roteala.common;
 
+import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import lombok.*;
 import uk.co.roteala.common.monetary.Coin;
@@ -15,8 +16,10 @@ import java.util.List;
 @EqualsAndHashCode
 @NoArgsConstructor
 @AllArgsConstructor
+@JsonTypeName("STATECHAIN")
 public class ChainState extends BaseModel {
     private Integer lastBlockIndex;
+    @JsonSerialize(converter = CoinConverter.class)
     private Coin reward;
     private Integer target;
     private List<String> accounts;

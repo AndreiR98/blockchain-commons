@@ -1,5 +1,7 @@
 package uk.co.roteala.common;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
@@ -21,6 +23,7 @@ import java.util.*;
 @EqualsAndHashCode(callSuper = false)
 @NoArgsConstructor
 @AllArgsConstructor
+@JsonTypeName("BLOCK")
 public class Block extends BaseModel {
 
     //Block header
@@ -33,12 +36,13 @@ public class Block extends BaseModel {
     private Integer confirmations;
     private BlockStatus status;
 
+    @JsonIgnore
     public String getHash() {
         final String hash = this.header.getHash();
 
         return (hash == null || hash.isEmpty()) ? "" : hash;
     }
-
+    @JsonIgnore
     private String getTransactionAsString() {
         TreeSet<String> sortedMap = new TreeSet<>();
 

@@ -1,10 +1,15 @@
 package uk.co.roteala.common;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import lombok.*;
 import uk.co.roteala.common.monetary.Coin;
+import uk.co.roteala.common.monetary.CoinConverter;
 import uk.co.roteala.security.utils.HashingService;
 
+import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.TreeMap;
@@ -18,7 +23,8 @@ import java.util.TreeMap;
 @EqualsAndHashCode(callSuper = false)
 @NoArgsConstructor
 @AllArgsConstructor
-public class BlockHeader extends BaseModel {
+@JsonTypeName("BLOCKHEADER")
+public class BlockHeader extends BaseModel implements Serializable {
     private String previousHash;
     private String hash;
     private String markleRoot;
@@ -29,8 +35,10 @@ public class BlockHeader extends BaseModel {
     private Integer version;
     private Integer index;
     private Integer difficulty;
+    @JsonSerialize(converter = CoinConverter.class)
     private Coin reward;
 
+    @JsonIgnore
     public void setHash() {
         Map<String, Object> map = new HashMap<>();
         map.put("version", this.version);

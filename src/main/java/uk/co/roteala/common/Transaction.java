@@ -2,6 +2,7 @@ package uk.co.roteala.common;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
@@ -26,6 +27,7 @@ import java.util.*;
 @Slf4j
 @NoArgsConstructor
 @AllArgsConstructor
+@JsonTypeName("TRANSACTION")
 public class Transaction extends BaseModel {
     private String hash;
     private String pseudoHash;
@@ -48,6 +50,7 @@ public class Transaction extends BaseModel {
     @JsonInclude(JsonInclude.Include.NON_NULL)
     private SignatureModel signature;
 
+    @JsonIgnore
     public String computeHash() {
         Map<String, Object> map = new HashMap<>();
         map.put("pseudoHash", this.pseudoHash);

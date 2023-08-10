@@ -1,5 +1,6 @@
 package uk.co.roteala.common;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import lombok.*;
 import uk.co.roteala.common.monetary.Coin;
@@ -21,7 +22,7 @@ public class Fees implements Serializable {
     @JsonSerialize(converter = CoinConverter.class)
     private Coin networkFees;
 
-
+    @JsonIgnore
     public Map<String, String> format() {
         Map<String, String> map = new TreeMap<>();
         map.put("fees", String.valueOf(fees.getValue()));

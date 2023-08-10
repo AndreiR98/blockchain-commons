@@ -1,6 +1,8 @@
 package uk.co.roteala.common;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
@@ -39,6 +41,7 @@ import java.util.TreeMap;
 @NoArgsConstructor
 @AllArgsConstructor
 @Slf4j
+@JsonTypeName("PSEUDOTRANSACITON")
 public class PseudoTransaction extends BaseModel {
     private String pseudoHash;
     private String from;
@@ -49,8 +52,8 @@ public class PseudoTransaction extends BaseModel {
     private Fees fees;
     private Integer nonce;
     private long timeStamp;
-    @JsonDeserialize(using = TransactionStatusDeserializer.class)
-    @JsonSerialize(converter = TransactionStatusConverter.class)
+    //@JsonDeserialize(using = TransactionStatusDeserializer.class)
+    //@JsonSerialize(converter = TransactionStatusConverter.class)
     private TransactionStatus status;
     private String pubKeyHash;
     @JsonInclude(JsonInclude.Include.NON_NULL)
@@ -61,6 +64,7 @@ public class PseudoTransaction extends BaseModel {
      *
      * @return String
      * */
+    @JsonIgnore
     public String computeSigningHash() throws JsonProcessingException {
         Map<String, Object> map = new HashMap<>();
         map.put("from", this.from);
@@ -77,8 +81,6 @@ public class PseudoTransaction extends BaseModel {
         ObjectMapper objectMapper = new ObjectMapper();
         String jsonString = objectMapper.writeValueAsString(sortedMap);
 
-        log.info("JSON:{}", jsonString);
-
         return HashingService.bytesToHexString(HashingService.sha256Hash(jsonString.getBytes()));
     }
 
@@ -87,6 +89,7 @@ public class PseudoTransaction extends BaseModel {
      * Match the recovery key hash with the pukeyHash
      * Match the recovery key hash with the hash from address
      * */
+    @JsonIgnore
     public boolean verifySignatureWithRecovery() {
         // Retrieve all possible keys for this signature
         try {

@@ -13,5 +13,7 @@ public enum MessageTypes implements Serializable {
     STATECHAIN,
     ACCOUNT,
     MEMPOOL,
-    TRANSACTION
+    TRANSACTION,
+    NODESTATE,
+    BLOCKHEADER
 }
