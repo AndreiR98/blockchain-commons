@@ -1,0 +1,28 @@
+
+g	java:S112i"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òéüÿÿÿÿ8ò‘ÓÉ”1
+x
+java:S1128"VRemove this unused import 'com.fasterxml.jackson.databind.annotation.JsonDeserialize'.(Úˆ×øÿÿÿÿ8¸›æ1
+g
+java:S1128"ERemove this unused import 'org.bouncycastle.asn1.sec.SECNamedCurves'.(ô‹ÃÚıÿÿÿÿ8ÖŠÊ1
+`
+java:S1128"DRemove this unused import 'org.bouncycastle.asn1.x9.X9ECParameters'.(ÅŠû;8ÖŠÊ1
+`
+java:S1128"CRemove this unused import 'org.bouncycastle.jce.ECNamedCurveTable'.(¼å÷ø8ÖŠÊ1
+m
+java:S1128"PRemove this unused import 'org.bouncycastle.jce.spec.ECNamedCurveParameterSpec'.(ˆî³8ÖŠÊ1
+b
+java:S1128"FRemove this unused import 'org.bouncycastle.jce.spec.ECParameterSpec'.(¦±“08ÖŠÊ1
+_
+java:S1128"=Remove this unused import 'org.bouncycastle.math.ec.ECCurve'.(Œ§Éşÿÿÿÿ8ÖŠÊ1
+a
+java:S1128"DRemove this unused import 'org.bouncycastle.math.ec.ECFieldElement'.(ã¾”8×ŠÊ1
+Z
+java:S1128"=Remove this unused import 'org.bouncycastle.math.ec.ECPoint'.(¿Åûã8×ŠÊ1
+h
+java:S1128"KRemove this unused import 'uk.co.roteala.common.monetary.CoinDeserializer'.(ª’Ç8×ŠÊ1
+[
+java:S1128"9Remove this unused import 'uk.co.roteala.security.ECDSA'.(Õıä—ùÿÿÿÿ8×ŠÊ1
+[
+java:S1128"9Remove this unused import 'uk.co.roteala.security.ECKey'.(”¬Ì§ıÿÿÿÿ8×ŠÊ1
+N
+java:S1128"1Remove this unused import 'java.math.BigInteger'.(»Çâ€8×ŠÊ1

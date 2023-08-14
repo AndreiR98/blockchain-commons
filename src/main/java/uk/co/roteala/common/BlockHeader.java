@@ -29,6 +29,7 @@ public class BlockHeader extends BaseModel implements Serializable {
     private String hash;
     private String markleRoot;
     private long timeStamp;
+    private long blockTime;
     private String nonce;
     private Integer numberOfTransactions;
     private String minerAddress;
@@ -47,6 +48,7 @@ public class BlockHeader extends BaseModel implements Serializable {
         map.put("nonce", this.nonce);
         map.put("miner", this.minerAddress);
         map.put("index", this.index);
+        map.put("blockTime", this.blockTime);
         map.put("reward", String.valueOf(this.reward.getValue()));
         map.put("previousHash", this.previousHash);
         map.put("difficulty", this.difficulty);

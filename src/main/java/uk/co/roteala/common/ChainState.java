@@ -25,6 +25,7 @@ public class ChainState extends BaseModel {
     private List<String> accounts;
     @JsonSerialize(converter = CoinConverter.class)
     private Coin networkFees = Coin.valueOf(new BigDecimal("0.05"));
+    private boolean allowEmptyMining;
     private Block genesisBlock = Block.builder()
             .confirmations(1)
             .status(BlockStatus.MINED)

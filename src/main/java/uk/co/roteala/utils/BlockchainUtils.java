@@ -61,7 +61,6 @@ public class BlockchainUtils {
         transaction.setTimeStamp(pseudoTransaction.getTimeStamp());
         transaction.setHash(transaction.computeHash());
 
-
         return transaction;
     }
 

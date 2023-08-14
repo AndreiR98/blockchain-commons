@@ -17,18 +17,19 @@ import uk.co.roteala.common.monetary.Coin;
 import uk.co.roteala.common.monetary.CoinConverter;
 import uk.co.roteala.security.utils.HashingService;
 
+import java.io.Serializable;
 import java.nio.charset.StandardCharsets;
 import java.util.*;
 
 
-@EqualsAndHashCode(callSuper = true)
+@EqualsAndHashCode(callSuper = false)
 @Data
 @Builder
 @Slf4j
 @NoArgsConstructor
 @AllArgsConstructor
 @JsonTypeName("TRANSACTION")
-public class Transaction extends BaseModel {
+public class Transaction extends BaseModel implements Serializable {
     private String hash;
     private String pseudoHash;
     private Integer blockNumber;
@@ -44,8 +45,6 @@ public class Transaction extends BaseModel {
     private long confirmations;
     private long blockTime;
     private String pubKeyHash;
-    @JsonDeserialize(using = TransactionStatusDeserializer.class)
-    @JsonSerialize(converter = TransactionStatusConverter.class)
     private TransactionStatus status;
     @JsonInclude(JsonInclude.Include.NON_NULL)
     private SignatureModel signature;

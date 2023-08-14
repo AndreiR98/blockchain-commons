@@ -12,39 +12,32 @@ import static com.google.common.base.Preconditions.checkArgument;
 @JsonDeserialize(using = CoinDeserializer.class)
 public class Coin implements Monetary, Comparable<Coin>, Serializable {
 
-    public final BigDecimal value;
+    private final BigDecimal value;
 
-    //public final CoinSign sign;
-
-    Coin(final BigDecimal v) {
+    Coin(BigDecimal v) {
         this.value = v;
     }
 
-    public static Coin valueOf(final BigDecimal l) {
-        return new Coin(l);
+    public static Coin valueOf(BigDecimal v) {
+        if (v == null || v.compareTo(BigDecimal.ZERO) < 0) {
+            throw new IllegalArgumentException("Value must be non-null and non-negative");
+        }
+        return new Coin(v);
     }
 
-    public Coin add(final Coin value) {
-        //final BigDecimal finalValue = this.value.add(value.value);
-        return new Coin(this.value.add(value.value));
+    public Coin add(Coin other) {
+        return new Coin(value.add(other.value));
     }
 
-    public Coin min(final Coin value) {
-        return new Coin(this.value.min(value.value));
-    }
-
-    public Coin plus(final Coin value) {
-        return add(value);
-    }
-
-    public Coin minus(final Coin value) {
-        return min(value);
+    public Coin subtract(Coin other) {
+        return new Coin(value.subtract(other.value));
     }
 
     public static final Coin ZERO = Coin.valueOf(BigDecimal.ZERO);
+
     @Override
-    public int compareTo(@NotNull Coin o) {
-        return 0;
+    public int compareTo(Coin other) {
+        return value.compareTo(other.value);
     }
 
     @Override
@@ -54,11 +47,10 @@ public class Coin implements Monetary, Comparable<Coin>, Serializable {
 
     @Override
     public String toString() {
-        return this.value.toString();
+        return value.toString();
     }
 
-    @Override
-    public int sigNum() {
-        return 0;
-    }
+    // Implement Monetary interface methods here
+
+    // Implement other methods as needed
 }

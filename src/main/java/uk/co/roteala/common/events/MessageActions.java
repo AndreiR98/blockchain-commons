@@ -1,6 +1,7 @@
 package uk.co.roteala.common.events;
 
 public enum MessageActions {
+    DEFAULT,
     /**
      * Ask the node to verify the specific model
      * */
