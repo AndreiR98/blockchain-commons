@@ -1,0 +1,17 @@
+
+g	java:S112N"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òéüÿÿÿÿ8²ß†œ•1
+q
+java:S1128"ORemove this unused import 'com.fasterxml.jackson.core.JsonProcessingException'.(ßÔïÇûÿÿÿÿ8‰˜‹‰1
+x
+java:S1128"VRemove this unused import 'com.fasterxml.jackson.databind.annotation.JsonDeserialize'.(Úˆ×øÿÿÿÿ8òçœœ1
+]
+java:S1128
+";Remove this unused import 'com.google.common.hash.Hashing'.(ô‡ã·şÿÿÿÿ8‹˜‹‰1
+[
+java:S1128">Remove this unused import 'org.springframework.lang.Nullable'.(—Ùë8˜‹‰1
+Z
+java:S1128"8Remove this unused import 'reactor.core.publisher.Flux'.(·äÍÆøÿÿÿÿ8£˜‹‰1
+U
+java:S1128"8Remove this unused import 'reactor.netty.tcp.TcpServer'.( •òÛ8¥˜‹‰1
+[
+java:S1128">Remove this unused import 'java.nio.charset.StandardCharsets'.(ï˜ŞÛ8¦˜‹‰1

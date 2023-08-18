@@ -5,33 +5,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8788e929-56e3-4231-8353-0722302cf2c4" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/2/0/20f92e6a45a42e5775db63654800d1236f5cc65d" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/2/c/2c2fed9b7cd1d13b5bbf000f6c4d43b1e27b82a9" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/5/2/528aabcd66c43901a590c3b46eebd6f8419e4387" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/5/5/559f72847c7761f0ecedc0f038a86cc7e05e70d8" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/6/e/6e1beffe1b4e454b56c66a8ee92d16950e66d4b8" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/6/e/6e1beffe1b4e454b56c66a8ee92d16950e66d4b8" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/a/7/a7b1b5f4d615d0ecdc6238c3afd39caeabc5a3f8" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/d/2/d22098d3dec79d6dd37ef64c7131ea7b53628f53" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/4/4/442292b8a7efeabbe4cc176709b833b1792140ec" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/9/6/9684baba7c1f9c4666bef3bb65af78d25ef0ddc0" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/f/7/f7d5f39e5cc572d42a19505e9d90b002450ebff1" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/2/0/20f92e6a45a42e5775db63654800d1236f5cc65d" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/2/c/2c2fed9b7cd1d13b5bbf000f6c4d43b1e27b82a9" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/5/2/528aabcd66c43901a590c3b46eebd6f8419e4387" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/5/5/559f72847c7761f0ecedc0f038a86cc7e05e70d8" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/a/7/a7b1b5f4d615d0ecdc6238c3afd39caeabc5a3f8" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/d/2/d22098d3dec79d6dd37ef64c7131ea7b53628f53" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/index.pb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/uk/co/roteala/common/BlockHeader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/uk/co/roteala/common/BlockHeader.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/uk/co/roteala/common/ChainState.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/uk/co/roteala/common/ChainState.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/uk/co/roteala/common/NodeState.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/uk/co/roteala/common/NodeState.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/uk/co/roteala/common/Transaction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/uk/co/roteala/common/Transaction.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/uk/co/roteala/common/BaseModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/uk/co/roteala/common/BaseModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/uk/co/roteala/common/TransactionStatus.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/uk/co/roteala/common/TransactionStatus.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/uk/co/roteala/common/events/MessageActions.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/uk/co/roteala/common/events/MessageActions.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/uk/co/roteala/common/events/MessageTypes.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/uk/co/roteala/common/events/MessageTypes.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/uk/co/roteala/common/monetary/Coin.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/uk/co/roteala/common/monetary/Coin.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/uk/co/roteala/common/monetary/Monetary.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/uk/co/roteala/common/monetary/Monetary.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/uk/co/roteala/common/monetary/MoveFund.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/uk/co/roteala/common/monetary/MoveFund.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/uk/co/roteala/exceptions/errorcodes/TransactionErrorCode.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/uk/co/roteala/exceptions/errorcodes/TransactionErrorCode.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/uk/co/roteala/utils/BlockchainUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/uk/co/roteala/utils/BlockchainUtils.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/uk/co/roteala/common/events/PeersContainer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/uk/co/roteala/common/events/PeersContainer.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -68,29 +51,29 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "com.google.cloudcode.ide_session_index": "20230814_0001",
-    "git-widget-placeholder": "development",
-    "last_opened_file_path": "C:/Blockchain/blockchain-commons",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "reference.settings.ide.settings.new.ui",
-    "spring.configuration.checksum": "2be9a805f13705537bc45a4b27f0a68e",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;com.google.cloudcode.ide_session_index&quot;: &quot;20230818_0003&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;development&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/CLX/account-creator-tasks&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settings.ide.settings.new.ui&quot;,
+    &quot;spring.configuration.checksum&quot;: &quot;2be9a805f13705537bc45a4b27f0a68e&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
-  "keyToStringList": {
-    "com.intellij.ide.scratch.ScratchImplUtil$2/New Scratch File": [
-      "JAVA"
+  &quot;keyToStringList&quot;: {
+    &quot;com.intellij.ide.scratch.ScratchImplUtil$2/New Scratch File&quot;: [
+      &quot;JAVA&quot;
     ]
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
       <recent name="uk.co.roteala.utils" />
@@ -266,7 +249,10 @@
       <workItem from="1691738416876" duration="1618000" />
       <workItem from="1691774159316" duration="631000" />
       <workItem from="1691793448901" duration="1641000" />
-      <workItem from="1692011500880" duration="872000" />
+      <workItem from="1692011500880" duration="1957000" />
+      <workItem from="1692299422945" duration="667000" />
+      <workItem from="1692343435729" duration="16000" />
+      <workItem from="1692343779330" duration="435000" />
     </task>
     <servers />
   </component>

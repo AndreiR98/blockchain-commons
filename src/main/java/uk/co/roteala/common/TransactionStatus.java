@@ -9,7 +9,8 @@ public enum TransactionStatus implements Serializable {
     PENDING(1),
     VALIDATED(2),
     PROCESSED(3),
-    SUCCESS(4);
+    SUCCESS(4),
+    LOCKED(5);
 
     private Integer code;
 

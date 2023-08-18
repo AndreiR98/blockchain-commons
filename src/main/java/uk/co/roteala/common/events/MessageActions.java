@@ -13,7 +13,7 @@ public enum MessageActions {
     /**
      * Delete specific model
      * */
-    DELETE,
+    DISCARD,
     /**
      * Directly add to the ledger, instant flush
      * */
@@ -51,6 +51,9 @@ public enum MessageActions {
      * */
     CONNECT_PEER,
 
+    /**
+     * Asking broker for more connections
+     * */
     NO_CONNECTIONS
 
 }
