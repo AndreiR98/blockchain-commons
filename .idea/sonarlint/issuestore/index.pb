@@ -136,8 +136,6 @@ i
 9src/main/java/uk/co/roteala/common/monetary/MoveFund.java,a\b\ab2274a10b9fb72b816bd76f9d9653ec6c354721
 ]
 -src/main/java/uk/co/roteala/common/Block.java,2\c\2c2fed9b7cd1d13b5bbf000f6c4d43b1e27b82a9
-c
-3src/main/java/uk/co/roteala/common/BlockHeader.java,2\0\20f92e6a45a42e5775db63654800d1236f5cc65d
 b
 2src/main/java/uk/co/roteala/common/ChainState.java,a\7\a7b1b5f4d615d0ecdc6238c3afd39caeabc5a3f8
 i

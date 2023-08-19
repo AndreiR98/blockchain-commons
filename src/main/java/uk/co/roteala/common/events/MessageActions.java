@@ -46,10 +46,12 @@ public enum MessageActions {
      * */
     STORE_PEER,
 
+    TRY_CONNECTIONS,
+
     /**
      * CONNECT_PEER
      * */
-    CONNECT_PEER,
+    EMPTY_PEERS,
 
     /**
      * Asking broker for more connections
