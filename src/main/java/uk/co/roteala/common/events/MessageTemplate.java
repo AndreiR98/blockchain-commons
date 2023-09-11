@@ -14,7 +14,7 @@ public class MessageTemplate implements Message{
 
     private final BaseModel content;
 
-    private boolean verified;
+    private ValidationType verified;
 
     private String address;
 

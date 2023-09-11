@@ -9,7 +9,7 @@ import uk.co.roteala.common.BaseModel;
 
 @Data
 @RequiredArgsConstructor
-public class AccountMessage extends BaseModel implements Message {
+public class AccountMessage implements Message {
 
     private Connection connection;
 
@@ -17,7 +17,7 @@ public class AccountMessage extends BaseModel implements Message {
 
     private final BaseModel message;
 
-    private boolean verified;
+    private ValidationType verified;
 
     //Used for rewarding
     private String address;

@@ -18,9 +18,9 @@ public interface Message extends Serializable {
 
     void setConnection(Connection connection);
 
-    boolean isVerified();
+    ValidationType getVerified();
 
-    void setVerified(boolean v);
+    void setVerified(ValidationType v);
 
     void setMessageAction(MessageActions action);
 

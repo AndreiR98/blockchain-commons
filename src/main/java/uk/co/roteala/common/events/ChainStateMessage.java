@@ -9,14 +9,14 @@ import uk.co.roteala.common.BaseModel;
 
 @Data
 @RequiredArgsConstructor
-public class ChainStateMessage extends BaseModel implements Message {
+public class ChainStateMessage implements Message {
     private Connection connection;
 
     private MessageActions messageAction;
 
     private final BaseModel message;
 
-    private boolean verified;
+    private ValidationType verified;
 
     private String address;
 

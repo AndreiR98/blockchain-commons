@@ -9,14 +9,14 @@ import uk.co.roteala.common.BaseModel;
 
 @Data
 @RequiredArgsConstructor
-public class PeerMessage extends BaseModel implements Message {
+public class PeerMessage implements Message {
     private Connection connection;
 
     private MessageActions messageAction;
 
     private final BaseModel message;
 
-    private boolean verified;
+    private ValidationType verified;
 
     private String address;
     @Override

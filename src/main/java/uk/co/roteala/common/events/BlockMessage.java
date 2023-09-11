@@ -10,14 +10,14 @@ import uk.co.roteala.common.BaseModel;
 
 @Data
 @RequiredArgsConstructor
-public class BlockMessage extends BaseModel implements Message {
+public class BlockMessage implements Message {
     private Connection connection;
 
     private MessageActions messageAction;
 
     private final BaseModel message;
 
-    private boolean verified;
+    private ValidationType verified;
 
     private String address;
     @Override

@@ -19,7 +19,7 @@ import java.io.Serializable;
 public class MessageWrapper implements Serializable {
     private MessageTypes type;
     private BaseModel content;
-    private boolean verified;
+    private ValidationType verified;
     private MessageActions action;
 
     @JsonIgnore
