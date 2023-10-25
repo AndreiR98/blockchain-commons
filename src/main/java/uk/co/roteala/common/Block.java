@@ -2,16 +2,9 @@ package uk.co.roteala.common;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonTypeName;
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import lombok.*;
-import lombok.extern.slf4j.Slf4j;
-import uk.co.roteala.common.monetary.Coin;
-import uk.co.roteala.common.monetary.CoinConverter;
-import uk.co.roteala.security.utils.HashingService;
 
-import java.math.BigInteger;
 import java.util.*;
 
 
@@ -24,7 +17,7 @@ import java.util.*;
 @NoArgsConstructor
 @AllArgsConstructor
 @JsonTypeName("BLOCK")
-public class Block extends BaseModel {
+public class Block extends BasicModel {
 
     //Block header
     private BlockHeader header;

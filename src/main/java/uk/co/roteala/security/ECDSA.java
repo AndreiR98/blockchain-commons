@@ -8,7 +8,7 @@ public class ECDSA {
     private final ECKey ecKey;
     private final ECCurve ecCurve;
 
-//    public boolean verify(PseudoTransaction pseudoTransaction){
+//    public boolean verify(MempoolTransaction pseudoTransaction){
 //        String hash = pseudoTransaction.computeHash();
 //    }
 }

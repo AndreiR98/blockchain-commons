@@ -3,7 +3,7 @@ package uk.co.roteala.common.events;
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
 import reactor.netty.Connection;
-import uk.co.roteala.common.BaseModel;
+import uk.co.roteala.common.BasicModel;
 
 @Data
 @RequiredArgsConstructor
@@ -12,7 +12,7 @@ public class BlockHeaderMessage implements Message {
 
     private MessageActions messageAction;
 
-    private final BaseModel message;
+    private final BasicModel message;
 
     private ValidationType verified;
 

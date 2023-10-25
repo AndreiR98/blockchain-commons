@@ -24,7 +24,7 @@ import java.util.TreeMap;
 @NoArgsConstructor
 @AllArgsConstructor
 @JsonTypeName("BLOCKHEADER")
-public class BlockHeader extends BaseModel implements Serializable {
+public class BlockHeader extends BasicModel implements Serializable {
     private String previousHash;
     private String hash;
     private String markleRoot;
@@ -36,8 +36,6 @@ public class BlockHeader extends BaseModel implements Serializable {
     private Integer version;
     private Integer index;
     private Integer difficulty;
-    @JsonSerialize(converter = CoinConverter.class)
-    private Coin reward;
 
     @JsonIgnore
     public void setHash() {
@@ -49,7 +47,6 @@ public class BlockHeader extends BaseModel implements Serializable {
         map.put("miner", this.minerAddress);
         map.put("index", this.index);
         map.put("blockTime", this.blockTime);
-        map.put("reward", String.valueOf(this.reward.getValue()));
         map.put("previousHash", this.previousHash);
         map.put("difficulty", this.difficulty);
         map.put("numberOfTransactions", this.numberOfTransactions);

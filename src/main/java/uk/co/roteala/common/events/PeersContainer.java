@@ -2,8 +2,7 @@ package uk.co.roteala.common.events;
 
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import lombok.*;
-import uk.co.roteala.common.BaseModel;
-import uk.co.roteala.net.Peer;
+import uk.co.roteala.common.BasicModel;
 
 import java.io.Serializable;
 import java.util.List;
@@ -14,6 +13,6 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @JsonTypeName("PEERSCONTAINER")
-public class PeersContainer extends BaseModel implements Serializable {
+public class PeersContainer extends BasicModel implements Serializable {
     private List<String> peersList;
 }

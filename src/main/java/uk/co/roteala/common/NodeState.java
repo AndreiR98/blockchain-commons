@@ -4,7 +4,6 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import lombok.*;
 
 import java.io.Serializable;
-import java.time.Instant;
 
 @Data
 @Builder
@@ -12,7 +11,7 @@ import java.time.Instant;
 @NoArgsConstructor
 @AllArgsConstructor
 @JsonTypeName("NODESTATE")
-public class NodeState extends BaseModel implements Serializable {
+public class NodeState extends BasicModel implements Serializable {
     private Integer remainingBlocks;
     private Integer lastBlockIndex;
     private long updatedAt;

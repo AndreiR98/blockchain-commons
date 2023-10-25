@@ -2,55 +2,56 @@ package uk.co.roteala.common.monetary;
 
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.google.common.math.LongMath;
+import org.checkerframework.checker.units.qual.C;
 import org.jetbrains.annotations.NotNull;
 
+import java.beans.Transient;
 import java.io.Serializable;
 import java.math.BigDecimal;
+import java.math.BigInteger;
 
 import static com.google.common.base.Preconditions.checkArgument;
 
 @JsonDeserialize(using = CoinDeserializer.class)
-public class Coin implements Monetary, Comparable<Coin>, Serializable {
-
-    private final BigDecimal value;
-
-    Coin(BigDecimal v) {
-        this.value = v;
+public class Coin implements Comparable<Coin>, Serializable {
+    private final BigInteger value;
+    private Coin(BigInteger value) {
+        this.value = value;
     }
 
-    public static Coin valueOf(BigDecimal v) {
-        if (v == null || v.compareTo(BigDecimal.ZERO) < 0) {
+    public static Coin of(BigInteger value) {
+        if (value == null || value.compareTo(BigInteger.ZERO) <= 0) {
             throw new IllegalArgumentException("Value must be non-null and non-negative");
         }
-        return new Coin(v);
+        return new Coin(value);
+    }
+
+    public static Coin of(String value) {
+        if(value == null || new BigInteger(value, 10).compareTo(BigInteger.ZERO) <= 0) {
+            throw new IllegalArgumentException("Value must be non-null and non-negative");
+        }
+
+        return new Coin(new BigInteger(value, 10));
     }
 
     public Coin add(Coin other) {
-        return new Coin(value.add(other.value));
+        return new Coin(this.value.add(other.value));
     }
 
     public Coin subtract(Coin other) {
-        return new Coin(value.subtract(other.value));
+        return new Coin(this.value.subtract(other.value));
     }
 
-    public static final Coin ZERO = Coin.valueOf(BigDecimal.ZERO);
+    public String getStringValue() {
+        return this.value.toString(16);
+    }
+
+    public BigInteger getValue() {
+        return this.value;
+    }
 
     @Override
     public int compareTo(Coin other) {
         return value.compareTo(other.value);
     }
-
-    @Override
-    public BigDecimal getValue() {
-        return value;
-    }
-
-    @Override
-    public String toString() {
-        return value.toString();
-    }
-
-    // Implement Monetary interface methods here
-
-    // Implement other methods as needed
 }

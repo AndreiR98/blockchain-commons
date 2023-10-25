@@ -1,5 +1,7 @@
 
 N
-java:S1128"1Remove this unused import 'java.math.BigInteger'.(»Çâ€8êýã´œ1
+java:S1128"1Remove this unused import 'java.math.BigInteger'.(»Çâ€8½ âõ´1
 e
-java:S1128"CRemove this unused import 'java.security.NoSuchAlgorithmException'.(ŒòÍ¾þÿÿÿÿ8êýã´œ1
+java:S1128"CRemove this unused import 'java.security.NoSuchAlgorithmException'.(ŒòÍ¾þÿÿÿÿ8Ç âõ´1
+Q
+java:S1144J"4Remove this unused private "generateAddress" method.(ŠõÞî8Ú âõ´1

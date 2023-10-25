@@ -1,7 +1,7 @@
 package uk.co.roteala.common.monetary;
 
 import lombok.*;
-import uk.co.roteala.common.AccountModel;
+import uk.co.roteala.common.Account;
 
 @Data
 @Builder
@@ -10,7 +10,7 @@ import uk.co.roteala.common.AccountModel;
 @AllArgsConstructor
 public class Fund {
     private String targetAccountAddress;
-    private AccountModel sourceAccount;
-    private AmountDTO amount;
+    private Account sourceAccount;
+    //private AmountDTO amount;
     private boolean isProcessed;
 }

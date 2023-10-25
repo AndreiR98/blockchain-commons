@@ -1,7 +1,6 @@
 package uk.co.roteala.common.monetary;
 
 import lombok.*;
-import uk.co.roteala.common.Fees;
 
 @Data
 @Builder
@@ -10,5 +9,4 @@ import uk.co.roteala.common.Fees;
 @AllArgsConstructor
 public class AmountDTO {
     private Coin rawAmount;
-    private Fees fees;
 }

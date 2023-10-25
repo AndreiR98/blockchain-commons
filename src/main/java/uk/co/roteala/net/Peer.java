@@ -1,7 +1,7 @@
 package uk.co.roteala.net;
 
 import lombok.*;
-import uk.co.roteala.common.BaseModel;
+import uk.co.roteala.common.BasicModel;
 
 @Data
 @Builder
@@ -9,7 +9,7 @@ import uk.co.roteala.common.BaseModel;
 @NoArgsConstructor
 @AllArgsConstructor
 //@JsonNaming(PropertyNamingStrategy.SnakeCaseStrategy.class)
-public class Peer extends BaseModel {
+public class Peer extends BasicModel {
     private String address;
     private Integer port;
     private long lastTimeSeen;

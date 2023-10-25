@@ -3,7 +3,7 @@ package uk.co.roteala.common.events;
 import lombok.Builder;
 import lombok.Data;
 import reactor.netty.Connection;
-import uk.co.roteala.common.BaseModel;
+import uk.co.roteala.common.BasicModel;
 
 @Data
 @Builder
@@ -12,7 +12,7 @@ public class MessageTemplate implements Message{
     private MessageActions messageAction;
     private Connection connection;
 
-    private final BaseModel content;
+    private final BasicModel content;
 
     private ValidationType verified;
 
@@ -24,7 +24,7 @@ public class MessageTemplate implements Message{
     }
 
     @Override
-    public BaseModel getMessage() {
+    public BasicModel getMessage() {
         return this.content;
     }
 }

@@ -3,6 +3,7 @@ package uk.co.roteala.security.utils;
 import lombok.experimental.UtilityClass;
 import lombok.extern.slf4j.Slf4j;
 import org.bouncycastle.crypto.digests.SHAKEDigest;
+import org.bouncycastle.jcajce.provider.digest.Keccak;
 import org.bouncycastle.jce.provider.BouncyCastleProvider;
 
 import java.math.BigInteger;
@@ -91,5 +92,13 @@ public class HashingService {
         } catch (NoSuchAlgorithmException e) {
             throw new RuntimeException(e);
         }
+    }
+
+    public byte[] computeKeccak(byte[] bytes) {
+        Keccak.DigestKeccak kecc = new Keccak.Digest256();
+
+        kecc.update(bytes);
+
+        return kecc.digest();
     }
 }

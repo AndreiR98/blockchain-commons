@@ -1,6 +1,16 @@
 
-¤
-java:S1192 "Define a constant instead of duplicating this literal "0000000000000000000000000000000000000000000000000000000000000000" 3 times.(Ëá™–ÿÿÿÿÿ8¦Ô‘œ1
+v
+java:S1128"TRemove this unused import 'com.fasterxml.jackson.databind.annotation.JsonSerialize'.(ÖÎèöúÿÿÿÿ8ïµ1
+a
+java:S1128"?Remove this unused import 'uk.co.roteala.common.monetary.Coin'.(£‰ƒúÿÿÿÿ8ğµ1
+j
+java:S1128"HRemove this unused import 'uk.co.roteala.common.monetary.CoinConverter'.(É ì¿øÿÿÿÿ8ğµ1
+W
+java:S1128":Remove this unused import 'uk.co.roteala.utils.Constants'.(ï‰ê8ğµ1
 N
 java:S1128
-"1Remove this unused import 'java.math.BigInteger'.(»Çâ€8‹Õ‘œ1
+"1Remove this unused import 'java.math.BigDecimal'.(êêŠ8ğµ1
+M
+java:S1128"0Remove this unused import 'java.util.ArrayList'.(÷‰îƒ8ğµ1
+M
+java:S1128"+Remove this unused import 'java.util.List'.(Õë±Äøÿÿÿÿ8ğµ1

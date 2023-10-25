@@ -25,7 +25,7 @@ public class PublicKey implements PubKey{
 
     @Override
     public String toAddress() {
-        return generateAddress();
+        return generateETHAddress();
     }
 
     @Override
@@ -100,5 +100,22 @@ public class PublicKey implements PubKey{
         System.arraycopy(checkSum, 0, bytesToEncode, extendedRipeMd160.length, 4);
 
         return Base58.encode(bytesToEncode);
+    }
+
+    private String generateETHAddress() {
+        final byte[] bX = this.encodedX();
+        final byte[] bY = this.encodedY();
+
+        byte[] newBxBy = new byte[bX.length + bY.length];
+
+        System.arraycopy(bX, 0, newBxBy, 0, bX.length);
+        System.arraycopy(bY, 0, newBxBy, bX.length, bY.length);
+
+        byte[] keccak256hash = HashingService.computeKeccak(newBxBy);
+
+        byte[] addrBytes = new byte[20];
+        System.arraycopy(keccak256hash, keccak256hash.length - 20, addrBytes, 0, 20);
+        return "0x" + CryptographyUtils
+                .bytesToHexString(addrBytes);
     }
 }

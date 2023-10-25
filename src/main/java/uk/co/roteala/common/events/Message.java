@@ -1,14 +1,14 @@
 package uk.co.roteala.common.events;
 
 import reactor.netty.Connection;
-import uk.co.roteala.common.BaseModel;
+import uk.co.roteala.common.BasicModel;
 
 import java.io.Serializable;
 
 public interface Message extends Serializable {
     MessageTypes getMessageType();
 
-    BaseModel getMessage();
+    BasicModel getMessage();
 
     MessageActions getMessageAction();
 

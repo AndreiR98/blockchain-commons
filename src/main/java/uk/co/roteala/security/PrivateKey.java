@@ -34,7 +34,6 @@ public class PrivateKey implements PrivKey {
 
     @Override
     public byte[] getEncoded() {
-        //TODO: Use ECFieldElement?
         return new BigInteger(this.d, 16).toByteArray();
     }
 

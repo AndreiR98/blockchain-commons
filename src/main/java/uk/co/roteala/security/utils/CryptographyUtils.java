@@ -8,10 +8,7 @@ import org.bouncycastle.asn1.x9.X9ECParameters;
 import org.bouncycastle.math.ec.ECCurve;
 import org.bouncycastle.math.ec.ECFieldElement;
 import org.bouncycastle.math.ec.ECPoint;
-import uk.co.roteala.common.BaseModel;
-import uk.co.roteala.common.PseudoTransaction;
-import uk.co.roteala.common.SignatureModel;
-import uk.co.roteala.security.PrivateKey;
+import uk.co.roteala.common.MempoolTransaction;
 import uk.co.roteala.security.PublicKey;
 import uk.co.roteala.utils.Base58;
 
@@ -23,7 +20,7 @@ import java.util.Objects;
 @Slf4j
 @UtilityClass
 public class CryptographyUtils{
-    public List<PublicKey> recoverPublicKeys(PseudoTransaction transaction) throws JsonProcessingException {
+    public List<PublicKey> recoverPublicKeys(MempoolTransaction transaction) throws JsonProcessingException {
         //ECParameterSpec ecSpec = ECNamedCurveTable.getParameterSpec("secp256k1");
         List<PublicKey> publicKeys = new ArrayList<>();
 

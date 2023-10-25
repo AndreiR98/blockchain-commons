@@ -3,22 +3,16 @@ package uk.co.roteala.common;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonTypeName;
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
-import com.google.common.hash.Hashing;
 import lombok.*;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.lang.Nullable;
-import reactor.core.publisher.Flux;
-import reactor.netty.tcp.TcpServer;
 import uk.co.roteala.common.monetary.Coin;
 import uk.co.roteala.common.monetary.CoinConverter;
 import uk.co.roteala.security.utils.HashingService;
 
 import java.io.Serializable;
-import java.nio.charset.StandardCharsets;
+import java.math.BigInteger;
 import java.util.*;
 
 
@@ -29,17 +23,17 @@ import java.util.*;
 @NoArgsConstructor
 @AllArgsConstructor
 @JsonTypeName("TRANSACTION")
-public class Transaction extends BaseModel implements Serializable {
+public class Transaction extends BasicModel implements Serializable {
     private String hash;
     private String pseudoHash;
     private Integer blockNumber;
     private String from;
     private String to;
-    private Fees fees;
-    private Integer version;
-    private Integer transactionIndex;
+    private BigInteger fees;
     @JsonSerialize(converter = CoinConverter.class)
     private Coin value;
+    private Integer version;
+    private Integer transactionIndex;
     private Integer nonce;
     private long timeStamp;
     private long confirmations;
@@ -56,10 +50,10 @@ public class Transaction extends BaseModel implements Serializable {
         map.put("blockNumber", this.blockNumber);
         map.put("from", this.from);
         map.put("to", this.to);
-        map.put("fees", this.fees.format());
+        map.put("fees", "0x"+this.fees.toString(16));
+        map.put("value", "0x"+this.value.getStringValue());
         map.put("version", this.version);
         map.put("transactionIndex", this.transactionIndex);
-        map.put("value", String.valueOf(this.value.getValue()));
         map.put("nonce", this.nonce);
         map.put("timeStamp", this.timeStamp);
         map.put("blockTime", this.blockTime);

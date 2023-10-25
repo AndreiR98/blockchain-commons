@@ -16,7 +16,7 @@ import java.util.List;
 @Slf4j
 @UtilityClass
 public class BlockchainUtils {
-    public String mapHashed(PseudoTransaction pseudoTransaction, int blockIndex, long blockTimeStamp, int index) {
+    public String mapHashed(MempoolTransaction pseudoTransaction, int blockIndex, long blockTimeStamp, int index) {
         Transaction transaction = new Transaction();
         transaction.setPseudoHash(pseudoTransaction.getPseudoHash());
         transaction.setBlockNumber(blockIndex);
@@ -42,7 +42,7 @@ public class BlockchainUtils {
         return bothHashes.toString();
     }
 
-    public Transaction mapPsuedoTransactionToTransaction(PseudoTransaction pseudoTransaction, BlockHeader blockHeader, Integer index) {
+    public Transaction mapPsuedoTransactionToTransaction(MempoolTransaction pseudoTransaction, BlockHeader blockHeader, Integer index) {
         Transaction transaction = new Transaction();
 
         transaction.setFrom(pseudoTransaction.getFrom());

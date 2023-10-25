@@ -6,7 +6,7 @@ import io.netty.buffer.ByteBuf;
 import io.netty.buffer.Unpooled;
 import lombok.*;
 import org.apache.commons.lang3.SerializationUtils;
-import uk.co.roteala.common.BaseModel;
+import uk.co.roteala.common.BasicModel;
 import uk.co.roteala.exceptions.MessageSerializationException;
 import uk.co.roteala.exceptions.errorcodes.MessageSerializationErrCode;
 
@@ -18,7 +18,7 @@ import java.io.Serializable;
 @AllArgsConstructor
 public class MessageWrapper implements Serializable {
     private MessageTypes type;
-    private BaseModel content;
+    private BasicModel content;
     private ValidationType verified;
     private MessageActions action;
 
