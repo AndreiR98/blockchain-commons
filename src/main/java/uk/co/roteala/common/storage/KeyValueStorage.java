@@ -5,6 +5,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.common.base.Utf8;
 import org.apache.commons.lang3.SerializationUtils;
 import org.rocksdb.ColumnFamilyHandle;
+import org.rocksdb.WriteOptions;
 import uk.co.roteala.common.BasicModel;
 import uk.co.roteala.exceptions.StorageException;
 import uk.co.roteala.exceptions.errorcodes.StorageErrorCode;
@@ -27,6 +28,10 @@ public interface KeyValueStorage {
     boolean has(ColumnFamilyTypes columnFamilyTypes, byte[] key);
 
     void delete(ColumnFamilyTypes columnFamilyTypes, byte[] key);
+
+    void put(boolean persistent, ColumnFamilyTypes columnFamilyTypes, byte[] key, BasicModel value);
+
+    void put(boolean persistent, byte[] key, BasicModel value);
 
     ObjectMapper OBJECT_MAPPER = new ObjectMapper();
 

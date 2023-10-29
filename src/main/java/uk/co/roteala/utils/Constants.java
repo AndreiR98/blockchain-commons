@@ -39,7 +39,7 @@ public class Constants {
             .build();
 
     public static final ChainState GENESIS_STATE = ChainState.builder()
-            .lastBlockIndex(1)
+            .lastBlockIndex(0)
             .reward(new BigInteger("14D1120D7B160000", 16))
             .networkFees(new BigInteger("B1A2BC2EC50000", 16))
             .target(3)

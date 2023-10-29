@@ -1,10 +1,12 @@
 package uk.co.roteala.common.storage;
 
+import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.rocksdb.ColumnFamilyHandle;
-import org.rocksdb.RocksDB;
-import org.rocksdb.RocksDBException;
+import org.apache.commons.lang3.SerializationUtils;
+import org.rocksdb.*;
+import org.springframework.stereotype.Repository;
 import uk.co.roteala.common.BasicModel;
 import uk.co.roteala.exceptions.StorageException;
 import uk.co.roteala.exceptions.errorcodes.StorageErrorCode;
@@ -14,12 +16,19 @@ import java.util.Arrays;
 import java.util.List;
 
 @Slf4j
-@RequiredArgsConstructor
+@Repository
+@NoArgsConstructor
 public class Storage implements KeyValueStorage {
 
-    private final StorageTypes storageType;
-    private final RocksDB rocksDB;
-    private final List<ColumnFamilyHandle> columnFamilyHandles;
+    private StorageTypes storageType;
+    private RocksDB rocksDB;
+    private List<ColumnFamilyHandle> columnFamilyHandles;
+
+    public Storage(StorageTypes storageType, RocksDB rocksDB, List<ColumnFamilyHandle> columnFamilyHandles) {
+        this.storageType = storageType;
+        this.rocksDB = rocksDB;
+        this. columnFamilyHandles = columnFamilyHandles;
+    }
 
     /**
      * Retrieves a model by its key.
@@ -29,6 +38,8 @@ public class Storage implements KeyValueStorage {
      */
     @Override
     public BasicModel get(byte[] key) {
+        RocksDB.loadLibrary();
+
         byte[] data = null;
 
         try {
@@ -47,7 +58,8 @@ public class Storage implements KeyValueStorage {
      * @param value The model to insert.
      */
     @Override
-    public void put(byte[] key, BasicModel value) {
+    public synchronized void put(byte[] key, BasicModel value) {
+        RocksDB.loadLibrary();
         try {
             if(has(key)) {
                 throw new StorageException(StorageErrorCode.DATA_ALREADY);
@@ -67,6 +79,7 @@ public class Storage implements KeyValueStorage {
      */
     @Override
     public boolean has(byte[] key) {
+        RocksDB.loadLibrary();
         try {
             return this.rocksDB.get(key) != null;
         } catch (RocksDBException e) {
@@ -81,7 +94,8 @@ public class Storage implements KeyValueStorage {
      * @param key The unique key of the model to be deleted.
      */
     @Override
-    public void delete(byte[] key) {
+    public synchronized void delete(byte[] key) {
+        RocksDB.loadLibrary();
         try {
             this.rocksDB.delete(key);
         } catch (RocksDBException e) {
@@ -98,6 +112,7 @@ public class Storage implements KeyValueStorage {
      */
     @Override
     public BasicModel get(ColumnFamilyTypes columnFamilyType, byte[] key) {
+        RocksDB.loadLibrary();
         byte[] data = null;
 
         try {
@@ -117,7 +132,8 @@ public class Storage implements KeyValueStorage {
      * @param value  The model to insert.
      */
     @Override
-    public void put(ColumnFamilyTypes columnFamilyType, byte[] key, BasicModel value) {
+    public synchronized void put(ColumnFamilyTypes columnFamilyType, byte[] key, BasicModel value) {
+        RocksDB.loadLibrary();
         try {
             if(has(columnFamilyType, key)) {
                 throw new StorageException(StorageErrorCode.DATA_ALREADY);
@@ -138,6 +154,7 @@ public class Storage implements KeyValueStorage {
      */
     @Override
     public boolean has(ColumnFamilyTypes columnFamilyType, byte[] key) {
+        RocksDB.loadLibrary();
         try {
             return this.rocksDB.get(getHandler(columnFamilyType), key) != null;
         } catch (RocksDBException e) {
@@ -153,11 +170,67 @@ public class Storage implements KeyValueStorage {
      * @param key    The unique key of the model to be deleted.
      */
     @Override
-    public void delete(ColumnFamilyTypes columnFamilyType, byte[] key) {
+    public synchronized void delete(ColumnFamilyTypes columnFamilyType, byte[] key) {
+        RocksDB.loadLibrary();
         try {
             this.rocksDB.delete(getHandler(columnFamilyType), key);
         } catch (RocksDBException e) {
             log.error("Error deleting key in RocksDB!", e);
+        }
+    }
+
+    /**
+     * Adds a key-value pair to the RocksDB database in the specified column family with the option
+     * to control data persistence behavior, including immediate writing or delayed writing.
+     *
+     * @param persistent Set to true for immediate synchronous writing, or false for asynchronous writing.
+     * @param columnFamilyType The type of the column family in which the data will be added.
+     * @param key The key to add to the database.
+     * @param value The value associated with the key.
+     * @throws StorageException if the key already exists in the database.
+     */
+    @Override
+    public synchronized void put(boolean persistent, ColumnFamilyTypes columnFamilyType, byte[] key, BasicModel value) {
+        RocksDB.loadLibrary();
+        try {
+            if(has(columnFamilyType, key)) {
+                throw new StorageException(StorageErrorCode.DATA_ALREADY);
+            }
+
+            if(persistent) {
+                this.rocksDB.put(getHandler(columnFamilyType), DefaultStorage.defaultPersistantWriteOptions(),
+                        key, serializer(value));
+            } else {
+                this.put(columnFamilyType,key, value);
+            }
+        } catch (Exception e) {
+            log.error("Error while adding to storage!", e);
+        }
+    }
+
+    /**
+     * Adds a key-value pair to the RocksDB database in the default column family and ensures immediate data persistence.
+     *
+     * @param persistent Set to true for immediate synchronous writing, or false for asynchronous writing.
+     * @param key The key to add to the database.
+     * @param value The value associated with the key.
+     * @throws StorageException if the key already exists in the database.
+     */
+    @Override
+    public synchronized void put(boolean persistent, byte[] key, BasicModel value) {
+        RocksDB.loadLibrary();
+        try {
+            if(has(key)) {
+                throw new StorageException(StorageErrorCode.DATA_ALREADY);
+            }
+
+            if(persistent) {
+                this.rocksDB.put(DefaultStorage.defaultPersistantWriteOptions(), key, serializer(value));
+            } else {
+                this.put(key, value);
+            }
+        } catch (Exception e) {
+            log.error("Error while adding to storage!", e);
         }
     }
 
@@ -169,21 +242,25 @@ public class Storage implements KeyValueStorage {
      * @throws StorageException if the handle is not found.
      */
     public ColumnFamilyHandle getHandler(ColumnFamilyTypes columnFamilyTypes) {
-        return this.columnFamilyHandles.stream()
-                .filter(handle -> {
-                    try {
-                        return Arrays.equals(handle.getName(), columnFamilyTypes.getName()
-                                .getBytes(StandardCharsets.UTF_8));
-                    } catch (RocksDBException e) {
-                        return false;
-                    }
-                })
-                .findFirst()
-                .orElseThrow(() -> {
-                    log.error("Column family handler with name: {} not found in storage: {}",
-                            columnFamilyTypes.getName(),
-                            this.storageType.getName());
-                    return new StorageException(StorageErrorCode.HANDLER_NOT_FOUND);
-                });
+        RocksDB.loadLibrary();
+        try {
+            byte[] targetNameBytes = columnFamilyTypes.getName().getBytes(StandardCharsets.UTF_8);
+
+            for (ColumnFamilyHandle handle : columnFamilyHandles) {
+                byte[] handleNameBytes = handle.getName();
+
+                if (Arrays.equals(handleNameBytes, targetNameBytes)) {
+                    return handle;
+                }
+            }
+
+            log.error("Column family handler with name: {} not found in storage: {}", columnFamilyTypes.getName(), this.storageType.getName());
+            throw new StorageException(StorageErrorCode.HANDLER_NOT_FOUND);
+        } catch (RocksDBException e) {
+            log.error("Column family handler with name: {} not found in storage: {}",
+                    columnFamilyTypes.getName(),
+                    this.storageType.getName());
+            throw new StorageException(StorageErrorCode.HANDLER_NOT_FOUND);
+        }
     }
 }

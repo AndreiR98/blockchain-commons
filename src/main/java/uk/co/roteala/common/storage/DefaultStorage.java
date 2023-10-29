@@ -37,7 +37,8 @@ public class DefaultStorage {
         DBOptions dbOptions = new DBOptions();
         dbOptions.setCreateIfMissing(true)
                 .setAllowConcurrentMemtableWrite(true)
-                .setCreateMissingColumnFamilies(createMissingColumn);
+                .setCreateMissingColumnFamilies(createMissingColumn)
+                .setAtomicFlush(true);
 
         return dbOptions;
     }
@@ -54,7 +55,8 @@ public class DefaultStorage {
         Options options = new Options();
         options.setCreateIfMissing(true)
                 .setAllowConcurrentMemtableWrite(true)
-                .setCreateMissingColumnFamilies(createMissingColumn);
+                .setCreateMissingColumnFamilies(createMissingColumn)
+                .setAtomicFlush(true);
 
         return options;
     }
@@ -92,5 +94,16 @@ public class DefaultStorage {
         columnFamilyOptions.enableBlobGarbageCollection();
 
         return columnFamilyOptions;
+    }
+
+    /**
+     * Configures and returns a new ColumnFamilyOptions instance for a RocksDB database column family.
+     * The configuration includes setting the compression type to SNAPPY compression and enabling blob garbage collection.
+     *
+     * @return A configured ColumnFamilyOptions instance with SNAPPY compression and blob garbage collection enabled.
+     */
+    public static WriteOptions defaultPersistantWriteOptions() {
+        return new WriteOptions()
+                .setSync(true);
     }
 }
