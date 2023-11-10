@@ -1,6 +1,11 @@
 package uk.co.roteala.common.messenger;
 
+import reactor.netty.NettyInbound;
+
 import java.util.List;
-public interface StreamContext<V> {
-    List<SourceSupplier<V>> sourceSuppliers();
+import java.util.Set;
+import java.util.concurrent.ConcurrentHashMap;
+
+public interface StreamContext {
+    ConcurrentHashMap<String, NettyInbound> sourceSuppliers();
 }

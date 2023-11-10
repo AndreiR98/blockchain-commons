@@ -4,5 +4,6 @@ import java.io.Serializable;
 
 public enum MessageType implements Serializable {
     HEADER,
-    MESSAGE;
+    MESSAGE,
+    EMPTY;
 }

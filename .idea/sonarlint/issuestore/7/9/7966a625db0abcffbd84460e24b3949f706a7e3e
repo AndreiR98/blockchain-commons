@@ -1,3 +1,7 @@
 
-I
-java:S1948",Make "connection" transient or serializable.(ÿ›ÅÒ8èíÃ1
+J
+java:S1128"(Remove this unused import 'lombok.Data'.(÷í«ÿÿÿÿÿ8 ¾é¹1
+W
+java:S1128"5Remove this unused import 'reactor.netty.Connection'.(ÑØ«·úÿÿÿÿ8Âåã¹1
+Y
+java:S1128"<Remove this unused import 'uk.co.roteala.common.BasicModel'.(¦‹¸ø8Ãåã¹1
