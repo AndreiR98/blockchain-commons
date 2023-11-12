@@ -8,7 +8,4 @@ import java.io.Serializable;
 public abstract class Message implements Serializable {
     public String messageId;
     private MessageType messageType;
-    private byte[] payload;
-    private Integer chunkNumber;
-    private Integer sequenceChunkNumber;
 }

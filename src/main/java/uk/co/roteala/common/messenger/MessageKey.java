@@ -6,8 +6,7 @@ import uk.co.roteala.common.events.MessageActions;
 
 @Data
 @Builder
-public class MessageKey {
-    private String messageKey;
+public class MessageKey extends Message{
     private MessageType messageType;
     private Integer totalChunks;
     private Integer totalBytes;
