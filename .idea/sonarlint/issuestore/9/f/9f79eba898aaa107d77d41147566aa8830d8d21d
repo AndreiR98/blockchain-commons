@@ -1,0 +1,12 @@
+
+b
+java:S1124"EReorder the modifiers to comply with the Java Language Specification.(”Ì¿×8›ıšÑÄ1
+O
+java:S1905$"-Remove this unnecessary cast to "MessageKey".(Œ„›•ùÿÿÿÿ8µıšÑÄ1
+L
+java:S1905&"/Remove this unnecessary cast to "MessageChunk".(Œ‚Àø8µıšÑÄ1
+]	java:S125Z"<This block of commented-out lines of code should be removed.(“›Ğşÿÿÿÿ8»ıšÑÄ1
+]	java:S125]"<This block of commented-out lines of code should be removed.(éØ»Úûÿÿÿÿ8¼ıšÑÄ1
+G	java:S106b"+Replace this use of System.out by a logger.(‚ùŠõ8¼ıšÑÄ1
+D
+java:S1168€"&Return an empty array instead of null.(¥¹ï8¿ıšÑÄ1

@@ -1,7 +1,10 @@
 package uk.co.roteala.net;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 import uk.co.roteala.common.BasicModel;
+
+import java.nio.charset.StandardCharsets;
 
 @Data
 @Builder
@@ -14,4 +17,13 @@ public class Peer extends BasicModel {
     private Integer port;
     private long lastTimeSeen;
     private boolean active;
+
+    @JsonIgnore
+    public byte[] getKey() {
+        StringBuilder s = new StringBuilder();
+        s.append(this.address);
+        s.append(this.port);
+
+        return s.toString().getBytes(StandardCharsets.UTF_8);
+    }
 }

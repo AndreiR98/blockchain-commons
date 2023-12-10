@@ -2,15 +2,17 @@ package uk.co.roteala.common.events;
 
 import reactor.netty.Connection;
 import uk.co.roteala.common.BasicModel;
+import uk.co.roteala.common.messenger.EventActions;
+import uk.co.roteala.common.messenger.EventTypes;
 
 import java.io.Serializable;
 
 public interface Message extends Serializable {
-    MessageTypes getMessageType();
+    EventTypes getMessageType();
 
     BasicModel getMessage();
 
-    MessageActions getMessageAction();
+    EventActions getMessageAction();
 
     Connection getConnection();
 
@@ -22,7 +24,7 @@ public interface Message extends Serializable {
 
     void setVerified(ValidationType v);
 
-    void setMessageAction(MessageActions action);
+    void setMessageAction(EventActions action);
 
     void setAddress(String address);
 }

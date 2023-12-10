@@ -4,13 +4,15 @@ import lombok.Data;
 import lombok.RequiredArgsConstructor;
 import reactor.netty.Connection;
 import uk.co.roteala.common.BasicModel;
+import uk.co.roteala.common.messenger.EventActions;
+import uk.co.roteala.common.messenger.EventTypes;
 
 @Data
 @RequiredArgsConstructor
 public class TransactionMessage implements Message {
     private Connection connection;
 
-    private MessageActions messageAction;
+    private EventActions messageAction;
 
     private final BasicModel message;
 
@@ -18,7 +20,7 @@ public class TransactionMessage implements Message {
 
     private String address;
     @Override
-    public MessageTypes getMessageType() {
-        return MessageTypes.TRANSACTION;
+    public EventTypes getMessageType() {
+        return EventTypes.TRANSACTION;
     }
 }

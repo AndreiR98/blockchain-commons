@@ -1,7 +1,11 @@
 
 O
-java:S1135F"2Complete the task associated to this TODO comment.(âßÄä8ØÅØá1
+java:S1135H"2Complete the task associated to this TODO comment.(âßÄä8¤Ò‹ÜÄ1
 H
-java:S1168d"+Return an empty collection instead of null.(¥¹ï8İÅØá1
+java:S1168f"+Return an empty collection instead of null.(¥¹ï8§Ò‹ÜÄ1
+_
+java:S1126¢"AReplace this if-then-else statement by a single return statement.(êıÒ¹8¬Ò‹ÜÄ1
+m
+java:S1128"KRemove this unused import 'uk.co.roteala.security.utils.CryptographyUtils'.(„‚ìŒûÿÿÿÿ8®Ò‹ÜÄ1
 O
-java:S5855ª",Remove or rework this redundant alternative.(Â‰¶Ûÿÿÿÿÿ8èÅØá1
+java:S1128"-Remove this unused import 'java.util.Arrays'.(î–˜Éüÿÿÿÿ8®Ò‹ÜÄ1

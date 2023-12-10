@@ -18,6 +18,8 @@ public class Constants {
 
     public String DEFAULT_STATE_NAME = "state_chain";
 
+    public static final String DEFAULT_NETWORK_VERSION = "0x1";
+
     public static final Block GENESIS_BLOCK = Block.builder()
             .confirmations(1)
             .status(BlockStatus.MINED)
@@ -40,8 +42,8 @@ public class Constants {
 
     public static final ChainState GENESIS_STATE = ChainState.builder()
             .lastBlockIndex(0)
-            .reward(new BigInteger("14D1120D7B160000", 16))
-            .networkFees(new BigInteger("B1A2BC2EC50000", 16))
+            .reward(new BigInteger("14d1120d7b160000", 16))
+            .networkFees(new BigInteger("b1a2bc2ec50000", 16))
             .target(3)
             .chainId(7331)
             .netVersion(1)

@@ -7,6 +7,8 @@ import io.netty.buffer.Unpooled;
 import lombok.*;
 import org.apache.commons.lang3.SerializationUtils;
 import uk.co.roteala.common.BasicModel;
+import uk.co.roteala.common.messenger.EventActions;
+import uk.co.roteala.common.messenger.EventTypes;
 import uk.co.roteala.exceptions.MessageSerializationException;
 import uk.co.roteala.exceptions.errorcodes.MessageSerializationErrCode;
 
@@ -17,10 +19,10 @@ import java.io.Serializable;
 @NoArgsConstructor
 @AllArgsConstructor
 public class MessageWrapper implements Serializable {
-    private MessageTypes type;
+    private EventTypes type;
     private BasicModel content;
     private ValidationType verified;
-    private MessageActions action;
+    private EventActions action;
 
     @JsonIgnore
     public ByteBuf serialize() {

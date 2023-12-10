@@ -10,6 +10,7 @@ import org.springframework.stereotype.Repository;
 import uk.co.roteala.common.BasicModel;
 import uk.co.roteala.exceptions.StorageException;
 import uk.co.roteala.exceptions.errorcodes.StorageErrorCode;
+import uk.co.roteala.net.Peer;
 
 import java.nio.charset.StandardCharsets;
 import java.util.Arrays;
@@ -61,7 +62,7 @@ public class Storage implements KeyValueStorage {
     public synchronized void put(byte[] key, BasicModel value) {
         RocksDB.loadLibrary();
         try {
-            if(has(key)) {
+            if(has(key) && !(value instanceof Peer)) {
                 throw new StorageException(StorageErrorCode.DATA_ALREADY);
             }
 
@@ -135,7 +136,7 @@ public class Storage implements KeyValueStorage {
     public synchronized void put(ColumnFamilyTypes columnFamilyType, byte[] key, BasicModel value) {
         RocksDB.loadLibrary();
         try {
-            if(has(columnFamilyType, key)) {
+            if(has(columnFamilyType, key) && !(value instanceof Peer)) {
                 throw new StorageException(StorageErrorCode.DATA_ALREADY);
             }
 
@@ -193,7 +194,7 @@ public class Storage implements KeyValueStorage {
     public synchronized void put(boolean persistent, ColumnFamilyTypes columnFamilyType, byte[] key, BasicModel value) {
         RocksDB.loadLibrary();
         try {
-            if(has(columnFamilyType, key)) {
+            if(has(columnFamilyType, key) && !(value instanceof Peer)) {
                 throw new StorageException(StorageErrorCode.DATA_ALREADY);
             }
 
@@ -220,7 +221,7 @@ public class Storage implements KeyValueStorage {
     public synchronized void put(boolean persistent, byte[] key, BasicModel value) {
         RocksDB.loadLibrary();
         try {
-            if(has(key)) {
+            if(has(key) && !(value instanceof Peer)) {
                 throw new StorageException(StorageErrorCode.DATA_ALREADY);
             }
 

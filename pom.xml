@@ -21,9 +21,9 @@
     <revision>3.0.0-IMPROVED</revision>
     <java.version>11</java.version>
     <johnzon.version>1.2.21</johnzon.version>
-    <rocks.db.version>8.5.4</rocks.db.version>
+    <rocks.db.version>8.6.7</rocks.db.version>
     <bouncy.version>1.76</bouncy.version>
-    <netty-all.version>4.1.100.Final</netty-all.version>
+    <netty-all.version>4.1.101.Final</netty-all.version>
     <bson.version>4.11.0</bson.version>
     <jakarta.version>3.1.0</jakarta.version>
     <reactive-streams.version>1.0.4</reactive-streams.version>
@@ -31,7 +31,7 @@
     <caffeine.version>3.1.2</caffeine.version>
     <aspectj.version>1.9.7</aspectj.version>
     <guava.version>32.1.3-jre</guava.version>
-    <reactor-core.version>3.5.11</reactor-core.version>
+    <reactor-core.version>3.6.0</reactor-core.version>
     <commons-codec.version>1.16.0</commons-codec.version>
     <commons-lang3.version>3.13.0</commons-lang3.version>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -43,11 +43,6 @@
   </properties>
 
   <dependencies>
-    <dependency>
-      <groupId>org.springframework.boot</groupId>
-      <artifactId>spring-boot-starter-web</artifactId>
-    </dependency>
-
     <!-- https://mvnrepository.com/artifact/com.rometools/rome -->
     <dependency>
       <groupId>com.rometools</groupId>
@@ -55,6 +50,10 @@
       <version>${rome.version}</version>
     </dependency>
 
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter</artifactId>
+    </dependency>
 
     <dependency>
       <groupId>org.springframework.boot</groupId>
@@ -128,18 +127,6 @@
     </dependency>
 
     <dependency>
-      <groupId>io.rsocket</groupId>
-      <artifactId>rsocket-core</artifactId>
-      <version>${rsocket.version}</version> <!-- Ensure this is the latest version -->
-    </dependency>
-
-    <dependency>
-      <groupId>io.rsocket</groupId>
-      <artifactId>rsocket-transport-netty</artifactId>
-      <version>${rsocket.version}</version>
-    </dependency>
-
-    <dependency>
       <groupId>org.reactivestreams</groupId>
       <artifactId>reactive-streams</artifactId>
       <version>${reactive-streams.version}</version>
@@ -148,19 +135,6 @@
     <dependency>
       <groupId>com.google.code.gson</groupId>
       <artifactId>gson</artifactId>
-    </dependency>
-
-    <dependency>
-      <groupId>org.springframework.boot</groupId>
-      <artifactId>spring-boot-devtools</artifactId>
-      <scope>runtime</scope>
-      <optional>true</optional>
-    </dependency>
-
-    <dependency>
-      <groupId>org.springframework.boot</groupId>
-      <artifactId>spring-boot-configuration-processor</artifactId>
-      <optional>true</optional>
     </dependency>
 
     <dependency>

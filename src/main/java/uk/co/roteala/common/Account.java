@@ -11,6 +11,7 @@ import uk.co.roteala.common.monetary.CoinConverter;
 
 import java.io.Serializable;
 import java.math.BigInteger;
+import java.util.List;
 
 @Data
 @Builder
@@ -22,17 +23,35 @@ import java.math.BigInteger;
 public class Account extends BasicModel implements Serializable {
     private String address;
     private String nonce;
-    private BigInteger balance;
+    private String balance;
+    private List<Coin> coins;
+
+    @JsonIgnore
+    public BigInteger toBigInt() {
+        return new BigInteger(this.balance, 16);
+    }
+
+    @JsonIgnore
+    public void updateBalance(String amount) {
+        this.balance = new BigInteger(this.balance, 16)
+                .add(new BigInteger(amount, 16)).toString(16);
+    }
+
+    @JsonIgnore
+    public void updateBalance(BigInteger amount) {
+        this.balance = new BigInteger(this.balance, 16)
+                .add(amount).toString(16);
+    }
 
     /**
      * Return an empty account with address
      * */
     @JsonIgnore
-    public Account empty(String address) {
+    public static final Account empty(String address) {
         return Account.builder()
                 .address(address)
-                .nonce("0")
-                .balance(new BigInteger("0", 16))
+                .nonce("0x0")
+                .balance("0x0")
                 .build();
     }
 }

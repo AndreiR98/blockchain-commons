@@ -4,6 +4,8 @@ import lombok.Data;
 import lombok.RequiredArgsConstructor;
 import reactor.netty.Connection;
 import uk.co.roteala.common.BasicModel;
+import uk.co.roteala.common.messenger.EventActions;
+import uk.co.roteala.common.messenger.EventTypes;
 
 
 @Data
@@ -11,7 +13,7 @@ import uk.co.roteala.common.BasicModel;
 public class BlockMessage implements Message {
     private Connection connection;
 
-    private MessageActions messageAction;
+    private EventActions messageAction;
 
     private final BasicModel message;
 
@@ -19,7 +21,7 @@ public class BlockMessage implements Message {
 
     private String address;
     @Override
-    public MessageTypes getMessageType() {
-        return MessageTypes.BLOCK;
+    public EventTypes getMessageType() {
+        return EventTypes.BLOCK;
     }
 }
