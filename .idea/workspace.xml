@@ -4,39 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8788e929-56e3-4231-8353-0722302cf2c4" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/4/c/4c66d20b27d23f69ad57fed17810ff8badc841b5" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/4/c/4c66d20b27d23f69ad57fed17810ff8badc841b5" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/5/7/57f956dd6f20b588992f23427833f65cec28f8e3" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/5/7/57f956dd6f20b588992f23427833f65cec28f8e3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/5/c/5c0c8b2383942b4eaba04943131f87047e5bc199" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/5/c/5c0c8b2383942b4eaba04943131f87047e5bc199" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/9/f/9f79eba898aaa107d77d41147566aa8830d8d21d" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/9/f/9f79eba898aaa107d77d41147566aa8830d8d21d" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/a/b/ab18b832f83a9e13754b3a36a6f5d1183ace3a41" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/a/b/ab18b832f83a9e13754b3a36a6f5d1183ace3a41" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/b/1/b1c8e914bc53f4a9bf227b05e1c5d95d0df2640a" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/b/1/b1c8e914bc53f4a9bf227b05e1c5d95d0df2640a" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/e/c/ec881407da2dc76ec2589e1ff4e3988ccde684f0" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/e/c/ec881407da2dc76ec2589e1ff4e3988ccde684f0" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/f/7/f748379d05ebf18c9eacf9dbfd4287b41d5c8a24" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/f/7/f748379d05ebf18c9eacf9dbfd4287b41d5c8a24" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/f/c/fc6e439468d537aa715b9dcd6a731c1724ab1aa7" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/f/c/fc6e439468d537aa715b9dcd6a731c1724ab1aa7" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/f/c/fcc389e9f620ac151e7c47f6a23dba5c4c7790b8" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/f/c/fcc389e9f620ac151e7c47f6a23dba5c4c7790b8" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/f/e/fef6924643ad8c94a559861f3a607f631c681150" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/f/e/fef6924643ad8c94a559861f3a607f631c681150" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/index.pb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/uk/co/roteala/common/Account.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/uk/co/roteala/common/Account.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/uk/co/roteala/common/MempoolTransaction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/uk/co/roteala/common/MempoolTransaction.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/uk/co/roteala/common/SignatureModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/uk/co/roteala/common/SignatureModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/uk/co/roteala/common/Transaction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/uk/co/roteala/common/Transaction.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/uk/co/roteala/common/events/MessageTemplate.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/uk/co/roteala/common/messenger/MessageTemplate.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/uk/co/roteala/common/messenger/MessageContainer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/uk/co/roteala/common/messenger/MessageContainer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/uk/co/roteala/common/messenger/MessageKey.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/uk/co/roteala/common/messenger/MessageKey.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/uk/co/roteala/common/messenger/Messenger.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/uk/co/roteala/common/messenger/Messenger.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/uk/co/roteala/common/messenger/MessengerUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/uk/co/roteala/common/messenger/MessengerUtils.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/uk/co/roteala/core/Blockchain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/uk/co/roteala/core/Blockchain.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/uk/co/roteala/security/PublicKey.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/uk/co/roteala/security/PublicKey.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/uk/co/roteala/security/utils/CryptographyUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/uk/co/roteala/security/utils/CryptographyUtils.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/uk/co/roteala/security/utils/HashingService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/uk/co/roteala/security/utils/HashingService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/uk/co/roteala/utils/BlockchainUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/uk/co/roteala/utils/BlockchainUtils.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/genesis.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/genesis.json" afterDir="false" />
-    </list>
+    <list default="true" id="8788e929-56e3-4231-8353-0722302cf2c4" name="Changes" comment="feat:Chunk" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -99,6 +67,7 @@
   "keyToString": {
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SONARLINT_PRECOMMIT_ANALYSIS": "true",
     "WebServerToolWindowFactoryState": "false",
     "com.google.cloudcode.ide_session_index": "20231220_0001",
     "git-widget-placeholder": "feature/improved-blockchain",
@@ -332,8 +301,17 @@
       <workItem from="1702724576519" duration="11134000" />
       <workItem from="1702903110282" duration="9877000" />
       <workItem from="1702979800293" duration="12841000" />
-      <workItem from="1703056682021" duration="15209000" />
+      <workItem from="1703056682021" duration="15611000" />
     </task>
+    <task id="LOCAL-00001" summary="feat:Chunk">
+      <option name="closed" value="true" />
+      <created>1703073944950</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1703073944950</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -349,6 +327,10 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="feat:Chunk" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat:Chunk" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
