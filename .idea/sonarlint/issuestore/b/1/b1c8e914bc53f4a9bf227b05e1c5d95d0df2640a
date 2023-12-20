@@ -1,3 +1,12 @@
 
-N
-java:S1602",Remove useless curly braces around statement(»ﬂ’îˇˇˇˇˇ8©œ®ö¿1
+û
+java:S1186>"ÄAdd a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(¿À—õ8Ô÷Ç¥»1
+û
+java:S1186@"ÄAdd a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(Å„‹Ç8÷Ç¥»1
+g	java:S128."LEnd this switch case with an unconditional break, return or throw statement.(±⁄ﬂR8Ú÷Ç¥»1
+h	java:S128,"LEnd this switch case with an unconditional break, return or throw statement.(—‡Ë¥8Ú÷Ç¥»1
+h	java:S128*"LEnd this switch case with an unconditional break, return or throw statement.(ÏÿÉ∆8Ú÷Ç¥»1
+L
+java:S1172>"/Remove this unused method parameter "template".(¿À—õ8Û÷Ç¥»1
+L
+java:S1172@"/Remove this unused method parameter "template".(Å„‹Ç8Û÷Ç¥»1

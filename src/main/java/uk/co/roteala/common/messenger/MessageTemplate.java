@@ -1,4 +1,4 @@
-package uk.co.roteala.common.events;
+package uk.co.roteala.common.messenger;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -6,8 +6,6 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import reactor.netty.Connection;
 import uk.co.roteala.common.BasicModel;
-import uk.co.roteala.common.messenger.EventActions;
-import uk.co.roteala.common.messenger.MessageType;
 
 @Data
 @Builder
@@ -15,17 +13,19 @@ import uk.co.roteala.common.messenger.MessageType;
 @AllArgsConstructor
 public class MessageTemplate  {
     public static final MessageTemplate DEFAULT = emptyMessage();
-    private EventActions actions;
+    private EventActions eventAction;
     private BasicModel message;
-    private MessageType type;
+    private EventTypes eventType;
     private Connection owner;
+    private ReceivingGroup group;
+    private String messageId;
 
     public static final MessageTemplate emptyMessage() {
         return MessageTemplate.builder()
                 .message(null)
                 .owner(null)
-                .actions(EventActions.DISCARD)
-                .type(null)
+                .eventAction(EventActions.DISCARD)
+                .eventType(null)
                 .build();
     }
 }

@@ -1,9 +1,18 @@
 
-g	java:S112."FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òéüÿÿÿÿ8¤”…ê½1
-g	java:S1128"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òéüÿÿÿÿ8¥”…ê½1
-g	java:S112G"FDefine and throw a dedicated exception instead of using a generic one.(ÖîöÕşÿÿÿÿ8¦”…ê½1
-g	java:S112]"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òéüÿÿÿÿ8¦”…ê½1
+g	java:S1121"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òéüÿÿÿÿ8¸¨£õÇ1
+g	java:S112;"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òéüÿÿÿÿ8¸¨£õÇ1
+g	java:S112J"FDefine and throw a dedicated exception instead of using a generic one.(ÖîöÕşÿÿÿÿ8¸¨£õÇ1
+t	java:S127]"XRefactor the code in order to not assign to this loop counter from within the loop body.(Ä¾“§8ª›²õÇ1
+]	java:S125"<This block of commented-out lines of code should be removed.(ÚÜªœùÿÿÿÿ8õÈªõÇ1
+X
+java:S1994["6Move the update of "i" into this loop's update clause.(‰æ®¸ùÿÿÿÿ8¿›²õÇ1
+]	java:S125s"<This block of commented-out lines of code should be removed.(ñ¥ùšøÿÿÿÿ8Ñî£õÇ1
 j
-java:S1128"HRemove this unused import 'org.bouncycastle.crypto.digests.SHAKEDigest'.(ÿÛ­ùÿÿÿÿ8’•…ê½1
+java:S1128"HRemove this unused import 'org.bouncycastle.crypto.digests.SHAKEDigest'.(ÿÛ­ùÿÿÿÿ8­Ø³õÇ1
 N
-java:S1128	"1Remove this unused import 'java.math.BigInteger'.(»Çâ€8’•…ê½1
+java:S1128
+"1Remove this unused import 'java.math.BigInteger'.(»Çâ€8­Ø³õÇ1
+[
+java:S1128">Remove this unused import 'java.nio.charset.StandardCharsets'.(ï˜ŞÛ8­Ø³õÇ1
+K
+java:S1068".Remove this unused "HEX_PREFIX" private field.(Å•âÄ8­Ø³õÇ1

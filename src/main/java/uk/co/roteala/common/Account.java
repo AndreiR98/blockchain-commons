@@ -1,6 +1,7 @@
 package uk.co.roteala.common;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.databind.PropertyNamingStrategies;
 import com.fasterxml.jackson.databind.annotation.JsonNaming;
@@ -24,6 +25,8 @@ public class Account extends BasicModel implements Serializable {
     private String address;
     private String nonce;
     private String balance;
+    @JsonInclude(JsonInclude.Include.NON_NULL)
+    private String virtualBalance;//keep account changes
     private List<Coin> coins;
 
     @JsonIgnore

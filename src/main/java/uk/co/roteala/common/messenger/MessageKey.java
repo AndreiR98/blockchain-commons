@@ -12,8 +12,8 @@ import lombok.*;
 public class MessageKey extends Message{
     private Integer totalChunks;
     private Integer totalBytes;
-    private EventActions action;
-    private EventTypes eventTypes;
+    private EventActions eventAction;
+    private EventTypes eventType;
 
     @Override
     public void setMessageType(MessageType messageType) {

@@ -2,6 +2,6 @@
   {"type": "ACCOUNT","address":"0x438d064a20ac5bf3bf1040e85ba273a4d7d6b374","nonce":"0x0","balance":"0x10F0CF064DD59200000", "coins": []},
   {"type": "ACCOUNT","address":"0x88fBf5BC3c9A07Ff15b37cF525CC670C81C4ba78","nonce":"0x0","balance":"0x10F0CF064DD59200000", "coins": []},
   {"type": "ACCOUNT","address":"0xf7d8ed6e248b655a8a46db555e1fd07723923481","nonce":"0x0","balance":"0x10F0CF064DD59200000", "coins": []},
-  {"type": "ACCOUNT","address":"0xdd35572c133981a464d04190586af1382a1d27f5","nonce":"0x0","balance":"0x10F0CF064DD59200000", "coins": []},
+  {"type": "ACCOUNT","address":"0xb67bfb17aa1e61f09a2fb29f6bbf21a3db4ff5e9","nonce":"0x0","balance":"0x10F0CF064DD59200000", "coins": []},
   {"type": "ACCOUNT","address":"0x8230d844e8464ebbab3ed6929f9bac084843fca1","nonce":"0x0","balance":"0x10F0CF064DD59200000", "coins": []}
 ]

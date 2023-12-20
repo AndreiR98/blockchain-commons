@@ -5,67 +5,36 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8788e929-56e3-4231-8353-0722302cf2c4" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/1/3/138a8e3fa74559af35e506d14152d4a2ac89e072" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/1/3/138a8e3fa74559af35e506d14152d4a2ac89e072" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/1/b/1b2ff50d5d024eb3f47a19e82124c7f8308afe78" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/2/0/20f92e6a45a42e5775db63654800d1236f5cc65d" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/2/0/20f92e6a45a42e5775db63654800d1236f5cc65d" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/2/5/2570e640ff5781ac4ddce4bd053a696789d8ed83" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/2/c/2c2fed9b7cd1d13b5bbf000f6c4d43b1e27b82a9" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/2/c/2c2fed9b7cd1d13b5bbf000f6c4d43b1e27b82a9" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/3/6/367faf79f4f3410ad2b78da045dfcf98a197dff8" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/3/6/367faf79f4f3410ad2b78da045dfcf98a197dff8" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/4/c/4c66d20b27d23f69ad57fed17810ff8badc841b5" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/4/c/4c66d20b27d23f69ad57fed17810ff8badc841b5" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/5/7/57f956dd6f20b588992f23427833f65cec28f8e3" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/5/7/57f956dd6f20b588992f23427833f65cec28f8e3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/6/0/60aa04b3501b885e0edab3426f8247d48b687fc2" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/7/9/7966a625db0abcffbd84460e24b3949f706a7e3e" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/7/9/7966a625db0abcffbd84460e24b3949f706a7e3e" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/7/e/7e241f3cc6e504931452af335484924d37670f4c" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/7/e/7e241f3cc6e504931452af335484924d37670f4c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/9/2/9257509bb70cbdd276926bf554ae746248d2fa9c" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/9/2/9257509bb70cbdd276926bf554ae746248d2fa9c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/9/6/9684baba7c1f9c4666bef3bb65af78d25ef0ddc0" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/a/0/a0f78440d4839d61a5cb2339683f9fff82645dd1" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/a/0/a0f78440d4839d61a5cb2339683f9fff82645dd1" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/b/9/b953f4d5fa6df5754c7d5de2a49b52d2c181c095" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/d/2/d22098d3dec79d6dd37ef64c7131ea7b53628f53" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/d/2/d22098d3dec79d6dd37ef64c7131ea7b53628f53" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/d/8/d8c28effd6da137ce627b880f23824545681a724" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/e/b/ebabcb331773b73653a4b94eaf3266e471ed00fc" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/e/b/ebabcb331773b73653a4b94eaf3266e471ed00fc" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/5/c/5c0c8b2383942b4eaba04943131f87047e5bc199" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/5/c/5c0c8b2383942b4eaba04943131f87047e5bc199" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/9/f/9f79eba898aaa107d77d41147566aa8830d8d21d" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/9/f/9f79eba898aaa107d77d41147566aa8830d8d21d" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/a/b/ab18b832f83a9e13754b3a36a6f5d1183ace3a41" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/a/b/ab18b832f83a9e13754b3a36a6f5d1183ace3a41" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/b/1/b1c8e914bc53f4a9bf227b05e1c5d95d0df2640a" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/b/1/b1c8e914bc53f4a9bf227b05e1c5d95d0df2640a" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/e/c/ec881407da2dc76ec2589e1ff4e3988ccde684f0" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/e/c/ec881407da2dc76ec2589e1ff4e3988ccde684f0" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/e/f/efbb2597f8ef6c30e1354eeed7b646b775fa0221" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/f/5/f53d43ba9e14c3254e1a7be783fd67d97cace2e8" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/f/7/f748379d05ebf18c9eacf9dbfd4287b41d5c8a24" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/f/7/f748379d05ebf18c9eacf9dbfd4287b41d5c8a24" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/f/c/fc6e439468d537aa715b9dcd6a731c1724ab1aa7" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/f/c/fc6e439468d537aa715b9dcd6a731c1724ab1aa7" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/f/c/fcc389e9f620ac151e7c47f6a23dba5c4c7790b8" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/f/c/fcc389e9f620ac151e7c47f6a23dba5c4c7790b8" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/f/e/fef6924643ad8c94a559861f3a607f631c681150" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/f/e/fef6924643ad8c94a559861f3a607f631c681150" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/0/3/03f52752d47492ee7a169cd709f96e2d79cd568d" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/0/d/0db7c573e77fafb93f196a460fe1beeb624af811" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/1/b/1b2ff50d5d024eb3f47a19e82124c7f8308afe78" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/2/1/21c8b673aab9cdf940d03bdcbfb88ba55e46e89b" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/4/8/48e2aee871deaf169992541efc7486017075ab18" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/9/6/9684baba7c1f9c4666bef3bb65af78d25ef0ddc0" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/b/9/b953f4d5fa6df5754c7d5de2a49b52d2c181c095" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/c/6/c60375e3a230110bc5d68ac1cd20e11c0bf53d9c" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/d/8/d8c28effd6da137ce627b880f23824545681a724" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/d/9/d92ce7322c10de603a9d718f7ffcea1148ab5c94" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/e/b/ebbb203eaf7d3d49e1dd227083eec1d172930501" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/e/f/efbb2597f8ef6c30e1354eeed7b646b775fa0221" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/f/5/f53d43ba9e14c3254e1a7be783fd67d97cace2e8" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/index.pb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/uk/co/roteala/common/Account.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/uk/co/roteala/common/Account.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/uk/co/roteala/common/events/AccountMessage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/uk/co/roteala/common/events/AccountMessage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/uk/co/roteala/common/events/BlockHeaderMessage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/uk/co/roteala/common/events/BlockHeaderMessage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/uk/co/roteala/common/events/BlockMessage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/uk/co/roteala/common/events/BlockMessage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/uk/co/roteala/common/events/ChainStateMessage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/uk/co/roteala/common/events/ChainStateMessage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/uk/co/roteala/common/events/MempoolTransaction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/uk/co/roteala/common/events/MempoolTransaction.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/uk/co/roteala/common/events/Message.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/uk/co/roteala/common/events/Message.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/uk/co/roteala/common/events/MessageActions.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/uk/co/roteala/common/messenger/EventActions.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/uk/co/roteala/common/events/MessageTemplate.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/uk/co/roteala/common/events/MessageTemplate.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/uk/co/roteala/common/events/MessageTypes.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/uk/co/roteala/common/messenger/EventTypes.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/uk/co/roteala/common/events/MessageWrapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/uk/co/roteala/common/events/MessageWrapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/uk/co/roteala/common/events/PeerMessage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/uk/co/roteala/common/events/PeerMessage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/uk/co/roteala/common/events/TransactionMessage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/uk/co/roteala/common/events/TransactionMessage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/uk/co/roteala/common/messenger/Message.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/uk/co/roteala/common/messenger/Message.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/uk/co/roteala/common/messenger/MessageChunk.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/uk/co/roteala/common/messenger/MessageChunk.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/uk/co/roteala/common/MempoolTransaction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/uk/co/roteala/common/MempoolTransaction.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/uk/co/roteala/common/SignatureModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/uk/co/roteala/common/SignatureModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/uk/co/roteala/common/Transaction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/uk/co/roteala/common/Transaction.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/uk/co/roteala/common/events/MessageTemplate.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/uk/co/roteala/common/messenger/MessageTemplate.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/uk/co/roteala/common/messenger/MessageContainer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/uk/co/roteala/common/messenger/MessageContainer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/uk/co/roteala/common/messenger/MessageKey.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/uk/co/roteala/common/messenger/MessageKey.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/uk/co/roteala/common/messenger/MessageType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/uk/co/roteala/common/messenger/MessageType.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/uk/co/roteala/common/storage/Storage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/uk/co/roteala/common/storage/Storage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/uk/co/roteala/common/messenger/Messenger.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/uk/co/roteala/common/messenger/Messenger.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/uk/co/roteala/common/messenger/MessengerUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/uk/co/roteala/common/messenger/MessengerUtils.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/uk/co/roteala/core/Blockchain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/uk/co/roteala/core/Blockchain.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/uk/co/roteala/net/Peer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/uk/co/roteala/net/Peer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/uk/co/roteala/security/PublicKey.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/uk/co/roteala/security/PublicKey.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/uk/co/roteala/security/utils/CryptographyUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/uk/co/roteala/security/utils/CryptographyUtils.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/uk/co/roteala/security/utils/HashingService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/uk/co/roteala/security/utils/HashingService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/uk/co/roteala/utils/BlockchainUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/uk/co/roteala/utils/BlockchainUtils.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/uk/co/roteala/utils/Constants.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/uk/co/roteala/utils/Constants.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/genesis.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/genesis.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -77,8 +46,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="AnnotationType" />
-        <option value="Interface" />
         <option value="Class" />
+        <option value="Interface" />
         <option value="Enum" />
       </list>
     </option>
@@ -91,33 +60,32 @@
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="GitLabMergeRequestFiltersHistory">{
-  &quot;lastFilter&quot;: {
-    &quot;state&quot;: &quot;OPENED&quot;,
-    &quot;assignee&quot;: {
-      &quot;type&quot;: &quot;org.jetbrains.plugins.gitlab.mergerequest.ui.filters.GitLabMergeRequestsFiltersValue.MergeRequestsMemberFilterValue.MergeRequestsAssigneeFilterValue&quot;,
-      &quot;username&quot;: &quot;AndreiR98&quot;,
-      &quot;fullname&quot;: &quot;AndreiR98&quot;
-    }
-  }
-}</component>
-  <component name="GitLabMergeRequestsSettings">{
-  &quot;selectedUrlAndAccountId&quot;: {
-    &quot;first&quot;: &quot;https://gitlab.com/java-blockchain/blockchain-commons.git&quot;,
-    &quot;second&quot;: &quot;106ce0d9-f4bf-4457-a420-4eb5a77f0389&quot;
-  }
-}</component>
   <component name="KubernetesApiProvider">{
+  &quot;contexts&quot;: [
+    {
+      &quot;name&quot;: &quot;docker-desktop&quot;
+    }
+  ],
   &quot;isMigrated&quot;: true
 }</component>
+  <component name="KubernetesSettings">
+    <option name="contextName" value="docker-desktop" />
+  </component>
   <component name="MacroExpansionManager">
     <option name="directoryName" value="iugb8yo4" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="mavenHome" value="$USER_HOME$/apache-maven-3.8.5" />
+      </MavenGeneralSettings>
+    </option>
+  </component>
   <component name="ProjectColorInfo">{
-  &quot;associatedIndex&quot;: 3
+  &quot;associatedIndex&quot;: 4
 }</component>
   <component name="ProjectId" id="2LCoWOPQBA6JlcpW8v8W3MwXXTd" />
   <component name="ProjectLevelVcsManager">
@@ -132,10 +100,10 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
-    "com.google.cloudcode.ide_session_index": "20231210_0002",
+    "com.google.cloudcode.ide_session_index": "20231220_0001",
     "git-widget-placeholder": "feature/improved-blockchain",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "D:/Andrei blockchain/blockchain-broker",
+    "last_opened_file_path": "/Users/andreirotaru/Desktop/blockchain/blockchain-commons",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -143,8 +111,8 @@
     "nodejs_package_manager_path": "npm",
     "project.structure.last.edited": "Project",
     "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.0",
-    "settings.editor.selected.configurable": "preferences.pluginManager",
+    "project.structure.side.proportion": "0.39195403",
+    "settings.editor.selected.configurable": "bigdataide_conn_settings",
     "spring.configuration.checksum": "2be9a805f13705537bc45a4b27f0a68e",
     "vue.rearranger.settings.migration": "true"
   },
@@ -155,9 +123,6 @@
   }
 }]]></component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Blockchain\blockchain-commons\src\main\resources" />
-    </key>
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
       <recent name="uk.co.roteala.utils" />
     </key>
@@ -199,14 +164,12 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="jdk-11.0.21-temurin-11.0.21-8336523bb0d9-b2679d01" />
+        <option value="jdk-11.0.21-temurin-11.0.21-3183f394aec4-5dfaeb9a" />
+        <option value="jdk-17.0.9-temurin-17.0.9-3183f394aec4-9e320d02" />
       </set>
     </attachedChunks>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
-  <component name="SpringBeansView">
-    <option name="beanDetailsProportion" value="0.3" />
-  </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
       <changelist id="8788e929-56e3-4231-8353-0722302cf2c4" name="Changes" comment="" />
@@ -347,57 +310,29 @@
       <workItem from="1692343435729" duration="16000" />
       <workItem from="1692343779330" duration="435000" />
       <workItem from="1693514399407" duration="348000" />
-      <workItem from="1695138993466" duration="655000" />
-      <workItem from="1696108476733" duration="597000" />
-      <workItem from="1696193065544" duration="594000" />
-      <workItem from="1697212608587" duration="4713000" />
-      <workItem from="1697273773467" duration="7875000" />
-      <workItem from="1697395906786" duration="2193000" />
-      <workItem from="1697445361399" duration="1382000" />
-      <workItem from="1697743856105" duration="8042000" />
-      <workItem from="1697800269869" duration="1733000" />
-      <workItem from="1697811814708" duration="2084000" />
-      <workItem from="1697822860623" duration="11414000" />
-      <workItem from="1697881833882" duration="8379000" />
-      <workItem from="1697974920628" duration="1185000" />
-      <workItem from="1698087241370" duration="594000" />
-      <workItem from="1698133899135" duration="599000" />
-      <workItem from="1698166478754" duration="14587000" />
-      <workItem from="1698357052373" duration="111000" />
-      <workItem from="1698358503390" duration="1806000" />
-      <workItem from="1698396570532" duration="1510000" />
-      <workItem from="1698481813042" duration="6762000" />
-      <workItem from="1698531389937" duration="7709000" />
-      <workItem from="1698603739378" duration="5536000" />
-      <workItem from="1698679264175" duration="8117000" />
-      <workItem from="1698874956964" duration="1411000" />
-      <workItem from="1698918427607" duration="13539000" />
-      <workItem from="1699701074054" duration="4273000" />
-      <workItem from="1700218985207" duration="8730000" />
-      <workItem from="1700307256190" duration="8997000" />
-      <workItem from="1700472240071" duration="3050000" />
-      <workItem from="1700645967705" duration="2402000" />
-      <workItem from="1700729910656" duration="11914000" />
-      <workItem from="1700817475272" duration="6211000" />
-      <workItem from="1700838291355" duration="4510000" />
-      <workItem from="1700932425522" duration="6488000" />
-      <workItem from="1701032423416" duration="7484000" />
-      <workItem from="1701076953396" duration="116000" />
-      <workItem from="1701104586673" duration="1638000" />
-      <workItem from="1701192362303" duration="3992000" />
-      <workItem from="1701246258600" duration="70000" />
-      <workItem from="1701278271972" duration="1487000" />
-      <workItem from="1701375070653" duration="603000" />
-      <workItem from="1701452057364" duration="1204000" />
-      <workItem from="1701512419441" duration="1490000" />
-      <workItem from="1701537263893" duration="604000" />
-      <workItem from="1701603145427" duration="13627000" />
-      <workItem from="1701693630796" duration="6002000" />
-      <workItem from="1701991727699" duration="1227000" />
-      <workItem from="1702037053431" duration="1238000" />
-      <workItem from="1702051027136" duration="8718000" />
-      <workItem from="1702217799846" duration="1967000" />
-      <workItem from="1702226424792" duration="3639000" />
+      <workItem from="1702327071741" duration="3009000" />
+      <workItem from="1702332196560" duration="41000" />
+      <workItem from="1702332589136" duration="315000" />
+      <workItem from="1702332912266" duration="61000" />
+      <workItem from="1702332977288" duration="81000" />
+      <workItem from="1702333061018" duration="6000" />
+      <workItem from="1702333070487" duration="311000" />
+      <workItem from="1702333384985" duration="8000" />
+      <workItem from="1702333811492" duration="647000" />
+      <workItem from="1702335783214" duration="116000" />
+      <workItem from="1702335952782" duration="421000" />
+      <workItem from="1702336379638" duration="5000" />
+      <workItem from="1702339433757" duration="773000" />
+      <workItem from="1702340405350" duration="2200000" />
+      <workItem from="1702385056586" duration="4369000" />
+      <workItem from="1702402928021" duration="12491000" />
+      <workItem from="1702482581507" duration="8405000" />
+      <workItem from="1702594624617" duration="1310000" />
+      <workItem from="1702650150512" duration="12328000" />
+      <workItem from="1702724576519" duration="11134000" />
+      <workItem from="1702903110282" duration="9877000" />
+      <workItem from="1702979800293" duration="12841000" />
+      <workItem from="1703056682021" duration="15209000" />
     </task>
     <servers />
   </component>
@@ -414,5 +349,9 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
   </component>
 </project>

@@ -5,8 +5,8 @@ import lombok.Data;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.SerializationUtils;
 import uk.co.roteala.common.BasicModel;
-import uk.co.roteala.common.events.MessageTemplate;
-import uk.co.roteala.common.events.MessageWrapper;
+import uk.co.roteala.exceptions.SerializationException;
+import uk.co.roteala.exceptions.errorcodes.SerializationErrorCode;
 import uk.co.roteala.security.utils.HashingService;
 
 import java.io.ByteArrayOutputStream;
@@ -36,14 +36,12 @@ public class MessageContainer implements Serializable {
             totalBytes += chunk.getChunkSize();
         }
 
-        log.info("Total Key:{}, Total:{}", key.getTotalBytes(), totalBytes);
         return totalBytes == key.getTotalBytes();
     }
 
     public MessageTemplate aggregate() {
         if (!canAggregate()) {
-            log.error("Cannot aggregate message!");
-            return new MessageTemplate(); // or throw an exception
+            throw new SerializationException(SerializationErrorCode.DESERIALIZATION_FAILED); // or throw an exception
         }
 
         ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
@@ -55,14 +53,14 @@ public class MessageContainer implements Serializable {
         byte[] aggregatedBytes = outputStream.toByteArray();
 
         try {
-            log.info("Start aggregating!");
             String messageModelString = SerializationUtils.deserialize(aggregatedBytes);
             ObjectMapper objectMapper = new ObjectMapper();
             basicModel = objectMapper.readValue(messageModelString, BasicModel.class);
 
             messageTemplate.setMessage(basicModel);
-            messageTemplate.setType(this.key.getMessageType());
-            messageTemplate.setActions(this.key.getAction());
+            messageTemplate.setEventType(this.key.getEventType());
+            messageTemplate.setEventAction(this.key.getEventAction());
+            messageTemplate.setMessageId(this.key.getMessageId());
         } catch (Exception e) {
             log.error("Failed to aggregate message!", e);
         }

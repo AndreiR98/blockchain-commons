@@ -20,15 +20,15 @@ import java.util.List;
 public class BlockchainUtils {
     public String mapHashed(MempoolTransaction pseudoTransaction, int blockIndex, long blockTimeStamp, int index) {
         Transaction transaction = new Transaction();
-        transaction.setPseudoHash(pseudoTransaction.getPseudoHash());
+        transaction.setPseudoHash(pseudoTransaction.getHash());
         transaction.setBlockNumber(blockIndex);
         transaction.setFrom(pseudoTransaction.getFrom());
         transaction.setTo(pseudoTransaction.getTo());
-        transaction.setFees(pseudoTransaction.getFees());
+        //transaction.setFees(pseudoTransaction.getFees());
         transaction.setVersion(pseudoTransaction.getVersion());
         transaction.setTransactionIndex(index);
-        transaction.setValue(pseudoTransaction.getValue());
-        transaction.setNonce(pseudoTransaction.getNonce());
+        //transaction.setValue(pseudoTransaction.getValue());
+        //transaction.setNonce(pseudoTransaction.getNonce());
         transaction.setTimeStamp(pseudoTransaction.getTimeStamp());
         transaction.setBlockTime(blockTimeStamp);
         transaction.setPubKeyHash(pseudoTransaction.getPubKeyHash());
@@ -37,7 +37,7 @@ public class BlockchainUtils {
         transaction.setHash(transaction.computeHash());
 
         StringBuilder bothHashes = new StringBuilder();
-        bothHashes.append(pseudoTransaction.getPseudoHash());
+        bothHashes.append(pseudoTransaction.getHash());
         bothHashes.append("_");
         bothHashes.append(transaction.getHash());
 
@@ -50,16 +50,16 @@ public class BlockchainUtils {
         transaction.setFrom(pseudoTransaction.getFrom());
         transaction.setTo(pseudoTransaction.getTo());
         transaction.setStatus(pseudoTransaction.getStatus());
-        transaction.setNonce(pseudoTransaction.getNonce());
+        //transaction.setNonce(pseudoTransaction.getNonce());
         transaction.setVersion(pseudoTransaction.getVersion());
-        transaction.setFees(pseudoTransaction.getFees());
+        //transaction.setFees(pseudoTransaction.getFees());
         transaction.setPubKeyHash(pseudoTransaction.getPubKeyHash());
-        transaction.setPseudoHash(pseudoTransaction.getPseudoHash());
+        transaction.setPseudoHash(pseudoTransaction.getHash());
         transaction.setSignature(pseudoTransaction.getSignature());
         transaction.setBlockTime(blockHeader.getTimeStamp());
         transaction.setBlockNumber(blockHeader.getIndex());
         transaction.setTransactionIndex(index);
-        transaction.setValue(pseudoTransaction.getValue());
+        //transaction.setValue(pseudoTransaction.getValue());
         transaction.setTimeStamp(pseudoTransaction.getTimeStamp());
         transaction.setHash(transaction.computeHash());
 

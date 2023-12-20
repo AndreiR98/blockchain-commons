@@ -5,34 +5,59 @@ import lombok.experimental.UtilityClass;
 import lombok.extern.slf4j.Slf4j;
 import org.bouncycastle.asn1.sec.SECNamedCurves;
 import org.bouncycastle.asn1.x9.X9ECParameters;
+import org.bouncycastle.asn1.x9.X9IntegerConverter;
+import org.bouncycastle.math.ec.ECAlgorithms;
 import org.bouncycastle.math.ec.ECCurve;
 import org.bouncycastle.math.ec.ECFieldElement;
 import org.bouncycastle.math.ec.ECPoint;
 import uk.co.roteala.common.MempoolTransaction;
+import uk.co.roteala.common.SignatureModel;
+import uk.co.roteala.security.PubKey;
 import uk.co.roteala.security.PublicKey;
 import uk.co.roteala.utils.Base58;
 
 import java.math.BigInteger;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+import java.util.regex.Pattern;
 
 @Slf4j
 @UtilityClass
 public class CryptographyUtils{
-    public List<PublicKey> recoverPublicKeys(MempoolTransaction transaction) throws JsonProcessingException {
-        //ECParameterSpec ecSpec = ECNamedCurveTable.getParameterSpec("secp256k1");
+    private static final String MESSAGE_PREFIX = "\u0019Ethereum Signed Message:\n";
+
+    private static final Pattern HEXADECIMAL_PATTERN = Pattern.compile("0x[a-fA-F0-9]{40}");
+
+    private static byte[] getEthereumMessagePrefix(int messageLength) {
+        return MESSAGE_PREFIX
+                .concat(String.valueOf(messageLength))
+                .getBytes(StandardCharsets.UTF_8);
+    }
+
+    private static byte[] getEthereumMessageHash(byte[] message) {
+        byte[] prefix = getEthereumMessagePrefix(message.length);
+
+        byte[] result = new byte[prefix.length + message.length];
+        System.arraycopy(prefix, 0, result, 0, prefix.length);
+        System.arraycopy(message, 0, result, prefix.length, message.length);
+
+        return HashingService.sha3(result);
+    }
+
+    public List<PublicKey> recoverPublicKeys(MempoolTransaction transaction) {
         List<PublicKey> publicKeys = new ArrayList<>();
 
         X9ECParameters curveRaw = SECNamedCurves.getByName("secp256k1");
 
         ECCurve curve = curveRaw.getCurve();
 
-
         //Format signature to BigInteger
         BigInteger x = new BigInteger(transaction.getSignature().getR(), 16);
         BigInteger s = new BigInteger(transaction.getSignature().getS(), 16);
-        BigInteger h = new BigInteger(transaction.computeSigningHash(), 16);
+        BigInteger h = new BigInteger(1, getEthereumMessageHash(transaction
+                .computeJSONstring().getBytes(StandardCharsets.UTF_8)));
 
         ECFieldElement xCoord = curve.fromBigInteger(x);
         ECPoint rPoint = solveYCoordinates(curve, xCoord);
@@ -58,18 +83,20 @@ public class CryptographyUtils{
         return publicKeys;
     }
 
+
     public boolean checkKeyWithPubKeyHash(PublicKey key, String pubKeyHash) {
         return Objects.equals(key.getPubKeyHash(), pubKeyHash);
     }
 
-    public boolean checkKeyWithAddress(PublicKey key, String address) {
-        return Objects.equals(key.toAddress(), address);
+    public static boolean isValidAddress(String address) {
+        if (address == null || address.length() != 42) {
+            return false;
+        }
+        return HEXADECIMAL_PATTERN.matcher(address).matches();
     }
 
-    public String decodeAddress(String address){
-        byte[] addressDecoded = Base58.decode(address);
-
-        return bytesToHexString(addressDecoded);
+    public boolean checkKeyWithAddress(PublicKey key, String address) {
+        return Objects.equals(key.toAddress(), address);
     }
 
     public String bytesToHexString(byte[] bytes) {
@@ -81,7 +108,7 @@ public class CryptographyUtils{
         return hexString.toString();
     }
 
-    public static ECPoint solveYCoordinates(ECCurve curve, ECFieldElement x) {
+    private static ECPoint solveYCoordinates(ECCurve curve, ECFieldElement x) {
         List<ECPoint> points = new ArrayList<>();
 
         BigInteger beta = x.toBigInteger()

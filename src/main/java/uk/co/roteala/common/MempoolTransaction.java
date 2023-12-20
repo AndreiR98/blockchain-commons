@@ -5,91 +5,153 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import lombok.*;
 import lombok.extern.slf4j.Slf4j;
-import uk.co.roteala.common.monetary.Coin;
-import uk.co.roteala.common.monetary.CoinConverter;
+import uk.co.roteala.exceptions.SerializationException;
+import uk.co.roteala.exceptions.errorcodes.SerializationErrorCode;
 import uk.co.roteala.security.PublicKey;
 import uk.co.roteala.security.utils.CryptographyUtils;
 import uk.co.roteala.security.utils.HashingService;
 
+import java.math.BigDecimal;
 import java.math.BigInteger;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.TreeMap;
+import java.nio.charset.StandardCharsets;
+import java.util.*;
 
-
-/**Raw transaction data coming from wallet website
- * */
+@Slf4j
 @Data
 @Builder
 @EqualsAndHashCode
 @NoArgsConstructor
 @AllArgsConstructor
-@JsonTypeName("MEMPOOLTRANSACITON")
+@JsonTypeName(MempoolTransaction.TRANSACTION_TYPE)
 public class MempoolTransaction extends BasicModel {
-    private String pseudoHash;
+    static final String TRANSACTION_TYPE = "MEMPOOLTRANSACITON";
+
+    private String hash;
     private String from;
     private String to;
     private Integer version;
-    @JsonSerialize(converter = CoinConverter.class)
-    private Coin value;
-    private BigInteger fees;
-    private Integer nonce;
+    private BigInteger value;
+    private String nonce;
     private long timeStamp;
+    private BigDecimal networkFees;
+    private BigDecimal fees;
+    @JsonInclude(JsonInclude.Include.NON_NULL)
     private TransactionStatus status;
     private String pubKeyHash;
     @JsonInclude(JsonInclude.Include.NON_NULL)
     private SignatureModel signature;
 
-    /**
-     * Compute signing hash
-     *
-     * @return String
-     * */
     @JsonIgnore
-    public String computeSigningHash() throws JsonProcessingException {
-        Map<String, Object> map = new HashMap<>();
+    private static ObjectMapper getMapper() {
+        return new ObjectMapper();
+    }
+
+    @JsonIgnore
+    private Map<String, Object> createTransactionMap(boolean includeHash) {
+        Map<String, Object> map = new TreeMap<>();
+        map.put("type", TRANSACTION_TYPE);
         map.put("from", this.from);
         map.put("to", this.to);
         map.put("version", this.version);
-        map.put("value", "0x"+this.value.getStringValue());
-        map.put("fees", "0x"+this.fees.toString(16));
+        map.put("value", this.value.toString());
         map.put("nonce", this.nonce);
-        map.put("time_stamp", this.timeStamp);
-        map.put("pub_key_hash", this.pubKeyHash);
+        map.put("timeStamp", this.timeStamp);
+        map.put("networkFees", this.networkFees.toString());
+        map.put("fees", this.fees.toString());
+        map.put("pubKeyHash", this.pubKeyHash);
 
-        Map<String, Object> sortedMap = new TreeMap<>(map);
-
-        ObjectMapper objectMapper = new ObjectMapper();
-        String jsonString = objectMapper.writeValueAsString(sortedMap);
-
-        return HashingService.bytesToHexString(HashingService.sha256Hash(jsonString.getBytes()));
+        if (includeHash) {
+            map.put("hash", this.hash);
+        }
+        return map;
     }
 
-    /**
-     * Recover the public key from the signature
-     * Match the recovery key hash with the pukeyHash
-     * Match the recovery key hash with the hash from address
-     * */
     @JsonIgnore
-    public boolean verifySignatureWithRecovery() {
-        // Retrieve all possible keys for this signature
-        try {
-            List<PublicKey> publicKeys = CryptographyUtils.recoverPublicKeys(this);
+    public byte[] getKey() {
+        return this.hash.getBytes(StandardCharsets.UTF_8);
+    }
 
-            for (PublicKey publicKey : publicKeys) {
-                if (CryptographyUtils.checkKeyWithPubKeyHash(publicKey, this.pubKeyHash)
-                        && CryptographyUtils.checkKeyWithAddress(publicKey, this.from)) {
-                    return true;
-                }
-            }
+    @JsonIgnore
+    public static MempoolTransaction create(String rawData) {
+        try {
+            ObjectMapper mapper = getMapper();
+            MempoolTransaction mempoolTransaction = mapper.readValue(rawData, MempoolTransaction.class);
+            mempoolTransaction.setStatus(TransactionStatus.PENDING);
+            return mempoolTransaction;
+        } catch (Exception e) {
+            log.error("Error creating MempoolTransaction: {}", e.getMessage());
+            throw new SerializationException(SerializationErrorCode.DESERIALIZATION_FAILED);
+        }
+    }
+
+    @JsonIgnore
+    public String computeHash(boolean mode) {
+        try {
+            ObjectMapper objectMapper = getMapper();
+            String jsonString = objectMapper.writeValueAsString(createTransactionMap(mode));
+            return "0x" + HashingService.bytesToHexString(HashingService.sha256Hash(jsonString.getBytes()));
         } catch (JsonProcessingException e) {
-            throw new RuntimeException(e);
+            log.error("Error in computing hash: {}", e.getMessage());
+            return null;
+        }
+    }
+
+    @JsonIgnore
+    public String computeSigningHash() {
+        try {
+            ObjectMapper objectMapper = getMapper();
+            String jsonString = objectMapper.writeValueAsString(createTransactionMap(true));
+            return HashingService.bytesToHexString(HashingService.computeKeccak(jsonString.getBytes()));
+        } catch (Exception e) {
+            log.error("Error computing signing hash: {}", e.getMessage());
+            throw new SerializationException(SerializationErrorCode.SERIALIZATION_FAILED);
+        }
+    }
+
+    @JsonIgnore
+    public String computeJSONstring() {
+        try {
+            ObjectMapper objectMapper = getMapper();
+            String jsonString = objectMapper.writeValueAsString(createTransactionMap(true));
+            return jsonString;
+        } catch (Exception e) {
+            log.error("Error computing JSON string: {}", e.getMessage());
+            throw new SerializationException(SerializationErrorCode.SERIALIZATION_FAILED);
+        }
+    }
+
+    @JsonIgnore
+    public boolean verifyTransaction() {
+        if (!Objects.equals(computeHash(false), this.hash)) {
+            log.info("Transaction verification failed: hash mismatch. {}/{}", computeHash(false), this.hash);
+            return false;
         }
 
+        if (!CryptographyUtils.isValidAddress(this.from) || !CryptographyUtils.isValidAddress(this.to)) {
+            log.info("Invalid addresses");
+            return false;
+        }
+
+        List<PublicKey> publicKeys;
+        try {
+            publicKeys = CryptographyUtils.recoverPublicKeys(this);
+        } catch (Exception e) {
+            log.error("Error recovering public keys: {}", e.getMessage());
+            return false;
+        }
+
+        for (PublicKey publicKey : publicKeys) {
+            boolean isKeyMatching = CryptographyUtils.checkKeyWithPubKeyHash(publicKey, this.pubKeyHash);
+            boolean isFromAddressMatching = CryptographyUtils.checkKeyWithAddress(publicKey, this.from);
+
+            if (isKeyMatching && isFromAddressMatching) {
+                return true;
+            }
+        }
+
+        log.info("Transaction verification failed: no matching public key found.");
         return false;
     }
 }

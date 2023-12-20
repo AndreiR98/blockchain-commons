@@ -12,7 +12,6 @@ import uk.co.roteala.security.utils.HashingService;
 
 import java.security.SecureRandom;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 @Slf4j
@@ -22,12 +21,11 @@ public class MessengerUtils {
     public static Message deserialize(ByteBuf byteBuf) {
         byte[] bytes = new byte[byteBuf.readableBytes()];
         byteBuf.readBytes(bytes);
+        log.info("Bytes:{}", byteBuf.readableBytes());
 
         try {
             String messageWrapperString = SerializationUtils.deserialize(bytes);
             ReferenceCountUtil.release(byteBuf);
-
-            log.info("BytesHex:{}", messageWrapperString);
 
             ObjectMapper objectMapper = new ObjectMapper();
             Message messageWrapper = objectMapper.readValue(messageWrapperString, Message.class);
@@ -47,14 +45,12 @@ public class MessengerUtils {
     }
 
     private static Message defaultMessage() {
-        // Provide a default message if deserialization fails
-        // You may want to customize this based on your needs
         return new Message() {
         };
     }
 
-    public List<ByteBuf> createChunks(BasicModel model, EventTypes eventTypes, EventActions eventActions) {
-        byte[] availableBytes = SerializationUtils.serialize(modelToString(model));
+    public List<ByteBuf> createChunks(MessageTemplate template) {
+        byte[] availableBytes = SerializationUtils.serialize(modelToString(template.getMessage()));
         final int totalMessageSize = availableBytes.length;
 
         List<ByteBuf> byteBufs = new ArrayList<>();
@@ -68,34 +64,36 @@ public class MessengerUtils {
         MessageKey key = new MessageKey();
         key.setMessageId(messageId);
         key.setTotalBytes(totalMessageSize);
-        key.setEventTypes(eventTypes);
-        key.setAction(eventActions);
+        key.setEventType(template.getEventType());
+        key.setEventAction(template.getEventAction());
 
         while (offset < totalMessageSize) {
-            // Create chunks
             MessageChunk chunk = new MessageChunk();
             chunk.setMessageId(messageId);
             chunk.setChunkNumber(chunkNumber);
 
             List<Byte> byteList = new ArrayList<>();
-
             int chunkSizeCounter = 0;
 
-            // Add bytes to the chunk until reaching DEFAULT_CHUNK_SIZE or end of availableBytes
-            while (offset < totalMessageSize && Unpooled.copiedBuffer(serializeMessage(chunk)).readableBytes() < DEFAULT_CHUNK_SIZE) {
+            while (offset < totalMessageSize) {
                 byteList.add(availableBytes[offset]);
+                offset++;
+                chunkSizeCounter++;
+
                 chunk.setHexedBytes(formatToBytes(byteList));
-
-
-                //if(Unpooled.copiedBuffer(serializeMessage(chunk)).readableBytes() < DEFAULT_CHUNK_SIZE) {
-                    offset++;
-                    chunkSizeCounter++;
-                //}
                 chunk.setChunkSize(chunkSizeCounter);
+
+                byte[] serializedChunk = serializeMessage(chunk);
+                ByteBuf buffer = Unpooled.copiedBuffer(serializedChunk);
+                int size = buffer.readableBytes();
+                buffer.release(); // Release the ByteBuf
+
+                if (size >= DEFAULT_CHUNK_SIZE) {
+                    break;
+                }
             }
 
             byteBufs.add(Unpooled.copiedBuffer(serializeMessage(chunk)));
-            System.out.println("Offset: " + offset + ", TotalMessageSize: " + chunk.getHexedBytes());
             chunkNumber++;
         }
 
@@ -104,6 +102,7 @@ public class MessengerUtils {
         byte[] keyBytes = serializeMessage(key);
         ByteBuf keyBuff = Unpooled.copiedBuffer(keyBytes);
         byteBufs.add(keyBuff);
+        //keyBuff.release();
 
         return byteBufs;
     }

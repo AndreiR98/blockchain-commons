@@ -72,6 +72,6 @@ public class Transaction extends BasicModel implements Serializable {
             throw new RuntimeException(e);
         }
 
-        return HashingService.bytesToHexString(HashingService.computeSHA3(jsonString));
+        return "0x"+HashingService.computeSHA3(jsonString);
     }
 }

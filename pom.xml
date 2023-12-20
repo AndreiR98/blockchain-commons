@@ -18,10 +18,10 @@
   <description>Roteala Blockchain Commons</description>
 
   <properties>
-    <revision>3.0.0-IMPROVED</revision>
+    <revision>3.1.0-SNAPSHOT</revision>
     <java.version>11</java.version>
     <johnzon.version>1.2.21</johnzon.version>
-    <rocks.db.version>8.6.7</rocks.db.version>
+    <rocks.db.version>8.8.1</rocks.db.version>
     <bouncy.version>1.76</bouncy.version>
     <netty-all.version>4.1.101.Final</netty-all.version>
     <bson.version>4.11.0</bson.version>
@@ -53,6 +53,12 @@
     <dependency>
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-starter</artifactId>
+    </dependency>
+
+    <dependency>
+      <groupId>io.reactivex.rxjava3</groupId>
+      <artifactId>rxjava</artifactId>
+      <version>3.1.8</version>
     </dependency>
 
     <dependency>

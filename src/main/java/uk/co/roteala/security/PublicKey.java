@@ -1,22 +1,34 @@
 package uk.co.roteala.security;
 
-import lombok.Builder;
-import lombok.Setter;
+import lombok.*;
 import lombok.extern.slf4j.Slf4j;
+import org.bouncycastle.asn1.sec.SECNamedCurves;
+import org.bouncycastle.asn1.x9.X9ECParameters;
+import org.bouncycastle.asn1.x9.X9IntegerConverter;
+import org.bouncycastle.math.ec.ECAlgorithms;
+import org.bouncycastle.math.ec.ECCurve;
 import org.bouncycastle.math.ec.ECPoint;
+import uk.co.roteala.common.RawTransaction;
+import uk.co.roteala.common.Signature;
+import uk.co.roteala.core.Blockchain;
+import uk.co.roteala.core.rlp.Numeric;
+import uk.co.roteala.core.rlp.RlpEncoder;
+import uk.co.roteala.core.rlp.RlpUtils;
 import uk.co.roteala.security.utils.CryptographyUtils;
 import uk.co.roteala.security.utils.HashingService;
 import uk.co.roteala.utils.Base58;
 
 import java.math.BigInteger;
+import java.nio.charset.StandardCharsets;
 import java.security.NoSuchAlgorithmException;
+import java.security.SignatureException;
 
-@Builder
 @Slf4j
+@Builder
 public class PublicKey implements PubKey{
 
     @Setter
-    private ECPoint ecPoint;
+    private final ECPoint ecPoint;
 
     @Override
     public KeyType getType() {
@@ -60,15 +72,15 @@ public class PublicKey implements PubKey{
      * */
     public String getPubKeyHash() {
 
-        final byte[] bX = this.encodedX();
-        final byte[] bY = this.encodedY();
+//        final byte[] bX = this.encodedX();
+//        final byte[] bY = this.encodedY();
+//
+//        byte[] newBxBy = new byte[bX.length + bY.length];
+//        System.arraycopy(bX, 0, newBxBy, 0, bX.length);
+//        System.arraycopy(bY, 0, newBxBy, bX.length, bY.length);
+        final byte[] address = this.toAddress().getBytes(StandardCharsets.UTF_8);
 
-        byte[] newBxBy = new byte[bX.length + bY.length];
-        System.arraycopy(bX, 0, newBxBy, 0, bX.length);
-        System.arraycopy(bY, 0, newBxBy, bX.length, bY.length);
-
-        return CryptographyUtils
-                .bytesToHexString(HashingService.doubleSHA256(newBxBy));
+        return HashingService.computeSHA3(HashingService.computeSHA3(this.toAddress()));
     }
 
     private String generateAddress() {

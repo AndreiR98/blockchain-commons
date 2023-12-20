@@ -1,2 +1,13 @@
 
-]	java:S125"<This block of commented-out lines of code should be removed.(á§üúÿÿÿÿ8¤¥àõ´1
+q
+java:S1128"ORemove this unused import 'com.fasterxml.jackson.core.JsonProcessingException'.(ßÔïÇûÿÿÿÿ8ä²¼ŸÈ1
+j
+java:S1128"HRemove this unused import 'org.bouncycastle.asn1.x9.X9IntegerConverter'.(ÁöÑúùÿÿÿÿ8ä²¼ŸÈ1
+d
+java:S1128	"BRemove this unused import 'org.bouncycastle.math.ec.ECAlgorithms'.(ÂâĞ¯ÿÿÿÿÿ8ä²¼ŸÈ1
+b
+java:S1128"@Remove this unused import 'uk.co.roteala.common.SignatureModel'.(Øœ–¢øÿÿÿÿ8ä²¼ŸÈ1
+W
+java:S1128":Remove this unused import 'uk.co.roteala.security.PubKey'.(İöåÉ8ä²¼ŸÈ1
+T
+java:S1128"7Remove this unused import 'uk.co.roteala.utils.Base58'.(û˜¾¡8ä²¼ŸÈ1
