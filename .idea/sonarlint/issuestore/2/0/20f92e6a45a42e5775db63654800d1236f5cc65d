@@ -1,8 +1,9 @@
 
-`	java:S112>"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òéüÿÿÿÿ
+e
+java:S1128"HRemove this unused import 'com.fasterxml.jackson.databind.ObjectMapper'.(´‘¨™8ûş‹ÜÈ1
 v
-java:S1128"TRemove this unused import 'com.fasterxml.jackson.databind.annotation.JsonSerialize'.(ÖÎèöúÿÿÿÿ8£ÿÙÂ1
+java:S1128"TRemove this unused import 'com.fasterxml.jackson.databind.annotation.JsonSerialize'.(ÖÎèöúÿÿÿÿ8ûş‹ÜÈ1
 a
-java:S1128"?Remove this unused import 'uk.co.roteala.common.monetary.Coin'.(£‰ƒúÿÿÿÿ8¤ÿÙÂ1
+java:S1128"?Remove this unused import 'uk.co.roteala.common.monetary.Coin'.(£‰ƒúÿÿÿÿ8ûş‹ÜÈ1
 j
-java:S1128	"HRemove this unused import 'uk.co.roteala.common.monetary.CoinConverter'.(É ì¿øÿÿÿÿ8¤ÿÙÂ1
+java:S1128	"HRemove this unused import 'uk.co.roteala.common.monetary.CoinConverter'.(É ì¿øÿÿÿÿ8ûş‹ÜÈ1

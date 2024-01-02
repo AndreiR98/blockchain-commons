@@ -21,6 +21,6 @@ public class MempoolTransaction implements Message {
     private String address;
     @Override
     public EventTypes getMessageType() {
-        return EventTypes.MEMPOOL;
+        return EventTypes.MEMPOOL_TRANSACTION;
     }
 }

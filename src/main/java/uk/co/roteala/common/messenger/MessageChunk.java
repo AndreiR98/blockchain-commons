@@ -23,6 +23,11 @@ public class MessageChunk extends Message{
     }
 
     @Override
+    public void setHandler(HandlerType handlerType) {
+        super.setHandler(handlerType);
+    }
+
+    @Override
     public MessageType getMessageType() {
         return super.getMessageType();
     }

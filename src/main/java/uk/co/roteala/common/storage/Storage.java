@@ -1,10 +1,7 @@
 package uk.co.roteala.common.storage;
 
-import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
-import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.apache.commons.lang3.SerializationUtils;
 import org.rocksdb.*;
 import org.springframework.stereotype.Repository;
 import uk.co.roteala.common.BasicModel;
@@ -28,7 +25,57 @@ public class Storage implements KeyValueStorage {
     public Storage(StorageTypes storageType, RocksDB rocksDB, List<ColumnFamilyHandle> columnFamilyHandles) {
         this.storageType = storageType;
         this.rocksDB = rocksDB;
-        this. columnFamilyHandles = columnFamilyHandles;
+        this.columnFamilyHandles = columnFamilyHandles;
+    }
+
+    protected RocksDB getRocksDB() {
+        return this.rocksDB;
+    }
+
+    protected RocksIterator getIterator() {
+        return this.rocksDB.newIterator();
+    }
+
+    protected RocksIterator getIterator(ColumnFamilyTypes columnFamilyTypes) {
+        return this.rocksDB.newIterator(getHandler(columnFamilyTypes));
+    }
+    @Override
+    public boolean putIfAbsent(boolean persistent, byte[] key, BasicModel value) {
+        if(has(key)) {
+            return false;
+        }
+
+        put(persistent, key, value);
+        return true;
+    }
+
+    @Override
+    public boolean putIfAbsent(boolean persistent, ColumnFamilyTypes columnFamilyTypes, byte[] key, BasicModel value) {
+        if (has(columnFamilyTypes, key)) {
+            return false;
+        }
+        put(persistent, columnFamilyTypes, key, value);
+        return true;
+    }
+
+
+    @Override
+    public boolean putIfAbsent(ColumnFamilyTypes columnFamilyTypes, byte[] key, BasicModel value) {
+        if (has(columnFamilyTypes, key)) {
+            return false;
+        }
+        put(columnFamilyTypes, key, value);
+        return true;
+    }
+
+    @Override
+    public boolean putIfAbsent(byte[] key, BasicModel value) {
+        if(has(key)) {
+            return false;
+        }
+
+        put(key, value);
+        return true;
     }
 
     /**

@@ -9,6 +9,8 @@ import lombok.*;
 import lombok.extern.slf4j.Slf4j;
 import uk.co.roteala.common.monetary.Coin;
 import uk.co.roteala.common.monetary.CoinConverter;
+import uk.co.roteala.exceptions.SerializationException;
+import uk.co.roteala.exceptions.errorcodes.SerializationErrorCode;
 import uk.co.roteala.security.utils.HashingService;
 
 import java.io.Serializable;
@@ -43,6 +45,11 @@ public class Transaction extends BasicModel implements Serializable {
     @JsonInclude(JsonInclude.Include.NON_NULL)
     private SignatureModel signature;
 
+    @Override
+    public String serialize() {
+        return super.serialize();
+    }
+
     @JsonIgnore
     public String computeHash() {
         Map<String, Object> map = new HashMap<>();
@@ -62,14 +69,14 @@ public class Transaction extends BasicModel implements Serializable {
 
         Map<String, Object> sortedMap = new TreeMap<>(map);
 
-        ObjectMapper objectMapper = new ObjectMapper();
+        ObjectMapper objectMapper = super.mapper;
 
         String jsonString = null;
 
         try {
             jsonString = objectMapper.writeValueAsString(sortedMap);
         } catch (Exception e) {
-            throw new RuntimeException(e);
+            throw new SerializationException(SerializationErrorCode.SERIALIZATION_FAILED);
         }
 
         return "0x"+HashingService.computeSHA3(jsonString);

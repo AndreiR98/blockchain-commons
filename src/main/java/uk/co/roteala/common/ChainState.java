@@ -26,4 +26,9 @@ public class ChainState extends BasicModel {
     private Integer chainId;
     private Integer netVersion;
     private boolean allowEmptyMining;
+
+    @Override
+    public String serialize() {
+        return super.serialize();
+    }
 }

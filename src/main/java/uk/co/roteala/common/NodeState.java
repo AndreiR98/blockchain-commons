@@ -15,4 +15,9 @@ public class NodeState extends BasicModel implements Serializable {
     private Integer remainingBlocks;
     private Integer lastBlockIndex;
     private long updatedAt;
+
+    @Override
+    public String serialize() {
+        return super.serialize();
+    }
 }

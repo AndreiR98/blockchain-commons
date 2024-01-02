@@ -1,5 +1,6 @@
 package uk.co.roteala.common.messenger;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import lombok.*;
 
@@ -21,6 +22,11 @@ public class MessageKey extends Message{
     }
 
     @Override
+    public void setHandler(HandlerType handlerType) {
+        super.setHandler(handlerType);
+    }
+
+    @Override
     public MessageType getMessageType() {
         return super.getMessageType();
     }
@@ -29,4 +35,11 @@ public class MessageKey extends Message{
     public String getMessageId() {
         return super.getMessageId();
     }
+
+    @Override
+    public HandlerType getHandler() {
+        return super.getHandler();
+    }
+
+
 }

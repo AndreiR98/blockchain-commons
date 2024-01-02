@@ -7,6 +7,8 @@ import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import lombok.*;
 import uk.co.roteala.common.monetary.Coin;
 import uk.co.roteala.common.monetary.CoinConverter;
+import uk.co.roteala.exceptions.SerializationException;
+import uk.co.roteala.exceptions.errorcodes.SerializationErrorCode;
 import uk.co.roteala.security.utils.HashingService;
 
 import java.io.Serializable;
@@ -37,6 +39,11 @@ public class BlockHeader extends BasicModel implements Serializable {
     private Integer index;
     private Integer difficulty;
 
+    @Override
+    public String serialize() {
+        return super.serialize();
+    }
+
     @JsonIgnore
     public void setHash() {
         Map<String, Object> map = new HashMap<>();
@@ -53,13 +60,12 @@ public class BlockHeader extends BasicModel implements Serializable {
 
         Map<String, Object> sortedMap = new TreeMap<>(map);
 
-        ObjectMapper objectMapper = new ObjectMapper();
         String jsonString = null;
 
         try {
-            jsonString = objectMapper.writeValueAsString(sortedMap);
+            jsonString = super.mapper.writeValueAsString(sortedMap);
         }catch (Exception e) {
-            throw new RuntimeException(e);
+            throw new SerializationException(SerializationErrorCode.SERIALIZATION_FAILED);
         }
 
         this.hash = HashingService.bytesToHexString(HashingService.doubleSHA256(jsonString.getBytes()));

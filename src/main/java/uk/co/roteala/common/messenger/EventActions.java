@@ -1,6 +1,12 @@
 package uk.co.roteala.common.messenger;
 
 public enum EventActions {
+    /**
+     * If the mempool or transasaction is valid then append it and send response back to the broker or node
+     * */
+    VERIFY_THEN_APPEND,
+    RESPONSE,
+
     DEFAULT,
     /**
      * Ask the node to verify the specific model

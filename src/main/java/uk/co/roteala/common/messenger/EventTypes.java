@@ -8,9 +8,11 @@ public enum EventTypes implements Serializable {
     BLOCK,
     STATECHAIN,
     ACCOUNT,
-    MEMPOOL,
+    MEMPOOL_TRANSACTION,
+    MEMPOOL_BLOCK,
     TRANSACTION,
     NODESTATE,
     BLOCKHEADER,
+    RESPONSE,
     DEFAULT
 }

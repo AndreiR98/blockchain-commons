@@ -2,15 +2,10 @@ package uk.co.roteala.common.storage;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.google.common.base.Utf8;
 import org.apache.commons.lang3.SerializationUtils;
-import org.rocksdb.ColumnFamilyHandle;
-import org.rocksdb.WriteOptions;
 import uk.co.roteala.common.BasicModel;
 import uk.co.roteala.exceptions.StorageException;
 import uk.co.roteala.exceptions.errorcodes.StorageErrorCode;
-
-import java.nio.charset.StandardCharsets;
 
 public interface KeyValueStorage {
     BasicModel get(byte[] key);
@@ -33,12 +28,20 @@ public interface KeyValueStorage {
 
     void put(boolean persistent, byte[] key, BasicModel value);
 
+    boolean putIfAbsent(boolean persistent, byte[] key, BasicModel value);
+
+    boolean putIfAbsent(boolean persistent, ColumnFamilyTypes columnFamilyTypes, byte[] key, BasicModel value);
+
+    boolean putIfAbsent(ColumnFamilyTypes columnFamilyTypes, byte[] key, BasicModel value);
+
+    boolean putIfAbsent(byte[] key, BasicModel value);
+
     ObjectMapper OBJECT_MAPPER = new ObjectMapper();
 
     default byte[] serializer(BasicModel model) {
         try {
             String jsonData = OBJECT_MAPPER.writeValueAsString(model);
-            return jsonData.getBytes(StandardCharsets.UTF_8);
+            return SerializationUtils.serialize(jsonData);
         } catch (JsonProcessingException e) {
             throw new StorageException(StorageErrorCode.SERIALIZATION);
         }
@@ -46,7 +49,8 @@ public interface KeyValueStorage {
 
     default BasicModel deserializer(byte[] value) throws StorageException {
         try {
-            return OBJECT_MAPPER.readValue(new String(value, StandardCharsets.UTF_8), BasicModel.class);
+
+            return OBJECT_MAPPER.readValue((String) SerializationUtils.deserialize(value), BasicModel.class);
         } catch (JsonProcessingException e) {
             throw new StorageException(StorageErrorCode.SERIALIZATION);
         }

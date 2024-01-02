@@ -4,6 +4,8 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.*;
+import uk.co.roteala.exceptions.SerializationException;
+import uk.co.roteala.exceptions.errorcodes.SerializationErrorCode;
 
 import java.util.*;
 
@@ -30,6 +32,11 @@ public class Block extends BasicModel {
     private BlockStatus status;
 
     @JsonIgnore
+    public String serialize() {
+        return super.serialize();
+    }
+
+    @JsonIgnore
     public String getHash() {
         final String hash = this.header.getHash();
 
@@ -41,11 +48,10 @@ public class Block extends BasicModel {
 
         this.getTransactions().forEach(sortedMap::add);
 
-        ObjectMapper objectMapper = new ObjectMapper();
         String jsonString = null;
 
         try {
-            jsonString = objectMapper.writeValueAsString(sortedMap);
+            jsonString = super.mapper.writeValueAsString(sortedMap);
         }catch (Exception e) {
             throw new RuntimeException(e);
         }

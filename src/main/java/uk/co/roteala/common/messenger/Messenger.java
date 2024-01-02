@@ -1,16 +1,21 @@
 package uk.co.roteala.common.messenger;
 
 import io.reactivex.rxjava3.functions.Consumer;
+import io.vertx.core.buffer.Buffer;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.lang3.SerializationUtils;
 import org.springframework.stereotype.Component;
 import reactor.core.publisher.Flux;
+import reactor.core.publisher.Mono;
 import reactor.core.publisher.Signal;
 import reactor.core.publisher.Sinks;
 import reactor.netty.Connection;
 import uk.co.roteala.net.ConnectionsStorage;
 
 import java.time.Duration;
+import java.util.List;
+import java.util.stream.Collectors;
 
 
 @Slf4j
@@ -18,14 +23,6 @@ import java.time.Duration;
 @RequiredArgsConstructor
 public class Messenger implements Consumer<Flux<MessageTemplate>> {
     private final ConnectionsStorage connections;
-    private final Sinks.Many<MessageTemplate> sink;
-    /**
-     * Send a message to a receiving group
-     * */
-    public void send(MessageTemplate template, ReceivingGroup group) {
-        template.setGroup(group);
-        sink.tryEmitNext(template);
-    }
 
     @Override
     public void accept(Flux<MessageTemplate> messageTemplateFlux) {
@@ -36,7 +33,6 @@ public class Messenger implements Consumer<Flux<MessageTemplate>> {
 
     private void processor(Signal<MessageTemplate> templateSignal) {
         final MessageTemplate template = templateSignal.get();
-        log.info("Processing:{}", template);
 
         switch (template.getGroup()) {
             case BROKER:
@@ -51,11 +47,15 @@ public class Messenger implements Consumer<Flux<MessageTemplate>> {
     }
 
     private void sendToBroker(MessageTemplate template) {
-        this.connections.getBrokerConnection()
-                .outbound()
-                .sendObject(Flux.fromStream(MessengerUtils.createChunks(template).parallelStream())
-                        .delayElements(Duration.ofMillis(120)))
-                .then()
+        List<String> serializedChunks = MessengerUtils.createChunks(template)
+                .stream()
+                .map(s -> s+MessengerUtils.delimiter)
+                .collect(Collectors.toList());
+
+        Flux.fromIterable(serializedChunks)
+                .flatMap(chunk -> Mono.just(this.connections.getBrokerConnection())
+                        .doOnNext(netSocket -> netSocket.write(Buffer.buffer(chunk)))
+                ).then()
                 .subscribe();
     }
 
@@ -64,12 +64,18 @@ public class Messenger implements Consumer<Flux<MessageTemplate>> {
     private void sendToPeers(MessageTemplate template) {}
 
     private void sendToClients(MessageTemplate template) {
-        for(Connection connection : this.connections.getClientConnections()) {
-            connection.outbound()
-                    .sendObject(Flux.fromStream(MessengerUtils.createChunks(template).parallelStream())
-                            .delayElements(Duration.ofMillis(120)))
-                    .then()
-                    .subscribe();
-        }
+        log.info("Prepare to send: {}", template);
+
+        List<String> serializedChunks = MessengerUtils.createChunks(template)
+                .stream()
+                .map(s -> (s+MessengerUtils.delimiter))
+                .collect(Collectors.toList());
+
+        Flux.fromIterable(serializedChunks)
+                .flatMap(chunk -> Flux.fromIterable(this.connections.getClientConnections())
+                        .doOnNext(netSocket -> netSocket.write(Buffer.buffer(chunk)))
+                )
+                .then()
+                .subscribe();
     }
 }

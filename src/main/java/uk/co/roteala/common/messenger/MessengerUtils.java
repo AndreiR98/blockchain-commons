@@ -1,13 +1,12 @@
 package uk.co.roteala.common.messenger;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import io.netty.buffer.ByteBuf;
-import io.netty.buffer.Unpooled;
-import io.netty.util.ReferenceCountUtil;
 import lombok.experimental.UtilityClass;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.SerializationUtils;
 import uk.co.roteala.common.BasicModel;
+import uk.co.roteala.exceptions.SerializationException;
+import uk.co.roteala.exceptions.errorcodes.SerializationErrorCode;
 import uk.co.roteala.security.utils.HashingService;
 
 import java.security.SecureRandom;
@@ -17,17 +16,13 @@ import java.util.List;
 @Slf4j
 @UtilityClass
 public class MessengerUtils {
-    private final static Integer DEFAULT_CHUNK_SIZE = 2046;
-    public static Message deserialize(ByteBuf byteBuf) {
-        byte[] bytes = new byte[byteBuf.readableBytes()];
-        byteBuf.readBytes(bytes);
-        log.info("Bytes:{}", byteBuf.readableBytes());
+    private final static Integer DEFAULT_CHUNK_SIZE = 1024;
 
+    public final static String delimiter = "\n";
+
+    private static final ObjectMapper objectMapper = new ObjectMapper();
+    public static Message deserialize(String messageWrapperString) {
         try {
-            String messageWrapperString = SerializationUtils.deserialize(bytes);
-            ReferenceCountUtil.release(byteBuf);
-
-            ObjectMapper objectMapper = new ObjectMapper();
             Message messageWrapper = objectMapper.readValue(messageWrapperString, Message.class);
 
             if (messageWrapper instanceof MessageKey) {
@@ -35,27 +30,26 @@ public class MessengerUtils {
             } else if (messageWrapper instanceof MessageChunk) {
                 return (MessageChunk) messageWrapper;
             } else {
-                // Handle the case where the deserialized message is neither MessageKey nor MessageChunk
                 return defaultMessage();
             }
-
         } catch (Exception e) {
-            return defaultMessage();
+            log.info("Error:{}", e);
+            return null;
         }
     }
 
     private static Message defaultMessage() {
+        log.info("Default message!");
         return new Message() {
         };
     }
 
-    public List<ByteBuf> createChunks(MessageTemplate template) {
+    public List<String> createChunks(MessageTemplate template) {
         byte[] availableBytes = SerializationUtils.serialize(modelToString(template.getMessage()));
         final int totalMessageSize = availableBytes.length;
 
-        List<ByteBuf> byteBufs = new ArrayList<>();
+        List<String> messageChunks = new ArrayList<>();
 
-        // Message uniqueID
         final String messageId = generateMessageId();
 
         int chunkNumber = 0;
@@ -83,28 +77,23 @@ public class MessengerUtils {
                 chunk.setHexedBytes(formatToBytes(byteList));
                 chunk.setChunkSize(chunkSizeCounter);
 
-                byte[] serializedChunk = serializeMessage(chunk);
-                ByteBuf buffer = Unpooled.copiedBuffer(serializedChunk);
-                int size = buffer.readableBytes();
-                buffer.release(); // Release the ByteBuf
+                byte[] serializedChunk = SerializationUtils.serialize(serializeMessage(chunk));
+                int size = serializedChunk.length;
 
                 if (size >= DEFAULT_CHUNK_SIZE) {
                     break;
                 }
             }
 
-            byteBufs.add(Unpooled.copiedBuffer(serializeMessage(chunk)));
+            messageChunks.add(serializeMessage(chunk));
             chunkNumber++;
         }
 
         key.setTotalChunks(chunkNumber);
 
-        byte[] keyBytes = serializeMessage(key);
-        ByteBuf keyBuff = Unpooled.copiedBuffer(keyBytes);
-        byteBufs.add(keyBuff);
-        //keyBuff.release();
+        messageChunks.add(serializeMessage(key));
 
-        return byteBufs;
+        return messageChunks;
     }
 
     private String formatToBytes(List<Byte> bytesList) {
@@ -117,14 +106,13 @@ public class MessengerUtils {
         return HashingService.bytesToHexString(bytesData);
     }
 
-    private byte[] serializeMessage(Message message) {
+    public String serializeMessage(Message message) {
         try {
             ObjectMapper mapper = new ObjectMapper();
 
-            return SerializationUtils.serialize(mapper.writeValueAsString(message));
+            return mapper.writeValueAsString(message);
         } catch (Exception e) {
-            log.error("Failed to serialize message:{}", message);
-            return null;
+            throw new SerializationException(SerializationErrorCode.SERIALIZATION_FAILED);
         }
     }
 

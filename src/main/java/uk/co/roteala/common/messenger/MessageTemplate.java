@@ -18,6 +18,7 @@ public class MessageTemplate  {
     private EventTypes eventType;
     private Connection owner;
     private ReceivingGroup group;
+    private HandlerType handler;
     private String messageId;
 
     public static final MessageTemplate emptyMessage() {

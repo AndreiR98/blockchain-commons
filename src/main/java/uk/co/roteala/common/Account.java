@@ -26,8 +26,15 @@ public class Account extends BasicModel implements Serializable {
     private String nonce;
     private String balance;
     @JsonInclude(JsonInclude.Include.NON_NULL)
-    private String virtualBalance;//keep account changes
+    private VirtualBalance virtualBalance;//keep account changes
+    private List<String> transactionsIn;
+    private List<String> transactionsOut;
     private List<Coin> coins;
+
+    @Override
+    public String serialize() {
+        return super.serialize();
+    }
 
     @JsonIgnore
     public BigInteger toBigInt() {

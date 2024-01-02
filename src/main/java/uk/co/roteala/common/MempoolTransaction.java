@@ -18,15 +18,14 @@ import java.math.BigInteger;
 import java.nio.charset.StandardCharsets;
 import java.util.*;
 
-@Slf4j
 @Data
 @Builder
-@EqualsAndHashCode
+@EqualsAndHashCode(callSuper = false)
 @NoArgsConstructor
 @AllArgsConstructor
 @JsonTypeName(MempoolTransaction.TRANSACTION_TYPE)
 public class MempoolTransaction extends BasicModel {
-    static final String TRANSACTION_TYPE = "MEMPOOLTRANSACITON";
+    static final String TRANSACTION_TYPE = "MEMPOOLTRANSACTION";
 
     private String hash;
     private String from;
@@ -42,11 +41,6 @@ public class MempoolTransaction extends BasicModel {
     private String pubKeyHash;
     @JsonInclude(JsonInclude.Include.NON_NULL)
     private SignatureModel signature;
-
-    @JsonIgnore
-    private static ObjectMapper getMapper() {
-        return new ObjectMapper();
-    }
 
     @JsonIgnore
     private Map<String, Object> createTransactionMap(boolean includeHash) {
@@ -68,6 +62,11 @@ public class MempoolTransaction extends BasicModel {
         return map;
     }
 
+    @Override
+    public String serialize() {
+        return super.serialize();
+    }
+
     @JsonIgnore
     public byte[] getKey() {
         return this.hash.getBytes(StandardCharsets.UTF_8);
@@ -76,12 +75,11 @@ public class MempoolTransaction extends BasicModel {
     @JsonIgnore
     public static MempoolTransaction create(String rawData) {
         try {
-            ObjectMapper mapper = getMapper();
+            ObjectMapper mapper = new ObjectMapper();
             MempoolTransaction mempoolTransaction = mapper.readValue(rawData, MempoolTransaction.class);
             mempoolTransaction.setStatus(TransactionStatus.PENDING);
             return mempoolTransaction;
         } catch (Exception e) {
-            log.error("Error creating MempoolTransaction: {}", e.getMessage());
             throw new SerializationException(SerializationErrorCode.DESERIALIZATION_FAILED);
         }
     }
@@ -89,11 +87,10 @@ public class MempoolTransaction extends BasicModel {
     @JsonIgnore
     public String computeHash(boolean mode) {
         try {
-            ObjectMapper objectMapper = getMapper();
+            ObjectMapper objectMapper = super.mapper;
             String jsonString = objectMapper.writeValueAsString(createTransactionMap(mode));
             return "0x" + HashingService.bytesToHexString(HashingService.sha256Hash(jsonString.getBytes()));
         } catch (JsonProcessingException e) {
-            log.error("Error in computing hash: {}", e.getMessage());
             return null;
         }
     }
@@ -101,11 +98,10 @@ public class MempoolTransaction extends BasicModel {
     @JsonIgnore
     public String computeSigningHash() {
         try {
-            ObjectMapper objectMapper = getMapper();
+            ObjectMapper objectMapper = super.mapper;
             String jsonString = objectMapper.writeValueAsString(createTransactionMap(true));
             return HashingService.bytesToHexString(HashingService.computeKeccak(jsonString.getBytes()));
         } catch (Exception e) {
-            log.error("Error computing signing hash: {}", e.getMessage());
             throw new SerializationException(SerializationErrorCode.SERIALIZATION_FAILED);
         }
     }
@@ -113,11 +109,10 @@ public class MempoolTransaction extends BasicModel {
     @JsonIgnore
     public String computeJSONstring() {
         try {
-            ObjectMapper objectMapper = getMapper();
+            ObjectMapper objectMapper = super.mapper;
             String jsonString = objectMapper.writeValueAsString(createTransactionMap(true));
             return jsonString;
         } catch (Exception e) {
-            log.error("Error computing JSON string: {}", e.getMessage());
             throw new SerializationException(SerializationErrorCode.SERIALIZATION_FAILED);
         }
     }
@@ -125,12 +120,10 @@ public class MempoolTransaction extends BasicModel {
     @JsonIgnore
     public boolean verifyTransaction() {
         if (!Objects.equals(computeHash(false), this.hash)) {
-            log.info("Transaction verification failed: hash mismatch. {}/{}", computeHash(false), this.hash);
             return false;
         }
 
         if (!CryptographyUtils.isValidAddress(this.from) || !CryptographyUtils.isValidAddress(this.to)) {
-            log.info("Invalid addresses");
             return false;
         }
 
@@ -138,7 +131,6 @@ public class MempoolTransaction extends BasicModel {
         try {
             publicKeys = CryptographyUtils.recoverPublicKeys(this);
         } catch (Exception e) {
-            log.error("Error recovering public keys: {}", e.getMessage());
             return false;
         }
 
@@ -151,7 +143,6 @@ public class MempoolTransaction extends BasicModel {
             }
         }
 
-        log.info("Transaction verification failed: no matching public key found.");
         return false;
     }
 }
