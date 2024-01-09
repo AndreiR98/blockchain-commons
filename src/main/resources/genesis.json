@@ -1,7 +1,7 @@
 [
-  {"type": "ACCOUNT","address":"0x438d064a20ac5bf3bf1040e85ba273a4d7d6b374","nonce":"0x0","balance":"0x10F0CF064DD59200000", "coins": []},
-  {"type": "ACCOUNT","address":"0x88fBf5BC3c9A07Ff15b37cF525CC670C81C4ba78","nonce":"0x0","balance":"0x10F0CF064DD59200000", "coins": []},
-  {"type": "ACCOUNT","address":"0xf7d8ed6e248b655a8a46db555e1fd07723923481","nonce":"0x0","balance":"0x10F0CF064DD59200000", "coins": []},
-  {"type": "ACCOUNT","address":"0xb67bfb17aa1e61f09a2fb29f6bbf21a3db4ff5e9","nonce":"0x0","balance":"0x10F0CF064DD59200000", "coins": []},
-  {"type": "ACCOUNT","address":"0x8230d844e8464ebbab3ed6929f9bac084843fca1","nonce":"0x0","balance":"0x10F0CF064DD59200000", "coins": []}
+  {"type": "ACCOUNT","address":"0x3AcA08Cdbe8fc78DB236c3266Cc42607d937410F","nonce":0,"balance":5000000000000000000000, "virtual_balance":0, "transactions_in": [], "transactions_out": []},
+  {"type": "ACCOUNT","address":"0x88fBf5BC3c9A07Ff15b37cF525CC670C81C4ba78","nonce":0,"balance":5000000000000000000000, "virtual_balance":0, "transactions_in": [], "transactions_out": []},
+  {"type": "ACCOUNT","address":"0x211EF47972634Ea6a5d7F7b6B2033049FbD2AD55","nonce":0,"balance":5000000000000000000000, "virtual_balance":0, "transactions_in": [], "transactions_out": []},
+  {"type": "ACCOUNT","address":"0xb67bfb17aa1e61f09a2fb29f6bbf21a3db4ff5e9","nonce":0,"balance":3000000000000000000000, "virtual_balance":0, "transactions_in": [], "transactions_out": []},
+  {"type": "ACCOUNT","address":"0x8230d844e8464ebbab3ed6929f9bac084843fca1","nonce":0,"balance":500000000000000000000, "virtual_balance":0, "transactions_in": [], "transactions_out": []}
 ]

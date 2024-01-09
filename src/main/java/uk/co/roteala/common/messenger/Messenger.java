@@ -37,13 +37,37 @@ public class Messenger implements Consumer<Flux<MessageTemplate>> {
         switch (template.getGroup()) {
             case BROKER:
                 sendToBroker(template);
+                break;
             case SERVERS:
                 sendToServers(template);
+                break;
             case PEERS:
                 sendToPeers(template);
+                break;
             case CLIENTS:
                 sendToClients(template);
+                break;
+            case CLIENT:
+                sendToClient(template);
+                break;
+            case SERVER:
+                sendToServer(template);
         }
+    }
+
+    private void sendToServer(MessageTemplate template) {}
+
+    private void sendToClient(MessageTemplate template) {
+        List<String> serializedChunks = MessengerUtils.createChunks(template)
+                .stream()
+                .map(s -> s+MessengerUtils.delimiter)
+                .collect(Collectors.toList());
+
+        Flux.fromIterable(serializedChunks)
+                .flatMap(chunk -> Mono.just(template.getOwner())
+                        .doOnNext(netSocket -> netSocket.write(Buffer.buffer(chunk)))
+                ).then()
+                .subscribe();
     }
 
     private void sendToBroker(MessageTemplate template) {

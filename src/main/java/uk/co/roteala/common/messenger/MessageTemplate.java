@@ -1,5 +1,6 @@
 package uk.co.roteala.common.messenger;
 
+import io.vertx.core.net.NetSocket;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -16,7 +17,7 @@ public class MessageTemplate  {
     private EventActions eventAction;
     private BasicModel message;
     private EventTypes eventType;
-    private Connection owner;
+    private NetSocket owner;
     private ReceivingGroup group;
     private HandlerType handler;
     private String messageId;

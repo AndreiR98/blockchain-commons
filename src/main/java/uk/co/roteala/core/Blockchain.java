@@ -12,6 +12,8 @@ import uk.co.roteala.RlpString;
 import uk.co.roteala.common.*;
 import uk.co.roteala.common.monetary.Coin;
 import uk.co.roteala.common.storage.ColumnFamilyTypes;
+import uk.co.roteala.common.storage.Operator;
+import uk.co.roteala.common.storage.SearchField;
 import uk.co.roteala.common.storage.Storage;
 import uk.co.roteala.core.rlp.Numeric;
 import uk.co.roteala.core.rlp.RlpUtils;
@@ -37,6 +39,9 @@ public class Blockchain {
 
             stateStorage.put(true, ColumnFamilyTypes.STATE, Constants.DEFAULT_STATE_NAME
                     .getBytes(StandardCharsets.UTF_8), Constants.GENESIS_STATE);
+
+            stateStorage.put(true, ColumnFamilyTypes.NODE, Constants.DEFAULT_NODE_STATE
+                    .getBytes(StandardCharsets.UTF_8), Constants.NODE_STATE);
 
             setUpGenesisAccounts(stateStorage);
         }

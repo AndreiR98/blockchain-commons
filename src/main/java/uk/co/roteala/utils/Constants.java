@@ -1,10 +1,7 @@
 package uk.co.roteala.utils;
 
 import lombok.experimental.UtilityClass;
-import uk.co.roteala.common.Block;
-import uk.co.roteala.common.BlockHeader;
-import uk.co.roteala.common.BlockStatus;
-import uk.co.roteala.common.ChainState;
+import uk.co.roteala.common.*;
 import uk.co.roteala.common.monetary.Coin;
 import uk.co.roteala.common.monetary.Vault;
 
@@ -14,9 +11,11 @@ import java.util.List;
 
 @UtilityClass
 public class Constants {
-    public String DEFAULT_HASH = "0000000000000000000000000000000000000000000000000000000000000000";
+    public final String DEFAULT_HASH = "0000000000000000000000000000000000000000000000000000000000000000";
 
-    public String DEFAULT_STATE_NAME = "state_chain";
+    public final String DEFAULT_STATE_NAME = "state_chain";
+
+    public final String DEFAULT_NODE_STATE = "node_state";
 
     public static final String DEFAULT_NETWORK_VERSION = "0x1";
 
@@ -48,5 +47,11 @@ public class Constants {
             .chainId(7331)
             .netVersion(1)
             .allowEmptyMining(true)
+            .build();
+
+    public static final NodeState NODE_STATE = NodeState.builder()
+            .lastBlockIndex(0)
+            .remainingBlocks(0)
+            .updatedAt(System.currentTimeMillis())
             .build();
 }

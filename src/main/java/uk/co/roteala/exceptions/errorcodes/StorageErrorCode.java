@@ -13,7 +13,9 @@ public enum StorageErrorCode implements ErrorCode {
     STORAGE_FAILED("storage.008"),
     SERIALIZATION("storage.009"),
     DATA_ALREADY("storage.010"),
-    HANDLER_NOT_FOUND("storage.011");
+    HANDLER_NOT_FOUND("storage.011"),
+    IMMUTABILITY("storage.012"),
+    MODIFY_NON_EXISTANT("storage.013");
 
     StorageErrorCode(String key) {
         this.key = key;

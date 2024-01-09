@@ -28,6 +28,11 @@ public class ChainState extends BasicModel {
     private boolean allowEmptyMining;
 
     @Override
+    public String getHash() {
+        return Constants.DEFAULT_STATE_NAME;
+    }
+
+    @Override
     public String serialize() {
         return super.serialize();
     }

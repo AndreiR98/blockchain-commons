@@ -9,6 +9,7 @@ import uk.co.roteala.common.messenger.Response;
 import uk.co.roteala.common.monetary.Vault;
 import uk.co.roteala.exceptions.SerializationException;
 import uk.co.roteala.exceptions.errorcodes.SerializationErrorCode;
+import uk.co.roteala.net.Peer;
 
 import java.io.Serializable;
 
@@ -25,6 +26,7 @@ import java.io.Serializable;
         @JsonSubTypes.Type(value = ChainState.class, name="STATECHAIN"),
         @JsonSubTypes.Type(value = NodeState.class, name="NODESTATE"),
         @JsonSubTypes.Type(value = Account.class, name="ACCOUNT"),
+        @JsonSubTypes.Type(value = Peer.class, name="PEER"),
         @JsonSubTypes.Type(value = PeersContainer.class, name="PEERSCONTAINER"),
         @JsonSubTypes.Type(value = Vault.class, name="VAULT"),
         @JsonSubTypes.Type(value = Response.class, name = "RESPONSE")
@@ -34,6 +36,9 @@ public abstract class BasicModel implements Serializable {
 
     @JsonIgnore
     protected ObjectMapper mapper = new ObjectMapper();
+
+    @JsonIgnore
+    public abstract String getHash();
 
     @JsonIgnore
     protected String serialize() {

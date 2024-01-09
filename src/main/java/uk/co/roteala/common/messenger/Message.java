@@ -3,6 +3,7 @@ package uk.co.roteala.common.messenger;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import io.vertx.core.net.NetSocket;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -30,5 +31,5 @@ public abstract class Message implements Serializable {
     protected MessageType messageType;
     @JsonIgnore
     private HandlerType handler;
-    private Connection owner;
+    private NetSocket owner;
 }

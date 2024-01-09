@@ -9,9 +9,11 @@ import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import lombok.*;
 import uk.co.roteala.common.monetary.Coin;
 import uk.co.roteala.common.monetary.CoinConverter;
+import uk.co.roteala.common.monetary.VirtualBalanceSign;
 
 import java.io.Serializable;
 import java.math.BigInteger;
+import java.util.ArrayList;
 import java.util.List;
 
 @Data
@@ -23,13 +25,38 @@ import java.util.List;
 @JsonNaming(PropertyNamingStrategies.SnakeCaseStrategy.class)
 public class Account extends BasicModel implements Serializable {
     private String address;
-    private String nonce;
-    private String balance;
+    private BigInteger nonce;
+    private BigInteger balance;
     @JsonInclude(JsonInclude.Include.NON_NULL)
-    private VirtualBalance virtualBalance;//keep account changes
+    private BigInteger virtualBalance;//keep account changes
     private List<String> transactionsIn;
     private List<String> transactionsOut;
-    private List<Coin> coins;
+
+    //@Override
+    public String getAddress() {
+        String hexString = this.address.startsWith("0x") ?
+                this.address.substring(2) : this.address;
+
+        // Convert to lowercase
+        return "0x" + hexString.toLowerCase();
+    }
+
+    public void setAddress(String address) {
+        String hexString = address.startsWith("0x") ?
+                address.substring(2) : address;
+
+        // Convert to lowercase
+        this.address =  "0x" + hexString.toLowerCase();
+    }
+
+    @Override
+    public String getHash() {
+        String hexString = this.address.startsWith("0x") ?
+                this.address.substring(2) : this.address;
+
+        // Convert to lowercase
+        return "0x" + hexString.toLowerCase();
+    }
 
     @Override
     public String serialize() {
@@ -37,20 +64,23 @@ public class Account extends BasicModel implements Serializable {
     }
 
     @JsonIgnore
-    public BigInteger toBigInt() {
-        return new BigInteger(this.balance, 16);
+    public void updateVirtualBalance(BigInteger amount, VirtualBalanceSign sign) {
+        BigInteger newValue;
+
+        if (sign == VirtualBalanceSign.PLUS) {
+            newValue = this.virtualBalance.add(amount);
+        } else if (sign == VirtualBalanceSign.MINUS) {
+            newValue = this.virtualBalance.subtract(amount);
+        } else {
+            throw new IllegalArgumentException("Invalid VirtualBalanceSign");
+        }
+        this.virtualBalance = newValue;
     }
 
-    @JsonIgnore
-    public void updateBalance(String amount) {
-        this.balance = new BigInteger(this.balance, 16)
-                .add(new BigInteger(amount, 16)).toString(16);
-    }
 
     @JsonIgnore
-    public void updateBalance(BigInteger amount) {
-        this.balance = new BigInteger(this.balance, 16)
-                .add(amount).toString(16);
+    public String toWei() {
+        return "0x"+this.balance.toString(16);
     }
 
     /**
@@ -60,8 +90,11 @@ public class Account extends BasicModel implements Serializable {
     public static final Account empty(String address) {
         return Account.builder()
                 .address(address)
-                .nonce("0x0")
-                .balance("0x0")
+                .nonce(BigInteger.ZERO)
+                .balance(BigInteger.ZERO)
+                .virtualBalance(BigInteger.ZERO)
+                .transactionsIn(new ArrayList<>())
+                .transactionsOut(new ArrayList<>())
                 .build();
     }
 }

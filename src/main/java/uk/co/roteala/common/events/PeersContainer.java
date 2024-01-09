@@ -15,4 +15,9 @@ import java.util.List;
 @JsonTypeName("PEERSCONTAINER")
 public class PeersContainer extends BasicModel implements Serializable {
     private List<String> peersList;
+
+    @Override
+    public String getHash() {
+        return null;
+    }
 }

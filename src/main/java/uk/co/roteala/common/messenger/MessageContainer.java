@@ -62,6 +62,7 @@ public class MessageContainer implements Serializable {
             messageTemplate.setEventAction(this.key.getEventAction());
             messageTemplate.setMessageId(this.key.getMessageId());
             messageTemplate.setHandler(this.key.getHandler());
+            messageTemplate.setOwner(this.key.getOwner());
         } catch (Exception e) {
             log.error("Failed to aggregate message!", e);
         }

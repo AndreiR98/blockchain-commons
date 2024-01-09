@@ -36,6 +36,8 @@ public interface KeyValueStorage {
 
     boolean putIfAbsent(byte[] key, BasicModel value);
 
+    void modify(ColumnFamilyTypes columnFamilyTypes, byte[] key, BasicModel model);
+
     ObjectMapper OBJECT_MAPPER = new ObjectMapper();
 
     default byte[] serializer(BasicModel model) {

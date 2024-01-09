@@ -1,14 +1,15 @@
 
 h
-java:S2259%"FA "NullPointerException" could be thrown; "template" is nullable here.(¢Êìí˚ˇˇˇˇ8˛≤ÕΩÃ1
+java:S2259%"FA "NullPointerException" could be thrown; "template" is nullable here.(¢Êìí˚ˇˇˇˇ8ÍÜ—∞Œ1
+£
+java:S1186:"ÄAdd a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(ÎÑ‘Ÿ¸ˇˇˇˇ8ÎÜ—∞Œ1
 û
-java:S1186>"ÄAdd a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(¿À—õ8ˇ≤ÕΩÃ1
+java:S1186V"ÄAdd a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(¿À—õ8ÎÜ—∞Œ1
 û
-java:S1186@"ÄAdd a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(Å„‹Ç8ˇ≤ÕΩÃ1
-g	java:S128*"LEnd this switch case with an unconditional break, return or throw statement.(±⁄ﬂR8Å≥ÕΩÃ1
-h	java:S128("LEnd this switch case with an unconditional break, return or throw statement.(—‡Ë¥8Å≥ÕΩÃ1
-h	java:S128&"LEnd this switch case with an unconditional break, return or throw statement.(ÏÿÉ∆8Å≥ÕΩÃ1
+java:S1186X"ÄAdd a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(Å„‹Ç8ÎÜ—∞Œ1
+Q
+java:S1172:"/Remove this unused method parameter "template".(ÎÑ‘Ÿ¸ˇˇˇˇ8ÌÜ—∞Œ1
 L
-java:S1172>"/Remove this unused method parameter "template".(¿À—õ8Ç≥ÕΩÃ1
+java:S1172V"/Remove this unused method parameter "template".(¿À—õ8ÓÜ—∞Œ1
 L
-java:S1172@"/Remove this unused method parameter "template".(Å„‹Ç8Ç≥ÕΩÃ1
+java:S1172X"/Remove this unused method parameter "template".(Å„‹Ç8ÔÜ—∞Œ1

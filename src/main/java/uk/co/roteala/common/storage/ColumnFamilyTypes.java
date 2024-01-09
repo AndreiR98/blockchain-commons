@@ -7,7 +7,8 @@ public enum ColumnFamilyTypes {
     TRANSACTIONS("transactions"),
     BLOCKS("blocks"),
     ACCOUNTS("accounts"),
-    STATE("state");
+    STATE("state"),
+    NODE("node");
 
     private String name;
 

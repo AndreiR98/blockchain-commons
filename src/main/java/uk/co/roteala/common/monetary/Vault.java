@@ -21,4 +21,9 @@ public class Vault extends BasicModel implements Serializable {
     private Integer numberOfCoins;
     private List<Coin> coins;
     private boolean closed;
+
+    @Override
+    public String getHash() {
+        return null;
+    }
 }

@@ -4,28 +4,34 @@ import lombok.NoArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.rocksdb.*;
 import org.springframework.stereotype.Repository;
-import uk.co.roteala.common.BasicModel;
+import uk.co.roteala.common.*;
+import uk.co.roteala.common.Transaction;
 import uk.co.roteala.exceptions.StorageException;
 import uk.co.roteala.exceptions.errorcodes.StorageErrorCode;
 import uk.co.roteala.net.Peer;
+import uk.co.roteala.utils.Constants;
 
 import java.nio.charset.StandardCharsets;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
 @Slf4j
 @Repository
 @NoArgsConstructor
-public class Storage implements KeyValueStorage {
+public class Storage extends AbstractStorageOperation implements KeyValueStorage {
 
     private StorageTypes storageType;
     private RocksDB rocksDB;
     private List<ColumnFamilyHandle> columnFamilyHandles;
 
+    private Pagination pagination;
+
     public Storage(StorageTypes storageType, RocksDB rocksDB, List<ColumnFamilyHandle> columnFamilyHandles) {
         this.storageType = storageType;
         this.rocksDB = rocksDB;
         this.columnFamilyHandles = columnFamilyHandles;
+        this.pagination = new Pagination();
     }
 
     protected RocksDB getRocksDB() {
@@ -256,6 +262,83 @@ public class Storage implements KeyValueStorage {
         }
     }
 
+    @Override
+    public synchronized void modify(ColumnFamilyTypes columnFamilyTypes, byte[] key, BasicModel model) {
+        RocksDB.loadLibrary();
+        try {
+            //Blocks must be immutable
+            if(model instanceof Block) {
+                throw new StorageException(StorageErrorCode.IMMUTABILITY);
+            }
+            //Modify method only applies to data already existent except account, peer, you can't modify a transaction
+            // or mempool transaction if they dont exists
+            //If non existant Transaction, MempoolTransaction, StateChain, NodeState dont modify
+            if((model instanceof Transaction) && !has(ColumnFamilyTypes.TRANSACTIONS, ((Transaction) model).getHash()
+                    .getBytes(StandardCharsets.UTF_8))) {
+                throw new StorageException(StorageErrorCode.MODIFY_NON_EXISTANT);
+            }
+
+            if((model instanceof MempoolTransaction) && !has(((MempoolTransaction) model).getHash()
+                    .getBytes(StandardCharsets.UTF_8))) {
+                throw new StorageException(StorageErrorCode.MODIFY_NON_EXISTANT);
+            }
+
+            if((model instanceof ChainState) && !has(ColumnFamilyTypes.STATE, Constants.DEFAULT_STATE_NAME
+                    .getBytes(StandardCharsets.UTF_8))) {
+                throw new StorageException(StorageErrorCode.MODIFY_NON_EXISTANT);
+            }
+
+            if((model instanceof NodeState) && !has(ColumnFamilyTypes.NODE, Constants.DEFAULT_NODE_STATE
+                    .getBytes(StandardCharsets.UTF_8))) {
+                throw new StorageException(StorageErrorCode.MODIFY_NON_EXISTANT);
+            }
+
+            if((model instanceof Transaction)) {
+                Transaction transaction = (Transaction) model;
+                this.rocksDB.put(getHandler(ColumnFamilyTypes.TRANSACTIONS), DefaultStorage.defaultPersistantWriteOptions(),
+                        transaction.getHash()
+                                .getBytes(StandardCharsets.UTF_8), serializer(transaction));
+            }
+
+            if((model instanceof MempoolTransaction)) {
+                MempoolTransaction mempoolTransaction = (MempoolTransaction) model;
+                this.rocksDB.put(getHandler(ColumnFamilyTypes.NODE), DefaultStorage.defaultPersistantWriteOptions(),
+                        mempoolTransaction.getHash()
+                                .getBytes(StandardCharsets.UTF_8), serializer(mempoolTransaction));
+             }
+
+            if((model instanceof ChainState)) {
+                ChainState chainState = (ChainState) model;
+                this.rocksDB.put(getHandler(ColumnFamilyTypes.NODE), DefaultStorage.defaultPersistantWriteOptions(),
+                        Constants.DEFAULT_STATE_NAME
+                                .getBytes(StandardCharsets.UTF_8), serializer(chainState));
+            }
+
+            if((model instanceof NodeState)) {
+                NodeState nodeState = (NodeState) model;
+                this.rocksDB.put(getHandler(ColumnFamilyTypes.NODE), DefaultStorage.defaultPersistantWriteOptions(),
+                        Constants.DEFAULT_NODE_STATE
+                                .getBytes(StandardCharsets.UTF_8), serializer(nodeState));
+            }
+
+            if((model) instanceof Account) {
+                Account account = (Account) model;
+                this.rocksDB.put(getHandler(ColumnFamilyTypes.ACCOUNTS), DefaultStorage.defaultPersistantWriteOptions(),
+                        account.getAddress()
+                                .getBytes(StandardCharsets.UTF_8), serializer(account));
+            }
+
+            if((model) instanceof Peer) {
+                Peer peer = (Peer) model;
+                this.rocksDB.put(DefaultStorage.defaultPersistantWriteOptions(),
+                        peer.getKey(), serializer(peer));
+                this.put(true, peer.getKey(), peer);
+            }
+        } catch (Exception e) {
+            log.error("Failed to modify model");
+        }
+    }
+
     /**
      * Adds a key-value pair to the RocksDB database in the default column family and ensures immediate data persistence.
      *
@@ -280,6 +363,45 @@ public class Storage implements KeyValueStorage {
         } catch (Exception e) {
             log.error("Error while adding to storage!", e);
         }
+    }
+
+    public List<String> asString() {
+        List<String> hashes = new ArrayList<>();
+
+        RocksDB.loadLibrary();
+
+        int pageSize = DEFAULT_PAGE_SIZE;
+        int pageNumber = this.pageNumber != null && this.pageNumber > 0 ? this.pageNumber : 1; // Ensure pageNumber is at least 1
+        int skip = pageSize * (pageNumber);
+
+        try (final RocksIterator iterator = this.getIterator(this.handler)) {
+
+            // Move the iterator to the start of the page
+            for (int i = 0; i < skip && iterator.isValid(); i++) {
+                if (this.isReversed) {
+                    iterator.prev();
+                } else {
+                    iterator.next();
+                }
+            }
+
+            // Retrieve transactions for the page
+            int count = 0;
+            while (iterator.isValid() && count < pageSize) {
+                BasicModel model = deserializer(iterator.value());
+                hashes.add(model.getHash());
+
+                count++;
+
+                if (this.isReversed) {
+                    iterator.prev();
+                } else {
+                    iterator.next();
+                }
+            }
+        }
+
+        return hashes;
     }
 
     /**
@@ -310,5 +432,54 @@ public class Storage implements KeyValueStorage {
                     this.storageType.getName());
             throw new StorageException(StorageErrorCode.HANDLER_NOT_FOUND);
         }
+    }
+
+    @Override
+    public List<BasicModel> asBasicModel() {
+        Object response = processCriteria();
+
+        return (List<BasicModel>) response;
+    }
+
+    @Override
+    public List<String> asKey() {
+        return null;
+    }
+
+    /**
+     * Process based on a criteria
+     * */
+    private Object processCriteria() {
+        log.info("Operator: {}, Field:{}, Value:{}", operator, searchField, value);
+        switch (operator) {
+            case EQ:
+                return operatorEQ();
+            default:
+                return null;
+        }
+    }
+
+    /**
+     * Logic for operator EQ(=)
+     * */
+    private Object operatorEQ() {
+        List<BasicModel> multiQueryResponse = new ArrayList<>();
+
+        switch (searchField) {
+            case STATUS:
+                if(this.storageType == StorageTypes.PEERS) {
+                    RocksIterator iterator = this.getIterator();
+
+                    for(iterator.seekToLast(); iterator.isValid(); iterator.prev()) {
+                        Peer peer = (Peer) deserializer(iterator.value());
+
+                        if(peer.isActive() == (boolean) value) {
+                            multiQueryResponse.add(peer);
+                        }
+                    }
+                }
+        }
+
+        return multiQueryResponse;
     }
 }

@@ -31,11 +31,11 @@ public class MempoolTransaction extends BasicModel {
     private String from;
     private String to;
     private Integer version;
-    private BigInteger value;
+    private BigInteger amount;
     private String nonce;
     private long timeStamp;
-    private BigDecimal networkFees;
-    private BigDecimal fees;
+    private BigInteger networkFees;
+    private BigInteger fees;
     @JsonInclude(JsonInclude.Include.NON_NULL)
     private TransactionStatus status;
     private String pubKeyHash;
@@ -49,7 +49,7 @@ public class MempoolTransaction extends BasicModel {
         map.put("from", this.from);
         map.put("to", this.to);
         map.put("version", this.version);
-        map.put("value", this.value.toString());
+        map.put("amount", this.amount.toString());
         map.put("nonce", this.nonce);
         map.put("timeStamp", this.timeStamp);
         map.put("networkFees", this.networkFees.toString());
