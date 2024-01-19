@@ -4,60 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8788e929-56e3-4231-8353-0722302cf2c4" name="Changes" comment="feat:Update dependencies and message chunking between broker with chunks">
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/1/3/138a8e3fa74559af35e506d14152d4a2ac89e072" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/1/3/138a8e3fa74559af35e506d14152d4a2ac89e072" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/1/e/1e321a9e4a19b618c27b44cc5ba86da0e2301caf" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/1/e/1e321a9e4a19b618c27b44cc5ba86da0e2301caf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/2/0/20f92e6a45a42e5775db63654800d1236f5cc65d" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/2/0/20f92e6a45a42e5775db63654800d1236f5cc65d" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/2/a/2a0d4d112e9a5e355973120e93c676c932c37c7b" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/2/a/2a0d4d112e9a5e355973120e93c676c932c37c7b" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/2/c/2c2fed9b7cd1d13b5bbf000f6c4d43b1e27b82a9" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/2/c/2c2fed9b7cd1d13b5bbf000f6c4d43b1e27b82a9" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/3/0/301dd235ede97b1f00761e4a5ca217bcf9028d64" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/3/0/301dd235ede97b1f00761e4a5ca217bcf9028d64" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/3/0/304878fc5d23d2d45a3436a8de7ad99acb25c665" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/4/8/48869b333d7d3760cbd2511e4c172100d6634943" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/4/8/48869b333d7d3760cbd2511e4c172100d6634943" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/5/5/559f72847c7761f0ecedc0f038a86cc7e05e70d8" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/5/5/559f72847c7761f0ecedc0f038a86cc7e05e70d8" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/5/7/57f956dd6f20b588992f23427833f65cec28f8e3" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/5/7/57f956dd6f20b588992f23427833f65cec28f8e3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/9/4/9482d9dd450722bc6f309214c9ee98ff68fe94f2" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/9/4/9482d9dd450722bc6f309214c9ee98ff68fe94f2" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/9/f/9f79eba898aaa107d77d41147566aa8830d8d21d" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/9/f/9f79eba898aaa107d77d41147566aa8830d8d21d" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/a/0/a0ae0dc1e784964ffa7e1789c4f33c1303ee365d" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/a/0/a0ae0dc1e784964ffa7e1789c4f33c1303ee365d" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/a/7/a7b1b5f4d615d0ecdc6238c3afd39caeabc5a3f8" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/a/7/a7b1b5f4d615d0ecdc6238c3afd39caeabc5a3f8" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/a/b/ab18b832f83a9e13754b3a36a6f5d1183ace3a41" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/a/b/ab18b832f83a9e13754b3a36a6f5d1183ace3a41" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/b/1/b1c8e914bc53f4a9bf227b05e1c5d95d0df2640a" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/b/1/b1c8e914bc53f4a9bf227b05e1c5d95d0df2640a" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/e/a/eabd314abf03886fa06088ebe2fb58cd5fa05f75" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/e/a/eabd314abf03886fa06088ebe2fb58cd5fa05f75" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/e/b/ebabcb331773b73653a4b94eaf3266e471ed00fc" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/e/b/ebabcb331773b73653a4b94eaf3266e471ed00fc" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/e/c/ec5094a5da102288b6864bec283fe926731a7b1b" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/e/c/ec5094a5da102288b6864bec283fe926731a7b1b" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/e/c/ec881407da2dc76ec2589e1ff4e3988ccde684f0" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/e/c/ec881407da2dc76ec2589e1ff4e3988ccde684f0" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/f/7/f7d5f39e5cc572d42a19505e9d90b002450ebff1" beforeDir="false" />
+    <list default="true" id="8788e929-56e3-4231-8353-0722302cf2c4" name="Changes" comment="feat:Account balance after block validation">
       <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/3/0/304878fc5d23d2d45a3436a8de7ad99acb25c665" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/f/7/f7d5f39e5cc572d42a19505e9d90b002450ebff1" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/index.pb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/uk/co/roteala/common/Account.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/uk/co/roteala/common/Account.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/uk/co/roteala/common/BasicModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/uk/co/roteala/common/BasicModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/uk/co/roteala/common/Block.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/uk/co/roteala/common/Block.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/uk/co/roteala/common/BlockHeader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/uk/co/roteala/common/BlockHeader.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/uk/co/roteala/common/ChainState.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/uk/co/roteala/common/ChainState.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/uk/co/roteala/common/MempoolTransaction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/uk/co/roteala/common/MempoolTransaction.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/uk/co/roteala/common/NodeState.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/uk/co/roteala/common/NodeState.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/uk/co/roteala/common/Transaction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/uk/co/roteala/common/Transaction.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/uk/co/roteala/common/events/PeersContainer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/uk/co/roteala/common/PeersContainer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/uk/co/roteala/common/messenger/Message.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/uk/co/roteala/common/messenger/Message.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/uk/co/roteala/common/messenger/MessageTemplate.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/uk/co/roteala/common/messenger/MessageTemplate.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/uk/co/roteala/common/messenger/Messenger.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/uk/co/roteala/common/messenger/Messenger.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/uk/co/roteala/common/messenger/MessengerUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/uk/co/roteala/common/messenger/MessengerUtils.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/uk/co/roteala/common/messenger/ReceivingGroup.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/uk/co/roteala/common/messenger/ReceivingGroup.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/uk/co/roteala/common/monetary/Fund.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/uk/co/roteala/common/monetary/Funding.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/uk/co/roteala/common/monetary/Funding.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/uk/co/roteala/common/monetary/MoveFund.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/uk/co/roteala/common/monetary/MoveFund.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/uk/co/roteala/common/monetary/Vault.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/uk/co/roteala/common/monetary/Vault.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/uk/co/roteala/common/storage/ColumnFamilyTypes.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/uk/co/roteala/common/storage/ColumnFamilyTypes.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/uk/co/roteala/common/storage/Storage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/uk/co/roteala/common/storage/Storage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/uk/co/roteala/core/Blockchain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/uk/co/roteala/core/Blockchain.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/uk/co/roteala/exceptions/errorcodes/MiningErrorCode.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/uk/co/roteala/exceptions/errorcodes/MiningErrorCode.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/uk/co/roteala/net/ConnectionsStorage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/uk/co/roteala/net/ConnectionsStorage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/uk/co/roteala/net/Peer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/uk/co/roteala/net/Peer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/uk/co/roteala/utils/BlockchainUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/uk/co/roteala/utils/BlockchainUtils.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/uk/co/roteala/utils/Constants.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/uk/co/roteala/utils/Constants.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -382,7 +331,7 @@
       <workItem from="1704991460270" duration="3992000" />
       <workItem from="1705099536104" duration="6887000" />
       <workItem from="1705265243335" duration="38842000" />
-      <workItem from="1705608130085" duration="4067000" />
+      <workItem from="1705608130085" duration="4367000" />
     </task>
     <task id="LOCAL-00001" summary="feat:Chunk">
       <option name="closed" value="true" />
@@ -408,7 +357,23 @@
       <option name="project" value="LOCAL" />
       <updated>1704158803645</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="feat:Account balance after block validation">
+      <option name="closed" value="true" />
+      <created>1705696822624</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1705696822624</updated>
+    </task>
+    <task id="LOCAL-00005" summary="feat:Account balance after block validation">
+      <option name="closed" value="true" />
+      <created>1705696881818</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1705696881818</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -428,7 +393,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="feat:Chunk" />
     <MESSAGE value="feat:Update dependencies and message chunking between broker with chunks" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat:Update dependencies and message chunking between broker with chunks" />
+    <MESSAGE value="feat:Account balance after block validation" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat:Account balance after block validation" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
