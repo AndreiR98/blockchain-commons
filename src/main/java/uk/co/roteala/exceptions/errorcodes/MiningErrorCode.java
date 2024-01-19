@@ -7,10 +7,10 @@ public enum MiningErrorCode implements ErrorCode {
     MINED_BLOCK_EMPTY("mining.002"),
     PREVIOUS_HASH("mining.003"),
     PSEUDO_MATCH("mining.004"),
-    IN_BETWEEN("mining.005"),
-    OPERATION_FAILED("mining.006"),
-    ALREADY_EXISTS("mining.007"),
-    PSEUDO_TRANSACTION_NOT_FOUND("mining.008");
+    HASH_MATCH("mining.005"),
+    MARKLEROOT("mining.006"),
+    TARGET("mining.007"),
+    TRANSACTION_NOT_FOUND("mining.008");
 
 
     MiningErrorCode(String key) {

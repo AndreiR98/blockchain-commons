@@ -267,7 +267,7 @@ public class Storage extends AbstractStorageOperation implements KeyValueStorage
         RocksDB.loadLibrary();
         try {
             //Blocks must be immutable
-            if(model instanceof Block) {
+            if((model instanceof Block) && (this.storageType != StorageTypes.MEMPOOL)) {
                 throw new StorageException(StorageErrorCode.IMMUTABILITY);
             }
             //Modify method only applies to data already existent except account, peer, you can't modify a transaction
@@ -302,14 +302,14 @@ public class Storage extends AbstractStorageOperation implements KeyValueStorage
 
             if((model instanceof MempoolTransaction)) {
                 MempoolTransaction mempoolTransaction = (MempoolTransaction) model;
-                this.rocksDB.put(getHandler(ColumnFamilyTypes.NODE), DefaultStorage.defaultPersistantWriteOptions(),
+                this.rocksDB.put(getHandler(ColumnFamilyTypes.TRANSACTIONS), DefaultStorage.defaultPersistantWriteOptions(),
                         mempoolTransaction.getHash()
                                 .getBytes(StandardCharsets.UTF_8), serializer(mempoolTransaction));
              }
 
             if((model instanceof ChainState)) {
                 ChainState chainState = (ChainState) model;
-                this.rocksDB.put(getHandler(ColumnFamilyTypes.NODE), DefaultStorage.defaultPersistantWriteOptions(),
+                this.rocksDB.put(getHandler(ColumnFamilyTypes.STATE), DefaultStorage.defaultPersistantWriteOptions(),
                         Constants.DEFAULT_STATE_NAME
                                 .getBytes(StandardCharsets.UTF_8), serializer(chainState));
             }
@@ -371,7 +371,7 @@ public class Storage extends AbstractStorageOperation implements KeyValueStorage
         RocksDB.loadLibrary();
 
         int pageSize = DEFAULT_PAGE_SIZE;
-        int pageNumber = this.pageNumber != null && this.pageNumber > 0 ? this.pageNumber : 1; // Ensure pageNumber is at least 1
+        int pageNumber = this.pageSize != null && this.pageSize > 0 ? this.pageSize : 1; // Ensure pageNumber is at least 1
         int skip = pageSize * (pageNumber);
 
         try (final RocksIterator iterator = this.getIterator(this.handler)) {
@@ -389,7 +389,7 @@ public class Storage extends AbstractStorageOperation implements KeyValueStorage
             int count = 0;
             while (iterator.isValid() && count < pageSize) {
                 BasicModel model = deserializer(iterator.value());
-                hashes.add(model.getHash());
+                //hashes.add(model.getKey());
 
                 count++;
 
@@ -450,13 +450,54 @@ public class Storage extends AbstractStorageOperation implements KeyValueStorage
      * Process based on a criteria
      * */
     private Object processCriteria() {
-        log.info("Operator: {}, Field:{}, Value:{}", operator, searchField, value);
         switch (operator) {
             case EQ:
                 return operatorEQ();
+            case LTEQ:
+                return operatorLTEQ();
             default:
                 return null;
         }
+    }
+
+    /**
+     * Logic for operator LTEQ(<=X)
+     * */
+    private Object operatorLTEQ() {
+        List<BasicModel> multiQueryResponse = new ArrayList<>();
+
+        switch (searchField) {
+            case TIME_STAMP:
+                if(this.storageType == StorageTypes.MEMPOOL) {
+                    RocksIterator iterator = this.getIterator(handler);
+                    if(isReversed) {
+                        for(iterator.seekToLast(); iterator.isValid(); iterator.prev()) {
+                            MempoolTransaction mempoolTransaction = (MempoolTransaction) deserializer(iterator.value());
+
+                            if(mempoolTransaction.getTimeStamp() <= (long) value) {
+                                if(multiQueryResponse.size() < pageSize) {
+                                    multiQueryResponse.add(mempoolTransaction);
+                                } else {
+                                    break;
+                                }
+                            }
+                        }
+                    } else {
+                        for (iterator.seekToFirst(); iterator.isValid(); iterator.next()) {
+                            MempoolTransaction mempoolTransaction = (MempoolTransaction) deserializer(iterator.value());
+                            if(mempoolTransaction.getTimeStamp() <= (long) value) {
+                                if(multiQueryResponse.size() < pageSize) {
+                                    multiQueryResponse.add(mempoolTransaction);
+                                } else {
+                                    break;
+                                }
+                            }
+                        }
+                    }
+                }
+        }
+
+        return multiQueryResponse;
     }
 
     /**

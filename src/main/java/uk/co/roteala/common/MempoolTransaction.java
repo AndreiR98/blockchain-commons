@@ -1,6 +1,7 @@
 package uk.co.roteala.common;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.core.JsonProcessingException;
@@ -19,10 +20,12 @@ import java.nio.charset.StandardCharsets;
 import java.util.*;
 
 @Data
+@Slf4j
 @Builder
 @EqualsAndHashCode(callSuper = false)
 @NoArgsConstructor
 @AllArgsConstructor
+@JsonIgnoreProperties(ignoreUnknown = true)
 @JsonTypeName(MempoolTransaction.TRANSACTION_TYPE)
 public class MempoolTransaction extends BasicModel {
     static final String TRANSACTION_TYPE = "MEMPOOLTRANSACTION";
@@ -144,5 +147,28 @@ public class MempoolTransaction extends BasicModel {
         }
 
         return false;
+    }
+
+    @JsonIgnore
+    public Transaction toTransaction(Block blockDetails, int index) {
+        Transaction transaction = new Transaction();
+
+        transaction.setFrom(this.from);
+        transaction.setTo(this.getTo());
+        transaction.setStatus(TransactionStatus.SUCCESS);
+        transaction.setNonce(this.nonce);
+        transaction.setVersion(this.version);
+        transaction.setNetworkFees(this.networkFees);
+        transaction.setProcessingFees(this.fees);
+        transaction.setPubKeyHash(this.pubKeyHash);
+        transaction.setHash(this.hash);
+        transaction.setSignature(this.signature);
+        transaction.setBlockTime(blockDetails.getHeader().getBlockTime());
+        transaction.setBlockNumber(blockDetails.getIndex());
+        transaction.setTransactionIndex(index);
+        transaction.setAmount(this.amount);
+        transaction.setTimeStamp(this.timeStamp);
+
+        return transaction;
     }
 }

@@ -42,6 +42,7 @@ public class Blockchain {
 
             stateStorage.put(true, ColumnFamilyTypes.NODE, Constants.DEFAULT_NODE_STATE
                     .getBytes(StandardCharsets.UTF_8), Constants.NODE_STATE);
+            log.info("Node state created: {}", Constants.NODE_STATE);
 
             setUpGenesisAccounts(stateStorage);
         }

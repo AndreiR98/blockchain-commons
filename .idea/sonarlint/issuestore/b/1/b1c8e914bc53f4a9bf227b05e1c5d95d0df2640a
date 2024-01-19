@@ -1,15 +1,15 @@
 
-h
-java:S2259%"FA "NullPointerException" could be thrown; "template" is nullable here.(¢æ“’ûÿÿÿÿ8ê†Ñ°Î1
 £
-java:S1186:"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(ë„ÔÙüÿÿÿÿ8ë†Ñ°Î1
+java:S1186\"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(ë„ÔÙüÿÿÿÿ8õÅ˜£Ñ1
 
-java:S1186V"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(ÀËÑ›8ë†Ñ°Î1
+java:S1186x"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(ÀËÑ›8õÅ˜£Ñ1
 
-java:S1186X"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(ãÜ‚8ë†Ñ°Î1
+java:S1186z"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(ãÜ‚8õÅ˜£Ñ1
+a
+java:S1117R"?Rename "connections" which hides the field declared at line 26.(¡×ƒ“üÿÿÿÿ8ùÅ˜£Ñ1
 Q
-java:S1172:"/Remove this unused method parameter "template".(ë„ÔÙüÿÿÿÿ8í†Ñ°Î1
+java:S1172\"/Remove this unused method parameter "template".(ë„ÔÙüÿÿÿÿ8úÅ˜£Ñ1
 L
-java:S1172V"/Remove this unused method parameter "template".(ÀËÑ›8î†Ñ°Î1
+java:S1172x"/Remove this unused method parameter "template".(ÀËÑ›8ûÅ˜£Ñ1
 L
-java:S1172X"/Remove this unused method parameter "template".(ãÜ‚8ï†Ñ°Î1
+java:S1172z"/Remove this unused method parameter "template".(ãÜ‚8üÅ˜£Ñ1

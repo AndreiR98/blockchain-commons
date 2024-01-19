@@ -43,10 +43,10 @@ public class Constants {
             .lastBlockIndex(0)
             .reward(new BigInteger("14d1120d7b160000", 16))
             .networkFees(new BigInteger("b1a2bc2ec50000", 16))
-            .target(3)
+            .target(4)
             .chainId(7331)
             .netVersion(1)
-            .allowEmptyMining(true)
+            .allowEmptyMining(false)
             .build();
 
     public static final NodeState NODE_STATE = NodeState.builder()

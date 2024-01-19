@@ -2,10 +2,9 @@ package uk.co.roteala.net;
 
 import io.vertx.core.net.NetSocket;
 import lombok.Data;
-import reactor.netty.Connection;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.util.*;
+import java.util.concurrent.ConcurrentHashMap;
 
 @Data
 public class ConnectionsStorage {
@@ -14,14 +13,14 @@ public class ConnectionsStorage {
      * These connections are established by your node to communicate with other nodes in the blockchain network.
      * Typically used for sending transactions, requesting blocks, and general peer-to-peer communication.
      */
-    private Set<NetSocket> clientConnections = new HashSet<>();
+    private List<NetSocket> asClientConnections = new ArrayList<>();
 
     /**
      * Represents a set of connections accepted by the blockchain node acting as a server in a peer-to-peer network.
      * Nodes from the blockchain network establish connections to your node. Your node acts as a server,
      * receiving transactions, blocks, and other network-related information from connected nodes.
      */
-    private Set<NetSocket> serverConnections = new HashSet<>();
+    private List<NetSocket> asServerConnections = new ArrayList<>();
 
     /**
      * Represents a single connection to a broker. This connection may serve a specific purpose,

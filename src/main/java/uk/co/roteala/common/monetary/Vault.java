@@ -23,7 +23,7 @@ public class Vault extends BasicModel implements Serializable {
     private boolean closed;
 
     @Override
-    public String getHash() {
+    public byte[] getKey() {
         return null;
     }
 }

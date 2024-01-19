@@ -4,7 +4,6 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import uk.co.roteala.common.events.PeersContainer;
 import uk.co.roteala.common.messenger.Response;
 import uk.co.roteala.common.monetary.Vault;
 import uk.co.roteala.exceptions.SerializationException;
@@ -38,7 +37,7 @@ public abstract class BasicModel implements Serializable {
     protected ObjectMapper mapper = new ObjectMapper();
 
     @JsonIgnore
-    public abstract String getHash();
+    public abstract byte[] getKey();
 
     @JsonIgnore
     protected String serialize() {

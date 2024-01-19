@@ -4,6 +4,10 @@ package uk.co.roteala.utils;
 import lombok.experimental.UtilityClass;
 import lombok.extern.slf4j.Slf4j;
 import uk.co.roteala.common.*;
+import uk.co.roteala.common.storage.ColumnFamilyTypes;
+import uk.co.roteala.common.storage.Storage;
+import uk.co.roteala.exceptions.MiningException;
+import uk.co.roteala.exceptions.errorcodes.MiningErrorCode;
 import uk.co.roteala.security.utils.CryptographyUtils;
 import uk.co.roteala.security.utils.HashingService;
 
@@ -11,62 +15,51 @@ import uk.co.roteala.security.utils.HashingService;
 import java.math.BigInteger;
 import java.net.InetSocketAddress;
 import java.net.SocketAddress;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Objects;
 
 @Slf4j
 @UtilityClass
 public class BlockchainUtils {
-    public String mapHashed(MempoolTransaction pseudoTransaction, int blockIndex, long blockTimeStamp, int index) {
-        Transaction transaction = new Transaction();
-        transaction.setPseudoHash(pseudoTransaction.getHash());
-        transaction.setBlockNumber(blockIndex);
-        transaction.setFrom(pseudoTransaction.getFrom());
-        transaction.setTo(pseudoTransaction.getTo());
-        //transaction.setFees(pseudoTransaction.getFees());
-        transaction.setVersion(pseudoTransaction.getVersion());
-        transaction.setTransactionIndex(index);
-        //transaction.setValue(pseudoTransaction.getValue());
-        //transaction.setNonce(pseudoTransaction.getNonce());
-        transaction.setTimeStamp(pseudoTransaction.getTimeStamp());
-        transaction.setBlockTime(blockTimeStamp);
-        transaction.setPubKeyHash(pseudoTransaction.getPubKeyHash());
-        transaction.setStatus(pseudoTransaction.getStatus());
-        transaction.setSignature(pseudoTransaction.getSignature());
-        transaction.setHash(transaction.computeHash());
 
-        StringBuilder bothHashes = new StringBuilder();
-        bothHashes.append(pseudoTransaction.getHash());
-        bothHashes.append("_");
-        bothHashes.append(transaction.getHash());
+    public boolean isValidBlock(Block newMinedBlock, int target, Storage storage) {
+        // Verify if the hash match
+        if (!newMinedBlock.getHash().equals(newMinedBlock.computeHash())) {
+            throw new MiningException(MiningErrorCode.HASH_MATCH);
+        }
 
-        return bothHashes.toString();
+        // Check if the markle root is correct
+        if (!newMinedBlock.getTransactions().isEmpty() &&
+                !Objects.equals(newMinedBlock.getHeader().getMarkleRoot(),
+                        markleRootGenerator(newMinedBlock.getTransactions()))) {
+            throw new MiningException(MiningErrorCode.MARKLEROOT);
+        }
+
+        if (newMinedBlock.getTransactions().isEmpty() &&
+                !Objects.equals(newMinedBlock.getHeader().getMarkleRoot(), Constants.DEFAULT_HASH)) {
+            throw new MiningException(MiningErrorCode.MARKLEROOT);
+        }
+
+        //Check previous hash
+
+        // Check if the hash meets the target difficulty
+        if (!computedTargetValue(newMinedBlock.getHash(), target)) {
+            throw new MiningException(MiningErrorCode.TARGET);
+        }
+
+        // Verify each transaction hash
+        for (String mempoolTransactionHash : newMinedBlock.getTransactions()) {
+            if (!validTransactionHash(mempoolTransactionHash) &&
+                    !storage.has(ColumnFamilyTypes.TRANSACTIONS, mempoolTransactionHash.getBytes(StandardCharsets.UTF_8))) {
+                throw new MiningException(MiningErrorCode.TRANSACTION_NOT_FOUND);
+            }
+        }
+
+        return true;
     }
-
-    public Transaction mapPsuedoTransactionToTransaction(MempoolTransaction pseudoTransaction, BlockHeader blockHeader, Integer index) {
-        Transaction transaction = new Transaction();
-
-        transaction.setFrom(pseudoTransaction.getFrom());
-        transaction.setTo(pseudoTransaction.getTo());
-        transaction.setStatus(pseudoTransaction.getStatus());
-        //transaction.setNonce(pseudoTransaction.getNonce());
-        transaction.setVersion(pseudoTransaction.getVersion());
-        //transaction.setFees(pseudoTransaction.getFees());
-        transaction.setPubKeyHash(pseudoTransaction.getPubKeyHash());
-        transaction.setPseudoHash(pseudoTransaction.getHash());
-        transaction.setSignature(pseudoTransaction.getSignature());
-        transaction.setBlockTime(blockHeader.getTimeStamp());
-        transaction.setBlockNumber(blockHeader.getIndex());
-        transaction.setTransactionIndex(index);
-        //transaction.setValue(pseudoTransaction.getValue());
-        transaction.setTimeStamp(pseudoTransaction.getTimeStamp());
-        transaction.setHash(transaction.computeHash());
-
-        return transaction;
-    }
-
-    
 
     /**
      * TODO::Recreate the markle root based on the orde in the block
@@ -97,29 +90,6 @@ public class BlockchainUtils {
         return  layer.get(0);
     }
 
-    public List<List<String>> splitPseudoHashMatches(List<String> pseudoHashMatches) {
-        if(pseudoHashMatches.isEmpty()) {
-            return null;
-        }
-
-        List<List<String>> separatedHashes = new ArrayList<>();
-
-        List<String> transactionHash = new ArrayList<>();
-        List<String> pseudoHash = new ArrayList<>();
-
-        pseudoHashMatches.forEach(hash -> {
-            String[] splitHash = hash.split("_");
-
-            transactionHash.add(splitHash[1]);
-            pseudoHash.add(splitHash[0]);
-        });
-
-        separatedHashes.add(pseudoHash);
-        separatedHashes.add(transactionHash);
-
-        return separatedHashes;
-    }
-
     public boolean computedTargetValue(String proposedHash, Integer coefficient) {
         int currentCount = 0;
 
@@ -135,12 +105,13 @@ public class BlockchainUtils {
     }
 
     public boolean validTransactionHash(String hash) {
-        if(hash == null || hash.isEmpty()) {
+        if (hash == null || hash.isEmpty()) {
             return false;
         }
 
-        return hash.length() == 96;
+        return hash.startsWith("0x") && hash.length() == 66;
     }
+
 
     public boolean validBlockHash(String hash) {
         if(hash == null || hash.isEmpty()) {

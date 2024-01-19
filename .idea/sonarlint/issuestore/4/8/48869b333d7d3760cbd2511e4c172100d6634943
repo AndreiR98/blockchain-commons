@@ -8,11 +8,3 @@ java:S1948"+Make "signature" transient or serializable.(¨áçÀ8Ö°¹È1
 Z
 java:S1117#"8Rename "from" which hides the field declared at line 27.(ÓÄÛ©ùÿÿÿÿ8ß³íÕÆ1
 X	java:S125A"<This block of commented-out lines of code should be removed.(×í¨¦8É¥¯üÆ1
-q
-java:S1128"ORemove this unused import 'com.fasterxml.jackson.core.JsonProcessingException'.(ßÔïÇûÿÿÿÿ8Ø°¹È1
-_
-java:S1128"=Remove this unused import 'uk.co.roteala.security.PublicKey'.(õã‘şøÿÿÿÿ8Ø°¹È1
-m
-java:S1128"KRemove this unused import 'uk.co.roteala.security.utils.CryptographyUtils'.(„‚ìŒûÿÿÿÿ8Ø°¹È1
-M
-java:S1128"+Remove this unused import 'java.util.List'.(Õë±Äøÿÿÿÿ8Ø°¹È1

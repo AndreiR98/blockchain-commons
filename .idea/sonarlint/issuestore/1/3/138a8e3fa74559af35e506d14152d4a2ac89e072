@@ -1,12 +1,18 @@
 
 
-java:S1192|"_Define a constant instead of duplicating this literal "Error while adding to storage!" 4 times.(…øÑëúÿÿÿÿ8¿Ğ¸®Î1
-h
-java:S1301Æ"KReplace this "switch" statement by "if" statements to increase readability.(î­™o8ÀĞ¸®Î1
+java:S1192|"_Define a constant instead of duplicating this literal "Error while adding to storage!" 4 times.(…øÑëúÿÿÿÿ8Ë¼ÛñÑ1
 i
-java:S1301Ô"KReplace this "switch" statement by "if" statements to increase readability.(†½š½8ÀĞ¸®Î1
+java:S1301Õ"KReplace this "switch" statement by "if" statements to increase readability.(†½š½8Ë¼ÛñÑ1
+i
+java:S1301ı"KReplace this "switch" statement by "if" statements to increase readability.(†½š½8Ë¼ÛñÑ1
 p
-java:S3776Š"RRefactor this method to reduce its Cognitive Complexity from 16 to the 15 allowed.(ñù 8úĞ¸®Î1
+java:S3776Š"RRefactor this method to reduce its Cognitive Complexity from 17 to the 15 allowed.(ñù 8 ½ÛñÑ1
+G
+java:S1481‡"*Remove this unused "model" local variable.(Û«È8¦½ÛñÑ1
+^	java:S125ˆ"<This block of commented-out lines of code should be removed.(›”´ªÿÿÿÿÿ8¦½ÛñÑ1
 I
-java:S1168¾"+Return an empty collection instead of null.(¥¹ï8ÿĞ¸®Î1
-v	java:S131Ô"YComplete cases by adding the missing enum constants or add a default case to this switch.(†½š½8ÿĞ¸®Î1
+java:S1168¾"+Return an empty collection instead of null.(¥¹ï8¨½ÛñÑ1
+p
+java:S3776Ò"RRefactor this method to reduce its Cognitive Complexity from 39 to the 15 allowed.(£ú·ú8©½ÛñÑ1
+v	java:S131Õ"YComplete cases by adding the missing enum constants or add a default case to this switch.(†½š½8©½ÛñÑ1
+v	java:S131ı"YComplete cases by adding the missing enum constants or add a default case to this switch.(†½š½8«½ÛñÑ1

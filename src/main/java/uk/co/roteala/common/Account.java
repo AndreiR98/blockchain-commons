@@ -13,6 +13,7 @@ import uk.co.roteala.common.monetary.VirtualBalanceSign;
 
 import java.io.Serializable;
 import java.math.BigInteger;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -50,12 +51,13 @@ public class Account extends BasicModel implements Serializable {
     }
 
     @Override
-    public String getHash() {
+    public byte[] getKey() {
         String hexString = this.address.startsWith("0x") ?
                 this.address.substring(2) : this.address;
 
         // Convert to lowercase
-        return "0x" + hexString.toLowerCase();
+        return ("0x" + hexString.toLowerCase())
+                .getBytes(StandardCharsets.UTF_8);
     }
 
     @Override

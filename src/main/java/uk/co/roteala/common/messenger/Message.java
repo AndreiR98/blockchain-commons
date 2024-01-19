@@ -7,10 +7,6 @@ import io.vertx.core.net.NetSocket;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import reactor.netty.Connection;
-import uk.co.roteala.common.*;
-import uk.co.roteala.common.events.PeersContainer;
-import uk.co.roteala.common.monetary.Vault;
 
 import java.io.Serializable;
 
@@ -31,5 +27,6 @@ public abstract class Message implements Serializable {
     protected MessageType messageType;
     @JsonIgnore
     private HandlerType handler;
+    @JsonIgnore
     private NetSocket owner;
 }

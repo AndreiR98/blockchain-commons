@@ -1,14 +1,13 @@
 
 v
-java:S1128"TRemove this unused import 'com.fasterxml.jackson.databind.annotation.JsonSerialize'.(ÖÎèöúÿÿÿÿ8ùÅüÏ1
+java:S1128"TRemove this unused import 'com.fasterxml.jackson.databind.annotation.JsonSerialize'.(ÖÎèöúÿÿÿÿ8ıöÿ¦Ï1
 a
-java:S1128"?Remove this unused import 'uk.co.roteala.common.monetary.Coin'.(£‰ƒúÿÿÿÿ8ùÅüÏ1
+java:S1128"?Remove this unused import 'uk.co.roteala.common.monetary.Coin'.(£‰ƒúÿÿÿÿ8ıöÿ¦Ï1
 j
-java:S1128"HRemove this unused import 'uk.co.roteala.common.monetary.CoinConverter'.(É ì¿øÿÿÿÿ8ùÅüÏ1
+java:S1128	"HRemove this unused import 'uk.co.roteala.common.monetary.CoinConverter'.(É ì¿øÿÿÿÿ8ıöÿ¦Ï1
 N
-java:S1128
-"1Remove this unused import 'java.math.BigDecimal'.(êêŠ8ùÅüÏ1
+java:S1128"1Remove this unused import 'java.math.BigDecimal'.(êêŠ8ıöÿ¦Ï1
 M
-java:S1128"0Remove this unused import 'java.util.ArrayList'.(÷‰îƒ8ùÅüÏ1
+java:S1128"0Remove this unused import 'java.util.ArrayList'.(÷‰îƒ8ıöÿ¦Ï1
 M
-java:S1128"+Remove this unused import 'java.util.List'.(Õë±Äøÿÿÿÿ8ùÅüÏ1
+java:S1128"+Remove this unused import 'java.util.List'.(Õë±Äøÿÿÿÿ8ıöÿ¦Ï1

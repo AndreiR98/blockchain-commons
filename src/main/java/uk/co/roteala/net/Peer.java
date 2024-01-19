@@ -22,21 +22,12 @@ public class Peer extends BasicModel {
     private boolean active;
 
     @JsonIgnore
+    @Override
     public byte[] getKey() {
         StringBuilder s = new StringBuilder();
         s.append(this.address);
         s.append(this.port);
 
-        return s.toString().getBytes(StandardCharsets.UTF_8);
-    }
-
-    @JsonIgnore
-    @Override
-    public String getHash() {
-        StringBuilder s = new StringBuilder();
-        s.append(this.address);
-        s.append(this.port);
-
-        return s.toString();
+        return this.address.getBytes(StandardCharsets.UTF_8);
     }
 }

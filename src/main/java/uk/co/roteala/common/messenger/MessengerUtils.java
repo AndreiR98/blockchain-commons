@@ -45,6 +45,8 @@ public class MessengerUtils {
     }
 
     public List<String> createChunks(MessageTemplate template) {
+        //template.setWithOut(new ArrayList<>());
+
         byte[] availableBytes = SerializationUtils.serialize(modelToString(template.getMessage()));
         final int totalMessageSize = availableBytes.length;
 

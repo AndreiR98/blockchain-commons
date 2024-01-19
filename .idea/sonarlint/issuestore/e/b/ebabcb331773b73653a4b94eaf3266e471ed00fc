@@ -1,12 +1,3 @@
 
 I
-java:S1948""'Make "owner" transient or serializable.(©¶­Ðÿÿÿÿÿ8€‘ÇÔË1
-W
-java:S1128
-"5Remove this unused import 'reactor.netty.Connection'.(ÑØ«·úÿÿÿÿ8¤ÙÍ­Î1
-S
-java:S1128"1Remove this unused import 'uk.co.roteala.common'.(Å×§òûÿÿÿÿ8«¥ž¾Ì1
-d
-java:S1128"GRemove this unused import 'uk.co.roteala.common.events.PeersContainer'.(ÞÔ¬í8«¥ž¾Ì1
-b
-java:S1128"@Remove this unused import 'uk.co.roteala.common.monetary.Vault'.(¬´ÒŽüÿÿÿÿ8«¥ž¾Ì1
+java:S1948"'Make "owner" transient or serializable.(©¶­Ðÿÿÿÿÿ8¥×ïŸÑ1

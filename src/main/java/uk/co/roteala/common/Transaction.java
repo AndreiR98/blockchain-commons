@@ -4,39 +4,35 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import lombok.*;
 import lombok.extern.slf4j.Slf4j;
-import uk.co.roteala.common.monetary.Coin;
-import uk.co.roteala.common.monetary.CoinConverter;
 import uk.co.roteala.exceptions.SerializationException;
 import uk.co.roteala.exceptions.errorcodes.SerializationErrorCode;
 import uk.co.roteala.security.utils.HashingService;
 
 import java.io.Serializable;
 import java.math.BigInteger;
+import java.nio.charset.StandardCharsets;
 import java.util.*;
 
 
-@EqualsAndHashCode(callSuper = false)
 @Data
 @Builder
-@Slf4j
+@EqualsAndHashCode(callSuper = false)
 @NoArgsConstructor
 @AllArgsConstructor
 @JsonTypeName("TRANSACTION")
-public class Transaction extends BasicModel implements Serializable {
+public class Transaction extends BasicModel {
     private String hash;
-    private String pseudoHash;
     private Integer blockNumber;
     private String from;
     private String to;
-    private BigInteger fees;
-    @JsonSerialize(converter = CoinConverter.class)
-    private Coin value;
+    private BigInteger networkFees;
+    private BigInteger processingFees;
+    private BigInteger amount;
     private Integer version;
     private Integer transactionIndex;
-    private Integer nonce;
+    private String nonce;
     private long timeStamp;
     private long confirmations;
     private long blockTime;
@@ -50,35 +46,8 @@ public class Transaction extends BasicModel implements Serializable {
         return super.serialize();
     }
 
-    @JsonIgnore
-    public String computeHash() {
-        Map<String, Object> map = new HashMap<>();
-        map.put("pseudoHash", this.pseudoHash);
-        map.put("blockNumber", this.blockNumber);
-        map.put("from", this.from);
-        map.put("to", this.to);
-        map.put("fees", "0x"+this.fees.toString(16));
-        map.put("value", "0x"+this.value.getStringValue());
-        map.put("version", this.version);
-        map.put("transactionIndex", this.transactionIndex);
-        map.put("nonce", this.nonce);
-        map.put("timeStamp", this.timeStamp);
-        map.put("blockTime", this.blockTime);
-        map.put("pubKeyHash", this.pubKeyHash);
-        map.put("signature", this.signature.format());
-
-        Map<String, Object> sortedMap = new TreeMap<>(map);
-
-        ObjectMapper objectMapper = super.mapper;
-
-        String jsonString = null;
-
-        try {
-            jsonString = objectMapper.writeValueAsString(sortedMap);
-        } catch (Exception e) {
-            throw new SerializationException(SerializationErrorCode.SERIALIZATION_FAILED);
-        }
-
-        return "0x"+HashingService.computeSHA3(jsonString);
+    @Override
+    public byte[] getKey() {
+        return this.hash.getBytes(StandardCharsets.UTF_8);
     }
 }

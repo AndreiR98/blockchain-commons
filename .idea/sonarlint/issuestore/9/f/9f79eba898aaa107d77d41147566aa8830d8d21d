@@ -1,10 +1,11 @@
 
-{	java:S115"ZRename this constant name to match the regular expression '^[A-Z][A-Z0-9]*(_[A-Z0-9]+)*$'.(í‚ùûÿÿÿÿ8Îã°‘Ì1
+{	java:S115"ZRename this constant name to match the regular expression '^[A-Z][A-Z0-9]*(_[A-Z0-9]+)*$'.(í‚ùûÿÿÿÿ8×ı¸›Ñ1
 a
-java:S1124"EReorder the modifiers to comply with the Java Language Specification.(¹†È	8Ä›œ‘Ì1
+java:S1124"EReorder the modifiers to comply with the Java Language Specification.(¹†È	8Ùı¸›Ñ1
 g
-java:S1124"EReorder the modifiers to comply with the Java Language Specification.(í‚ùûÿÿÿÿ8Ä›œ‘Ì1
+java:S1124"EReorder the modifiers to comply with the Java Language Specification.(í‚ùûÿÿÿÿ8Ùı¸›Ñ1
 O
-java:S1905"-Remove this unnecessary cast to "MessageKey".(Œ„›•ùÿÿÿÿ8º–Ò‘Ì1
+java:S1905"-Remove this unnecessary cast to "MessageKey".(Œ„›•ùÿÿÿÿ8áı¸›Ñ1
 L
-java:S1905"/Remove this unnecessary cast to "MessageChunk".(Œ‚Àø8º–Ò‘Ì1
+java:S1905"/Remove this unnecessary cast to "MessageChunk".(Œ‚Àø8áı¸›Ñ1
+X	java:S1250"<This block of commented-out lines of code should be removed.(€Ä½¬8«Ñ¦ŸÑ1

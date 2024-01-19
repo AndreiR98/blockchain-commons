@@ -5,6 +5,7 @@ import lombok.*;
 import uk.co.roteala.utils.Constants;
 
 import java.io.Serializable;
+import java.nio.charset.StandardCharsets;
 
 @Data
 @Builder
@@ -18,8 +19,9 @@ public class NodeState extends BasicModel implements Serializable {
     private long updatedAt;
 
     @Override
-    public String getHash() {
-        return Constants.DEFAULT_NODE_STATE;
+    public byte[] getKey() {
+        return Constants.DEFAULT_NODE_STATE
+                .getBytes(StandardCharsets.UTF_8);
     }
 
     @Override

@@ -12,21 +12,18 @@ import uk.co.roteala.exceptions.errorcodes.SerializationErrorCode;
 import uk.co.roteala.security.utils.HashingService;
 
 import java.io.Serializable;
+import java.nio.charset.StandardCharsets;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.TreeMap;
 
-/**
- * BlockHeader represend the data that is broadcasted to other nodes and broker
- * This data is the mined data and based on this real blocks are constructed and transaction enriched
- * */
 @Data
 @Builder
 @EqualsAndHashCode(callSuper = false)
 @NoArgsConstructor
 @AllArgsConstructor
 @JsonTypeName("BLOCKHEADER")
-public class BlockHeader extends BasicModel implements Serializable {
+public class BlockHeader extends BasicModel{
     private String previousHash;
     private String hash;
     private String markleRoot;
@@ -42,6 +39,11 @@ public class BlockHeader extends BasicModel implements Serializable {
     @Override
     public String serialize() {
         return super.serialize();
+    }
+
+    @Override
+    public byte[] getKey() {
+        return this.index.toString().getBytes(StandardCharsets.UTF_8);
     }
 
     @JsonIgnore
